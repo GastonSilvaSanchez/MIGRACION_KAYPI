@@ -31,6 +31,7 @@ dependencies:
   google_maps_flutter: ^2.0.6
   provider: ^6.0.0
   location: ^4.3.0
+  adress_search_text_field: ^1.3.0+1
 
 dev_dependencies:
   flutter_test:
