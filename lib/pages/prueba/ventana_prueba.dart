@@ -41,7 +41,7 @@ class NewScreen extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Text(
-                'Hello World GUYS!!!',
+                'Hello World!!!',
                 style: TextStyle(color: Colors.white),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
 import 'package:flutter_kaypi/pages/requestPermission/requestPermissionController.dart';
@@ -89,28 +90,121 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.grey,
-                Colors.blue,
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: BackButton(
+          color: Colors.black,
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, Routes.HOME);
+          },
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.white,
+              Colors.grey,
+              Colors.blue,
+            ],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
+        ),
+        //width: double.infinity,
+        //height: double.infinity,
+        alignment: Alignment.center,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: _swiper(),
+              ),
+              ElevatedButton(
+                child: const Text(
+                  "Continuar",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                onPressed: () {
+                  _controller.request();
+                },
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(200, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+//aca usamos para swiper de las imagenes de ayuda en el splash
+  static List<String> imageList = [
+    'assets/img/LineasMicros.jpg',
+    'assets/img/LineaTaxiTruffi.jpg',
+    'assets/img/ruta.jpg',
+    'assets/img/worldmap_cbba.png',
+    'assets/img/Cochabamba_Cultura.png'
+  ];
+
+  static List<String> helps = [
+    "Lineas de transporte Cochabamba",
+    "Toma un transporte para llegar a tu destino",
+    "Observa la ruta de distintas lineas de transporte",
+    "Habilita tu ubicacion para mejor servicio",
+    "Destinos Turisticos de nuestra amada Llajta"
+  ];
+
+  Widget _swiper() {
+    return Container(
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              height: 500.0,
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        height: 300.0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            imageList[index],
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        helps[index],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+                autoplay: true,
+                itemCount: 5,
+                viewportFraction: 0.8,
+                scale: 0.5,
+              ),
             ),
-          ),
-          width: double.infinity,
-          height: double.infinity,
-          alignment: Alignment.center,
-          child: ElevatedButton(
-            child: const Text("Continuar"),
-            onPressed: () {
-              _controller.request();
-            },
-          ),
+          ],
         ),
       ),
     );

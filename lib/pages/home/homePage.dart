@@ -35,6 +35,8 @@ class _HomePageState extends State<HomePage> {
                 end: Alignment.bottomLeft,
               ),
             ),
+            height: double.infinity,
+            width: double.infinity,
             child: Stack(
               children: <Widget>[
                 Column(
@@ -92,9 +94,11 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       style: ElevatedButton.styleFrom(
-                          fixedSize: Size(200, 50),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50))),
+                        fixedSize: Size(200, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
                     ),
                   ],
                 ),
