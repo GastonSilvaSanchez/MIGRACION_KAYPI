@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/pages/pantalla_portada.dart';
+import 'package:flutter_kaypi/pages/Routes/pages.dart';
+import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kaypi',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
-      home: PantallaInicio(),
+      initialRoute: Routes.HOME,
+      routes: appRoutes(),
     );
   }
 }
