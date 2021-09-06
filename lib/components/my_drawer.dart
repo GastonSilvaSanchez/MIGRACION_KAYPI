@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -27,32 +28,86 @@ class MyDrawer extends StatelessWidget {
             height: 20.00,
           ),
           ListTile(
-            title: Text("Rutas".toUpperCase()),
-            leading: Icon(Icons.add_road_rounded),
-            //evento on click
-            onTap: () => Navigator.of(context).push(_NewPage(1)),
-          ),
+              title: Text("Rutas".toUpperCase()),
+              leading: Icon(Icons.add_road_rounded),
+              //evento on click
+              onTap: () => Navigator.of(context).pushNamed(Routes.RUTA)),
           SizedBox(
             height: 20.00,
           ),
           ListTile(
-            title: Text("Líneas de transporte".toUpperCase()),
+              title: Text("Líneas de transporte".toUpperCase()),
+              leading: Icon(Icons.departure_board_rounded),
+              //evento on click
+              onTap: () => Navigator.of(context).pushNamed(Routes.FORMLINEAS)),
+          SizedBox(
+            height: 20.00,
+          ),
+          ListTile(
+            title: Text("Radio Movil".toUpperCase()),
             leading: Icon(Icons.departure_board_rounded),
             //evento on click
-            onTap: () => Navigator.of(context).push(_NewPage(2)),
+            onTap: () => Navigator.of(context).pushNamed(Routes.RADIOTAXI),
           ),
           SizedBox(
             height: 20.00,
           ),
           ListTile(
-            title: Text("Paradas".toUpperCase()),
-            leading: Icon(Icons.local_parking_rounded),
+            title: Text("Puntos Estrategicos".toUpperCase()),
+            leading: Icon(Icons.departure_board_rounded),
             //evento on click
-            onTap: () => Navigator.of(context).push(_NewPage(3)),
+            onTap: () =>
+                Navigator.of(context).pushNamed(Routes.PUNTOSESTRATEGICOS),
           ),
           SizedBox(
             height: 20.00,
           ),
+          ListTile(
+            title: Text("Directorio Municipal".toUpperCase()),
+            leading: Icon(Icons.departure_board_rounded),
+            //evento on click
+            onTap: () => Navigator.of(context).pushNamed(Routes.DIRECTORIO),
+          ),
+          SizedBox(
+            height: 20.00,
+          ),
+          ListTile(
+            title: Text("Noticias y Trafico".toUpperCase()),
+            leading: Icon(Icons.departure_board_rounded),
+            //evento on click
+            onTap: () => Navigator.of(context).pushNamed(Routes.NOTICIAS),
+          ),
+          SizedBox(
+            height: 20.00,
+          ),
+          ListTile(
+            title: Text("Parqueos".toUpperCase()),
+            leading: Icon(Icons.departure_board_rounded),
+            //evento on click
+            onTap: () => Navigator.of(context).pushNamed(Routes.PARQUEO),
+          ),
+          SizedBox(
+            height: 20.00,
+          ),
+          ListTile(
+            title: Text("Configuracion".toUpperCase()),
+            leading: Icon(Icons.departure_board_rounded),
+            //evento on click
+            onTap: () => Navigator.of(context).pushNamed(Routes.CONFIGURACION),
+          ),
+          SizedBox(
+            height: 20.00,
+          ),
+          ListTile(
+            title: Text("Ayuda".toUpperCase()),
+            leading: Icon(Icons.local_parking_rounded),
+            //evento on click
+            onTap: () => Navigator.of(context).pushNamed(Routes.AYUDA),
+          ),
+          SizedBox(
+            height: 20.00,
+          ),
+          //agregar direccionamiento de acerca de
           ListTile(
             title: Text("Acerca de".toUpperCase()),
             leading: Icon(Icons.info_rounded),
@@ -76,6 +131,7 @@ class _NewPage extends MaterialPageRoute<void> {
               title: Text('Page $id'),
               elevation: 1.0,
             ),
+            drawer: MyDrawer(),
             body: Center(
               child: Text('Page $id'),
             ),

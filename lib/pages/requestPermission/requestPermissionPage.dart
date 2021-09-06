@@ -84,7 +84,7 @@ class _RequestPermissionPageState extends State<RequestPermissionPage>
 
   //redirege a la pagina home
   void _goToHome() {
-    Navigator.pushReplacementNamed(context, Routes.PRUEBA);
+    Navigator.pushReplacementNamed(context, Routes.RUTA);
   }
 
   @override
