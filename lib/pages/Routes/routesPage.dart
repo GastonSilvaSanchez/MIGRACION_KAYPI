@@ -3,4 +3,5 @@ abstract class Routes {
   static const HOME = '/';
   static const PERMISSIONS = '/permission';
   static const PRUEBA = '/prueba';
+  static const RUTAS = '/rutas';
 }

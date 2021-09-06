@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
+import 'package:flutter/lib/rutas.dart';
+
 //referencia a la vista ventana_prueba en pages
 
 class HomePage extends StatefulWidget {
@@ -87,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, Routes.SPLASH);
+                        Navigator.pushReplacementNamed(context, Routes.RUTAS);
                       },
                       child: const Text(
                         'ACCEDER',
