@@ -5,11 +5,9 @@ import 'package:flutter_kaypi/pages/prueba/ventana_prueba.dart';
 import 'package:flutter_kaypi/pages/requestPermission/requestPermissionPage.dart';
 import 'package:flutter_kaypi/pages/splash/splash_pages.dart';
 
-Map<String, Widget Function(BuildContext)> appRoutes() {
-  return RutaPage;
-}
 
-Map<String, Function> get RutaPage {
+
+Map<String, Widget Function(BuildContext)> appRoutes() {
   return {
   Routes.SPLASH: (_) => const SplashPage(),
   Routes.PERMISSIONS: (_) => const RequestPermissionPage(),
