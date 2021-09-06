@@ -19,7 +19,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Vista de ayuda'),
           ),
         ));
   }

@@ -19,7 +19,7 @@ class _FormRadioMovilState extends State<FormRadioMovil> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Informacion de radio moviles'),
           ),
         ));
   }

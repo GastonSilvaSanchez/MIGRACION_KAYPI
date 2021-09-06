@@ -19,7 +19,7 @@ class _ConfiguracionState extends State<Configuracion> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Vista de Configuracion'),
           ),
         ));
   }

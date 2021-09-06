@@ -19,7 +19,7 @@ class _NoticiasState extends State<Noticias> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Vista de noticias y trafico'),
           ),
         ));
   }

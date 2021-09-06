@@ -19,7 +19,7 @@ class _DirectorioState extends State<Directorio> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Vista de Directorio'),
           ),
         ));
   }

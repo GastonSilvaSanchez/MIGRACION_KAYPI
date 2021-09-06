@@ -19,7 +19,7 @@ class _ParqueosState extends State<Parqueos> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Informacion sobre el parqueo'),
           ),
         ));
   }

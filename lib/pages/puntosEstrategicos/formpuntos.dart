@@ -19,7 +19,7 @@ class _FormPuntosState extends State<FormPuntos> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Vista de puntos estrategicos'),
           ),
         ));
   }

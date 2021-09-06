@@ -19,7 +19,7 @@ class _FormLineasState extends State<FormLineas> {
             title: Text('Flutter layout demo'),
           ),
           body: Center(
-            child: Text('Hello World'),
+            child: Text('Informacion de las lineas'),
           ),
         ));
   }
