@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'Configuracion.TituloConfiguracion' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item class="margen" class="ion-text-wrap">
+      <ion-icon name="chatboxes" item-start color="danger"></ion-icon>
+      <ion-label>
+        <h2><b>{{'Configuracion.TituloIdioma' | translate}}</b></h2>
+        <p class="ion-text-wrap">{{'Configuracion.ContenidoIdioma' | translate}}</p>
+      </ion-label>
+      <ion-select [(ngModel)]="language" (ionChange)="setLanguage(language)">
+        <ion-select-option *ngFor="let lang of languages" value="{{lang.valor}}">{{'Configuracion.MensajeIdioma.' + lang.nombre | translate}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="margen">
+      <ion-icon name="sync" item-start color="danger"></ion-icon>
+      <ion-label>
+        <h2><b>{{'Configuracion.TituloActualizaciones' | translate}}</b></h2>
+        <p class="ion-text-wrap">{{'Configuracion.ContenidoActualizaciones' | translate}}</p>
+      </ion-label>
+      <ion-toggle color="{{config.styleApp}}" [(ngModel)]="update" (ionChange)="setConfigDataBase()"></ion-toggle>
+    </ion-item>
+    <ion-item class="margen">
+      <ion-icon name="color-fill" item-start color="danger"></ion-icon>
+      <ion-label>
+        <h2><b>Apariencia</b></h2>
+        <p class="ion-text-wrap">Cambia la apariencia de la aplicacion</p>
+      </ion-label>
+      <ion-select [(ngModel)]="style" (ionChange)="setStyle(style)">
+          <ion-select-option *ngFor="let sty of styles" value="{{sty.valor}}">{{sty.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

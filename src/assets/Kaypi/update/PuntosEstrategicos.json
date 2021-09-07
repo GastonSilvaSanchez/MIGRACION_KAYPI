@@ -1,0 +1,328 @@
+{
+    "PuntosEstrategicos": [
+        {
+            "Nombre": "Universidad del Valle Campus Tiquipaya",
+            "Categoria": "Centros de Abasto",
+            "Calles": [
+                "Av UNIVALLE"
+            ],
+            "Imagen": "11p.jpg",
+            "ZonasCBBA": "Tiquipaya",
+            "Lineas": [],
+            "Descripcion": "La Universidad Privada del Valle ha sido fundada el 4 de octubre de 1.988 por el Ing. M.Sc. Gonzalo Ruiz Mart\u00ednez, habiendo obtenido, en cumplimiento de la Constituci\u00f3n Pol\u00edtica del Estado, su Personer\u00eda Jur\u00eddica mediante la Resoluci\u00f3n Suprema 205336 de fecha 4 de noviembre de 1.988, firmada por el entonces Presidente Constitucional de la Rep\u00fablica, Dr. V\u00edctor Paz Estenssoro y el Ministro de Educaci\u00f3n.",
+            "Punto": {
+                "lat": -17.3306680249,
+                "lng": -66.2259507179
+            },
+            "Marcador": "Abasto.png"
+        },
+        {
+            "Nombre": "Universidad del Valle Ayacucho",
+            "Categoria": "Centros Educativos",
+            "Calles": [
+                "Av Ayacucho"
+            ],
+            "Imagen": "12p.jpg",
+            "ZonasCBBA": "Sudoeste",
+            "Lineas": [
+                "Micro H",
+                "Micro LL",
+                "Micro M",
+                "Micro U",
+                "Micro 3",
+                "TaxiTrufi 112",
+                "TaxiTrufi 1",
+                "TaxiTrufi 106"
+            ],
+            "Descripcion": "La Universidad Privada del Valle ha sido fundada el 4 de octubre de 1.988 por el Ing. M.Sc. Gonzalo Ruiz Mart\u00ednez, habiendo obtenido, en cumplimiento de la Constituci\u00f3n Pol\u00edtica del Estado, su Personer\u00eda Jur\u00eddica mediante la Resoluci\u00f3n Suprema 205336 de fecha 4 de noviembre de 1.988, firmada por el entonces Presidente Constitucional de la Rep\u00fablica, Dr. V\u00edctor Paz Estenssoro y el Ministro de Educaci\u00f3n.",
+            "Punto": {
+                "lat": -17.3941354866,
+                "lng": -66.1586594582
+            },
+            "Marcador": "Educacion.png"
+        },
+        {
+            "Nombre": "Terminal de Buses",
+            "Categoria": "Centros de Abasto",
+            "Calles": [
+                "Av Ayacucho"
+            ],
+            "Imagen": "13p.jpg",
+            "ZonasCBBA": "Sudoeste",
+            "Lineas": [
+                "Micro A",
+                "Micro M",
+                "Micro U",
+                "Micro 3",
+                "TaxiTrufi 103",
+                "MiniBus 207",
+                "TaxiTrufi 1",
+                "TaxiTrufi 106"
+            ],
+            "Descripcion": "La Terminal de Buses de Cochabamba se encuentra ubicada en la zona sud oeste de la ciudad. En sus instalaciones una gran cantidad de Flotas prestan sus servicios hacia el interior del pa\u00eds. Adem\u00e1s cuenta con una secci\u00f3n de salidas internacionales.",
+            "Punto": {
+                "lat": -17.4026125332,
+                "lng": -66.1579084396
+            },
+            "Marcador": "Abasto.png"
+        },
+        {
+            "Nombre": "Segip",
+            "Categoria": "Entidades P\u00fablicas",
+            "Calles": [
+                "Av. Circunvalacion"
+            ],
+            "Imagen": "9p.jpg",
+            "ZonasCBBA": "Pacata Baja",
+            "Lineas": [],
+            "Descripcion": "El SEGIP es la \u00fanica instituci\u00f3n facultada por Ley para emitir C\u00e9dula de Identidad en todo lo largo y ancho del Estado Plurinacional de Bolivia.",
+            "Punto": {
+                "lat": -17.37296163,
+                "lng": -66.1357909441
+            },
+            "Marcador": "EntidadesPublicas.png"
+        },
+        {
+            "Nombre": "SAR Bolivia",
+            "Categoria": "Centros de Abasto",
+            "Calles": [
+                "Av Uyuni"
+            ],
+            "Imagen": "10p.jpg",
+            "ZonasCBBA": "Cala Cala",
+            "Lineas": [
+                "MiniBus 211",
+                "TaxiTrufi 106"
+            ],
+            "Descripcion": "El SEM es la especialidad de acci\u00f3n del SAR-Bolivia, para toda atenci\u00f3n m\u00e9dica de emergencia, las t\u00e9cnicas y las capacidades que sus miembros poseen est\u00e1n de acuerdo a las normas y programas internacionales de atenci\u00f3n de emergencia.",
+            "Punto": {
+                "lat": -17.3807280509,
+                "lng": -66.1594319344
+            },
+            "Marcador": "Abasto.png"
+        },
+        {
+            "Nombre": "Plaza principal",
+            "Categoria": "Centros Tur\u00edsticos",
+            "Calles": [
+                "Plaza 14 de Septiembre.",
+                "Nataniel Aguirre"
+            ],
+            "Imagen": "1p.jpg",
+            "ZonasCBBA": "Queru Queru",
+            "Lineas": [
+                "Micro LL",
+                "Micro M",
+                "Micro U",
+                "Micro 3",
+                "TaxiTrufi 112",
+                "TaxiTrufi 106"
+            ],
+            "Descripcion": "Antes denominada Plaza de Armas, debe su actual nombre a la fecha m\u00e1s importante de la independencia de Cochabamba",
+            "Punto": {
+                "lat": -17.3937873869,
+                "lng": -66.1569643021
+            },
+            "Marcador": "Turismo.png"
+        },
+        {
+            "Nombre": "Parque de la familia",
+            "Categoria": "Recreaci\u00f3n y Cultura",
+            "Calles": [
+                "Av Pedro Domingo Murillo"
+            ],
+            "Imagen": "3p.jpg",
+            "ZonasCBBA": "Queru Queru",
+            "Lineas": [
+                "Micro LL",
+                "TaxiTrufi 112"
+            ],
+            "Descripcion": "El nuevo parque de la familia se construy\u00f3 en el espacio que fue el exzool\u00f3gico de Cochabamba y por alg\u00fan tiempo se denomin\u00f3 el Parque del Ni\u00f1o.",
+            "Punto": {
+                "lat": -17.3864361858,
+                "lng": -66.1634659767
+            },
+            "Marcador": "RecreacionCultura.png"
+        },
+        {
+            "Nombre": "Mercado Calatayud",
+            "Categoria": "Centros de Abasto",
+            "Calles": [
+                "Av Aroma"
+            ],
+            "Imagen": "6p.jpg",
+            "ZonasCBBA": "Quillacollo",
+            "Lineas": [
+                "Micro LL",
+                "Micro M",
+                "Micro U",
+                "MiniBus 31",
+                "Micro 3",
+                "TaxiTrufi 103",
+                "TaxiTrufi 112",
+                "MiniBus 211",
+                "MiniBus 343",
+                "TaxiTrufi 1"
+            ],
+            "Descripcion": "Mercado en el cu\u00e1l principalmente se vende legumbres, carnes, etc.",
+            "Punto": {
+                "lat": -17.398404773,
+                "lng": -66.1528766155
+            },
+            "Marcador": "Abasto.png"
+        },
+        {
+            "Nombre": "Mercado 10 de Febrero",
+            "Categoria": "Centros de Abasto",
+            "Calles": [
+                "Av Sim\u00f3n L\u00f3pez"
+            ],
+            "Imagen": "5p.jpg",
+            "ZonasCBBA": "Santa Ana",
+            "Lineas": [
+                "MiniBus 31",
+                "MiniBus 211",
+                "MiniBus 343"
+            ],
+            "Descripcion": "Mercado en el cu\u00e1l principalmente se vende ropa.",
+            "Punto": {
+                "lat": -17.3611034029,
+                "lng": -66.1822486767
+            },
+            "Marcador": "Abasto.png"
+        },
+        {
+            "Nombre": "Mariscal Santa Cruz",
+            "Categoria": "Recreaci\u00f3n y Cultura",
+            "Calles": [
+                "Hernan Morales"
+            ],
+            "Imagen": "0p.jpg",
+            "ZonasCBBA": "Colcapirhua",
+            "Lineas": [],
+            "Descripcion": "Parque acu\u00e1tico Mariscal Santa Cruz",
+            "Punto": {
+                "lat": -17.4004421191,
+                "lng": -66.1742591858
+            },
+            "Marcador": "RecreacionCultura.png"
+        },
+        {
+            "Nombre": "La Cancha",
+            "Categoria": "Recreaci\u00f3n y Cultura",
+            "Calles": [
+                "Punata",
+                "Av. Barrientos"
+            ],
+            "Imagen": "4p.jpg",
+            "ZonasCBBA": "Queru Queru",
+            "Lineas": [
+                "Micro M",
+                "TaxiTrufi 103",
+                "TaxiTrufi 112",
+                "MiniBus 207",
+                "MiniBus 252",
+                "MiniBus 388",
+                "MiniBus 211",
+                "TaxiTrufi 106"
+            ],
+            "Descripcion": "El Gran Mercado La Cancha es uno de los m\u00e1s grandes mercados populares de Latinoam\u00e9rica. En \u00e9l se puede encontrar desde verduras y frutas hasta lo \u00faltimo en tecnolog\u00eda como televisores plasma o computadoras de \u00faltima generaci\u00f3n.",
+            "Punto": {
+                "lat": -17.4023668273,
+                "lng": -66.1533594131
+            },
+            "Marcador": "RecreacionCultura.png"
+        },
+        {
+            "Nombre": "Hospital Univalle",
+            "Categoria": "Centros de Atenci\u00f3n en Salud",
+            "Calles": [
+                "Amboro",
+                "Total"
+            ],
+            "Imagen": "8p.jpg",
+            "ZonasCBBA": "Alalay",
+            "Lineas": [
+                "TaxiTrufi 103"
+            ],
+            "Descripcion": "En 1.988 se inaugura el Hospital Universitario que es la referencia acad\u00e9mica de la Carrera de Medicina.",
+            "Punto": {
+                "lat": -17.4212237999,
+                "lng": -66.1329102516
+            },
+            "Marcador": "Salud.png"
+        },
+        {
+            "Nombre": "Cristo De La Concordia",
+            "Categoria": "Centros Tur\u00edsticos",
+            "Calles": [
+                "Av de la Concordia"
+            ],
+            "Imagen": "2p.jpg",
+            "ZonasCBBA": "Queru Queru",
+            "Lineas": [],
+            "Descripcion": "El Cristo de la Concordia es una colosal estatua monumental de Jesucristo, que se encuentra sobre el cerro de San Pedro en la ciudad de Cochabamba, Bolivia, a una altura de 265 m sobre la ciudad.",
+            "Punto": {
+                "lat": -17.3843571117,
+                "lng": -66.1349720606
+            },
+            "Marcador": "Turismo.png"
+        },
+        {
+            "Nombre": "Complejo Hospitalario Viedma",
+            "Categoria": "Centros de Atenci\u00f3n en Salud",
+            "Calles": [
+                "Venezuela"
+            ],
+            "Imagen": "7p.jpg",
+            "ZonasCBBA": "Sipe Sipe",
+            "Lineas": [
+                "Micro U",
+                "MiniBus 31",
+                "MiniBus 343"
+            ],
+            "Descripcion": "El 14 de Septiembre de 1998 el nuevo Hospital es entregado a la Prefectura. En Septiembre de 1999, se transfiere a la HAM y se abre el 12 de Mayo del a\u00f1o 2000.",
+            "Punto": {
+                "lat": -17.3854123182,
+                "lng": -66.1486279964
+            },
+            "Marcador": "Salud.png"
+        },
+        {
+            "Nombre": "Colegio Maryknoll",
+            "Categoria": "Centros Educativos",
+            "Calles": [
+                "Av Juan de La Rosa"
+            ],
+            "Imagen": "0p.jpg",
+            "ZonasCBBA": "Cala Cala",
+            "Lineas": [],
+            "Descripcion": "Colegio Maryknoll",
+            "Punto": {
+                "lat": -17.3772621279,
+                "lng": -66.1677360535
+            },
+            "Marcador": "Educacion.png"
+        },
+        {
+            "Nombre": "Aeropuerto internacional Jorge Wilsterman",
+            "Categoria": "Centros de Transporte",
+            "Calles": [
+                "Av Guillermo Killman"
+            ],
+            "Imagen": "14p.jpg",
+            "ZonasCBBA": "Pacata",
+            "Lineas": [
+                "Micro M",
+                "Micro U",
+                "Micro 3"
+            ],
+            "Descripcion": "El nombre se debe al primer piloto comercial boliviano, Jorge Wilstermann, luego de su muerte, el entonces presidente de la empresa de aviaci\u00f3n, solicito que el aeropuerto llevara su nombre. Es un centro de conexi\u00f3n de la aerol\u00ednea Boliviana de Aviaci\u00f3n (BoA), que est\u00e1 ampliando su flota para pr\u00f3ximamente poder llegar a Am\u00e9rica y Europa.",
+            "Punto": {
+                "lat": -17.4100853151,
+                "lng": -66.1739177355
+            },
+            "Marcador": "Transporte.png"
+        }
+    ]
+}

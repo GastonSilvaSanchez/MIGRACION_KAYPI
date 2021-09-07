@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'Directorios.InformacionDirectorio' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="fondo">
+    <ion-card-header style="text-align: center">
+      <b><h1 class="encabezado" class="ion-text-wrap">{{directory.NombreDirectorio}}</h1></b>
+    </ion-card-header>
+    <ion-card-content style="text-align: center">
+      <h3 class="titulo">{{ 'Directorios.CentroMunicipal' | translate }}</h3>
+      <p class="letra">{{directory.Categoria}}</p>
+      <br>
+      <h3 class="titulo">{{ 'Directorios.Descripcion' | translate }}</h3>
+      <p class="letra" class="ion-text-wrap">{{directory.Descripcion}}</p>
+      <br>
+      <h3 class="titulo">{{ 'Directorios.Horarios' | translate }}</h3>
+      <p class="letra">{{directory.HorariosdeAtencion}}</p>
+      <br>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.Consultas' | translate}}</h3>
+      <p *ngFor="let telf of directory.Telefonos">
+        <ion-button fill="clear" (click)="callNumber(telf)" icon-left>
+          {{telf}}
+          <ion-icon name="call" class="iconoTelf"></ion-icon>
+        </ion-button>
+      </p>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.VerPuntoMapa' | translate}}</h3>
+      <ion-button round icon-left color="danger" (click)="showPoint()">
+        <ion-icon name="navigate"></ion-icon>
+        {{'Botones.BotonVerPunto' | translate}}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

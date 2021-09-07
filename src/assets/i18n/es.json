@@ -1,0 +1,273 @@
+{
+    "Menu": {
+        "Inicio": "Inicio",
+        "RadioMovil": "Radio Móvil",
+        "BusquedaDeLineas": "Líneas",
+        "IrDesdeMiUbicacion": "Rutas",
+        "PuntosEstrategicos": "Puntos Estratégicos",
+        "NoticiasTrafico": "Noticias y Tráfico",
+        "Parqueos": "Parqueos",
+        "Configuracion": "Configuración",
+        "Directorios": "Directorio Municipal",
+        "Ayuda": "Ayuda",
+        "AcercaDe": "Acerca De...",
+        "Salir": "Salir",
+        "MensajeSalir": "¿Usted está seguro que desea salir de la aplicación?"
+    },
+    "BusquedaDeLineas": {
+        "TituloBusquedaLineas": "Líneas",
+        "Categoria": {
+            "TituloCategoria": "Categoría:",
+            "Todos": "Todos",
+            "Calles": "Calles",
+            "Micro": "Micro",
+            "Minibus": "Minibus",
+            "TaxiTrufi": "Taxitrufi",
+            "Zona": "Zona"
+        },
+        "BarraBusqueda": {
+            "Lineas": "Buscar Líneas..",
+            "Micro": "Buscar Micro...",
+            "Minibus": "Buscar MiniBus...",
+            "TaxiTrufi": "Buscar Taxitrufi...",
+            "Zonas": "Buscar Zonas..."
+        },
+        "InformacionLineas": {
+            "TituloInformacionLinea": "Información de la línea",
+            "VerRutas": "Ver Rutas:",
+            "CostoDelPasaje": "Costo del Pasaje:",
+            "Horarios": "Horarios:",
+            "CallesPrincipales": "Calles Principales:",
+            "Consultas": "Consultas y/o Reclamos:",
+            "Telefono": "Teléfono Copiado",
+            "Categoria": "Categoría:"
+        },
+        "TituloAlertCalles": "Aviso",
+        "ContenidoAlertCalles": "Seleccione un punto en el mapa para referenciar la calle y realizar la búsqueda"
+    },
+    "Rutas": {
+        "NORTE-SUR": "NORTE-SUR",
+        "NORTE-SUROESTE": "NORTE-SUROESTE",
+        "NORESTE-SUROESTE": "NORESTE-SUROESTE",
+        "ESTE-SUROESTE": "ESTE-SUROESTE",
+        "ESTE-OESTE": "ESTE-OESTE",
+        "NORTE-SURESTE": "NORTE-SURESTE",
+        "NOROESTE-SURESTE": "NOROESTE-SURESTE",
+        "OESTE-SURESTE": "OESTE-SURESTE",
+        "OESTE-ESTE": "OESTE-ESTE",
+        "SUR-NOROESTE": "SUR-NOROESTE",
+        "SURESTE-NOROESTE": "SURESTE-NOROESTE",
+        "ESTE-NOROESTE": "ESTE-NOROESTE",
+        "SUR-NORESTE": "SUR-NORESTE",
+        "SUROESTE-NORESTE": "SUROESTE-NORESTE",
+        "OESTE-NORESTE": "OESTE-NORESTE",
+        "SUR-NORTE": "SUR-NORTE",
+        "ESTE-SURESTE": "ESTE-SURESTE",
+        "SUROESTE-ESTE": "SUROESTE-ESTE",
+        "Todos": "Todos"
+    },
+    "IrDesdeMiUbicacion": {
+        "TituloMiUbicacion": "Rutas",
+        "TituloAlertSeleccioneOrigen": "Seleccione su Origen",
+        "ContenidoAlertMiUbicacion": "Mi ubicación",
+        "ContenidoAlertElegirOrigen": "Elegir Origen",
+        "Ubicacion": {
+            "TituloAlertUbicacion": "Seleccione su Destino",
+            "ContenidoAlertUbicacion": "Seleccione en el mapa el lugar a donde desea ir."
+        },
+        "Origen": {
+            "TituloAlertOrigen": "Seleccione su Origen",
+            "ContenidoAlertOrigen": "Seleccione en el mapa su lugar de origen.",
+            "TituloAlertDestino": "Seleccione su Destino",
+            "ContenidoAlertDestino": "Seleccione en el mapa el lugar a donde desea ir."
+        },
+        "ResultadoBusqueda": "Resultado de Búsqueda",
+        "ToastLineasCercanas": "Estas son las líneas más cercanas que pasan por los puntos seleccionados",
+        "ToastNinguno": "No existen líneas con los puntos seleccionados, o está fuera de la cobertura del sistema.",
+        "ToastCobertura": "Esta es la cobertura de la aplicación, no existen líneas registradas que pasen fuera del rango mostrado.",
+        "TituloAlertErrorBusqueda": "Error en la búsqueda",
+        "ContenidoAlertErrorBusqueda": "Algo salió mal, verifique los puntos ingresados sean los correctos e intente de nuevo",
+        "TituloAlertGps": "GPS",
+        "ContenidoAlertGps": "El GPS no se encuentra activado, por favor verifique e intente de nuevo",
+        "TituloAlertDistancia": "Distancia Corta",
+        "ContenidoAlertDistancia": "La distancia de los dos puntos debe ser mayor a 150 metros.",
+        "Cobertura": "Cobertura",
+        "Trafico": "Tráfico",
+        "ToastBloqueos": "Estos son los bloqueos que ocurren en la ciudad",
+        "ToastNoBloqueos": "No existen bloqueos en la ciudad"
+    },
+    "PuntosEstrategicos": {
+        "TituloPuntosEstrategicos": "Puntos Estratégicos",
+        "TabPuntos": "Puntos Estratégicos",
+        "TabMisPuntos": "Mis puntos",
+        "BarraBusqueda": "Buscar Punto Estratégico",
+        "Categoria": {
+            "TituloCategoria": "Categoría",
+            "Todos": "Todos",
+            "Centros de Transporte": "Centros de Transporte",
+            "Centros Educativos": "Centros Educativos",
+            "Centros de Atención en Salud": "Centros de Atención en Salud",
+            "Centros Turísticos": "Centros Túristicos",
+            "Recreación y Cultura": "Recreación y Cultura",
+            "Centros de Abasto": "Centros de Abasto",
+            "Entidades Públicas": "Entidades Públicas",
+            "Servicios Municipales": "Servicios Municipales"
+        },
+        "InformacionPuntoEstrategico": {
+            "Titulo": "Punto Estratégico",
+            "VerPuntoMapa": "Ver punto en el mapa:",
+            "Categoria": "Categoría:",
+            "Direccion": "Dirección:",
+            "Lineas": "Lineas proximas al punto:",
+            "Zona": "Zona",
+            "InformacionComplementaria": "Información Complementaria",
+            "Fab": "Ir desde mi ubicación"
+        },
+        "MisPuntos": {
+            "BarraBusqueda": "Buscar Punto",
+            "TituloAlertPunto": "Agregar Punto",
+            "ContenidoAlertPunto": "Seleccione en el mapa un punto e ingrese el nombre",
+            "InputNombrePunto": "Nombre Punto",
+            "ToastGuardado": "Punto guardado exitosamente",
+            "ToastEliminado": "Punto eliminado exitosamente",
+            "TituloAlertEliminar": "Eliminar",
+            "ContenidoAlertEliminar": "¿Está segur@ de eliminar este punto de su lista?"
+        }
+    },
+    "NoticiasTrafico": {
+        "TituloNoticiasTrafico": "Noticias y Tráfico",
+        "TabNovedades": "Novedades",
+        "TabTrafico": "Tráfico",
+        "ToastNoticias": "Actualizando noticias...",
+        "Publicado": "Publicado",
+        "Fecha": "Fecha"
+    },
+    "Configuracion": {
+        "TituloConfiguracion": "Configuración",
+        "TituloIdioma": "Idioma",
+        "ContenidoIdioma": "Elija el idioma de su preferencia",
+        "MensajeIdioma": {
+            "Titulo": "Elija el Idioma de su Preferencia",
+            "Castellano": "Castellano",
+            "Ingles": "English",
+            "Portugues": "Portugues",
+            "Quechua": "Quechua"
+        },
+        "TituloActualizaciones": "Actualizaciones",
+        "ContenidoActualizaciones": "Descarga automática ante cambios y nuevas rutas de las líneas",
+        "TituloNoticias": "Noticias",
+        "ContenidoNoticias": "Recibir comunicados de la municipalidad",
+        "TituloTrafico": "Tráfico",
+        "ContenidoTrafico": "Recibir noticias de tráfico, obstrucción de calles, etc.",
+        "TituloUnivalle": "Modo Univalle",
+        "ContenidoUnivalle": "Cambia la apariencia de la aplicación"
+    },
+    "Ayuda": {
+        "TituloAyuda": "Ayuda",
+        "Guia1": "Guía 1",
+        "TituloGuia1": "Búsqueda de Líneas",
+        "ContenidoGuia1": "Escriba parte o nombre de una línea para encontrar el resultado. Existen criterios  que permiten filtrar la búsqueda  a través de calles y tipos específicos de servicios de transporte.",
+        "Guia2": "Guía 2",
+        "TituloGuia2": "Ir desde mi ubicación",
+        "ContenidoGuia2": "Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
+        "Guia3": "Guía 3",
+        "TituloGuia3": "Ir desde mi ubicación",
+        "ContenidoGuia3": "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
+        "Guia4": "Guía 4",
+        "TituloGuia4": "Ir desde mi ubicación",
+        "ContenidoGuia4": "La cobertura muestra el alcance actual que tiene la aplicación.",
+        "Guia5": "Guía 5",
+        "TituloGuia5": "Puntos Estratégicos",
+        "ContenidoGuia5": "Muestra la información y ubicación de los lugares estratégicos del municipio (Centros de Abasto, Turismo, Salud, Educación, etc). Se pueden realizar búsquedas en base a parámetros.",
+        "Guia6": "Guía 6",
+        "TituloGuia6": "Puntos Estratégicos",
+        "ContenidoGuia6": "Elegido un punto estratégico es posible  determinar las líneas que pasan por dicho punto así como trazar una ruta desde su ubicación actual. La aplicación le permite crear sus propios puntos estratégicos.",
+        "Guia7": "Guía 7",
+        "TituloGuia7": "Noticias y Tráfico",
+        "ContenidoGuia7": "Muestra noticias relevantes para el municipio así como información acerca del tráfico (Cortes de vías por reparación, bloqueos, etc.). Puede omitirse la recepción de estas noticias a través de las opciones de configuración"
+    },
+    "AcercaDe": {
+        "Alcaldia": "Gobierno Autónomo Municipal de Cochabamba",
+        "TituloAcercaDe": "Acerca De...",
+        "Version": "Versión",
+        "Contribuciones": "Contribuciones:",
+        "DesarrolladoEn": "Desarrollado en:",
+        "GrupoTrabajo": "Grupo de Trabajo:",
+        "Desarrolladores": "Desarrolladores:",
+        "OtrasApps": "Otras Aplicaciones",
+        "Descargar": "Descargar"
+    },
+    "BuscandoLineas": "Buscando Líneas",
+    "ObteniendoUbicacion": "Obteniendo Ubicación...",
+    "SinInternet": "No tienes conexión a Internet",
+    "ConInternet": "Internet activado",
+    "Cargando": "Cargando...",
+    "Botones": {
+        "Cancelar": "Cancelar",
+        "Aceptar": "Aceptar",
+        "Actualizar": "Actualizar",
+        "VolverIntentar": "Volver a intentar",
+        "Salir": "Salir",
+        "Eliminar": "Eliminar",
+        "Guardar": "Guardar",
+        "BotonVerRutas": "Rutas",
+        "BotonVerTodosLosPuntos": "Ver puntos en el mapa",
+        "BotonVerPunto": "Punto",
+        "VerDetalles": "Ver Detalles",
+        "VerUbicacionTrafico": "Ver ubicación",
+        "ReiniciarBusqueda": "Empezar Búsqueda",
+        "Lineas": "Linea",
+        "Ajustes": "Ajustes",
+        "Reiniciar": "Reiniciar búsqueda",
+        "Cerrar": "Cerrar",
+        "VerTodos": "Ver todos"
+    },
+    "Actualizacion": {
+        "TituloMensaje": "Actualización de Datos",
+        "ContenidoMensaje": "Existe una nueva actualizacion de datos referido a las líneas de transporte público disponible. Es recomendable realizar la actualización.",
+        "Toast": "Descargando datos, Por favor espere...",
+        "TituloAlert": "Datos Actualizados",
+        "ContenidoAlert": "La base de datos fue actualizada.",
+        "ToastCargandoDatos": "Espere un momento por favor... la aplicación está actualizando los datos",
+        "TituloAlertError": "Error de actualización",
+        "MensajeAlertError": "No fue posible completar la descarga de la actualización, esto puede deberse a un problema de conexión a Internet. Por favor intente más tarde."
+    },
+    "RadioMoviles": {
+        "Titulo": "Radio Móviles",
+        "TituloAlert": "Seleccione como desea hacer la búsqueda",
+        "Buscar": "Buscar Taxis",
+        "Opcion1": "Mi ubicación",
+        "Opcion2": "Seleccionar punto",
+        "Opcion3": "Ver todos",
+        "ToastSeleccionPunto": "Presione el punto en el mapa",
+        "ToastError": "No existen paradas de radio móviles cerca.",
+        "DireccionModal": "Dirección",
+        "Telefonos": "Teléfonos",
+        "Denuncias": "Denuncias de cobros excesivos"
+    },
+    "Directorios": {
+        "Titulo": "Directorios",
+        "InformacionDirectorio": "Información Directorio",
+        "Buscar": "Buscar Directorio",
+        "CentroMunicipal": "Centro Municipal",
+        "Descripcion": "Descripción",
+        "Horarios": "Horarios de Atención"
+    },
+    "TituloMensajeSalir": "Salir de Kaypi",
+    "ContenidoMensajeSalir": "¿Está realmente seguro que desea salir de Kaypi?",
+    "AccesosDirectos": {
+        "IrMiUbicacion": "Ir a \"Ir desde mi ubicación\"",
+        "IrPorUnPunto": "Ir a \"Búsqueda por calles\""
+    },
+    "BusquedaPorCalle": {
+        "Titulo": "Búsqueda por calles"
+    },
+    "Parqueos": {
+        "VerMapa": "Ver en Mapa",
+        "Horarios": "Horarios",
+        "Multas": "Multas",
+        "PrimeraInfraccion": "Primera infracción",
+        "Reincidencia": "Reincidencia",
+        "Normativa": "Normativa"
+    }
+}

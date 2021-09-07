@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'AcercaDe.TituloAcercaDe' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="fondo">
+    <ion-card-header style="text-align: center">
+      <b><h1 class="encabezado">{{config.nameApp}}</h1></b>
+    </ion-card-header>
+    <img src="{{config.pathFolderImage + config.pathImages.icon}}" class="imagen">
+    <ion-card-content style="text-align: center">
+      <ion-label>
+        <h3 class="titulo">{{'AcercaDe.Version' | translate}}</h3>
+        <p class="letra">{{config.version | number:'1.1-1'}}</p>
+      </ion-label>
+      <br>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{config.pathFolderImage + config.pathImages.cbba}}">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="titulo">{{'AcercaDe.Contribuciones' | translate}}</h2>
+          <p class="ion-text-wrap">{{'AcercaDe.Alcaldia' | translate}}</p>
+        </ion-label>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{config.pathFolderImage + config.pathImages.univalle}}" class="animation-univalle">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="titulo">{{'AcercaDe.DesarrolladoEn' | translate}}</h2>
+          <p class="ion-text-wrap"><a href="http://www.univalle.edu/">Universidad Privada Del Valle</a></p>
+          <br>
+          <h2>{{'AcercaDe.Desarrolladores' | translate}}</h2>
+          <p>Joel Alánez</p>
+          <p>José Velasco</p>
+          <p>Roberto Siles</p>
+          <p>Ismael De la Barra</p>
+          <p>Javier Mercado</p>
+          <p>Royer Arévalo</p>
+        </ion-label>
+      </ion-item>
+      <br>
+      <br>
+      <h2>{{'AcercaDe.OtrasApps' | translate}}</h2>
+      <br>
+      <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/img/tramites.png">
+          </ion-avatar>
+          <ion-label>
+            <h2 class="titulo">Trámites Cochabamba</h2>
+            <p class="ion-text-wrap"><a href="https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=en">{{'AcercaDe.Descargar' | translate}}</a></p>
+          </ion-label>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="../../assets/img/ciudadanoActivo.png">
+            </ion-avatar>
+            <ion-label>
+              <h2 class="titulo">Ciudadano Activo</h2>
+              <p class="ion-text-wrap"><a href="https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=en">{{'AcercaDe.Descargar' | translate}}</a></p>
+            </ion-label>
+          </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

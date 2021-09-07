@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'Directorios.Titulo' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionChange)="filterItems($event)" placeholder="{{'Directorios.Buscar' | translate}}">
+  </ion-searchbar>
+  <ion-list>
+    <ion-item-group *ngFor="let directory of visibleList">
+      <div *ngIf="hayDirectorios(directory)">
+        <ion-item-divider color="light" (click)="mostrarDetalles(directory)" class="nombreCategoria">
+          <ion-label color="danger" class="ion-text-wrap">{{directory.NombreCategoria}}</ion-label>
+          <ion-icon ios="ios-arrow-down" md="md-arrow-down" color="danger" *ngIf="directory.Expandido" slot="end" item-end></ion-icon>
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" color="danger" *ngIf="!directory.Expandido" slot="end" item-end>
+          </ion-icon>
+        </ion-item-divider>
+        <div *ngIf="directory.Expandido">
+          <ion-item *ngFor="let d of directory.Directorios" class="item"
+            [routerLink]="['/directories', directory.NombreCategoria, d.NombreDirectorio]">{{d.NombreDirectorio}}
+          </ion-item>
+        </div>
+      </div>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

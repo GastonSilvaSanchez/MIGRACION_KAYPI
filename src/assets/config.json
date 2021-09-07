@@ -1,0 +1,48 @@
+{
+    "nameApp": "Kaypi",
+    "host": "http://kaypi.sccconline.net",
+    "localhost": "http://localhost/assets",
+    "port": 8100,
+    "pathAndroid": "file:///storage/emulated/0/Android/data/com.kaypi.univalle/files",
+    "pathIOS": "",
+    "version": 1.0,
+    "versionDatos": 1.0,
+    "lenguageDefault": "es",
+    "pathUpdateApp": "/Panel/GetVersionMovil",
+    "pathDowloadZip": "/Kaypi/update/Update.zip",
+    "pathPushToken": "/Push/RegisterToken",
+    "nameDataBasePhone": "kaypi.db",
+    "styleApp": "cbba",
+    "maxLines": 10,
+    "pathNews": {
+        "news": "/Noticia/GetNoticias",
+        "trafic": "/Trafico/GetTraficos"
+    },
+    "pathFolderImage": "/assets/img",
+    "pathImages": {
+        "icon": "/icon.png",
+        "univalle": "/univalle.png",
+        "team": "/AcercaDe/soceisi.jpg",
+        "cbba": "/AcercaDe/cbba.png",
+        "trufi": "/Lineas/0c.jpg",
+        "strategicPoints": "/PuntosEstrategicos/",
+        "radioTaxi": "/RadioMoviles/0c.jpg"
+    },
+    "pathJsons": "/Kaypi/update",
+    "pathsData": {
+        "pathLines": "/Lineas.json",
+        "pathStrategicPoints": "/PuntosEstrategicos.json",
+        "pathDirectories": "/Directorios.json",
+        "pathRadioTaxis": "/RadioMoviles.json",
+        "pathHelps": "/Ayudas.json",
+        "pathParking": "/Parqueos.json"
+    },
+    "map": {
+        "lat": -17.393835,
+        "lng": -66.156946,
+        "zoom": 13 
+    },
+    "updateNews": 0,
+    "updateTrafic": 0,
+    "updateData": 0
+}

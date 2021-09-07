@@ -1,0 +1,7 @@
+{
+  "name": "kaypi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

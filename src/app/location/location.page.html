@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button size="small" *ngIf="!isEdit && data.name == 'MisPuntos'" (click)="isEdit = true">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button size="small" *ngIf="isEdit" [disabled]="markers.length == 0 || namePoint == ''" (click)="savePoint()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button size="small" color="danger" *ngIf="isEdit" (click)="isEdit = false">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <b *ngIf="!isEdit">{{title}}</b>
+      <ion-input type="text" [(ngModel)]="namePoint" *ngIf="isEdit" autofocus></ion-input>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map" name="map"></div>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf="point">
+    <ion-fab-button color="danger">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-button shape="round" color="{{config.styleApp}}" (click)="searchLineByPoint(point, 'pointOne')">
+        <ion-label>Buscar como Punto Inicial</ion-label>
+      </ion-button>
+      <ion-button shape="round" color="{{config.styleApp}}" (click)="searchLineByPoint(point, 'pointTwo')">
+        <ion-label>Buscar como Punto Final</ion-label>
+      </ion-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="isEdit && data.name == 'MisPuntos'" hidden>
+    <ion-fab-button color="danger" (click)="getLocation()">
+      <ion-icon name="pin"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer *ngIf="resultLines.length > 0">
+  <ion-slides pager (ionSlideNextEnd)="slideChangedNext()" (ionSlideDidChange)="slideChanged()"
+    (ionSlidePrevEnd)="slideChangedBefore()">
+    <ion-slide *ngFor="let l of resultLines" class="offset-md-2">
+      <ion-toolbar>
+        <ion-item class="resultList">
+          <ion-avatar slot="start">
+            <img src="{{config.pathFolderImage + config.pathImages.univalle}}">
+          </ion-avatar>
+          <ion-label>
+            <h2><b>{{l.Nombre}}</b></h2>
+            <p>{{l.Categoria}}</p>
+          </ion-label>
+          <ion-label slot="end" *ngIf="line.Rutas.length == 0" class="ion-text-wrap">{{'Rutas.' + l.Rutas[0].Sentido | translate}}
+          </ion-label>
+          <ion-select *ngIf="line.Rutas.length > 0" [(ngModel)]="sentido" (ionChange)="changeRoute(sentido)">
+            <ion-select-option *ngFor="let route of line.Rutas" value="{{route.Sentido}}">
+              {{'Rutas.' + route.Sentido | translate}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-toolbar>
+    </ion-slide>
+  </ion-slides>
+</ion-footer>

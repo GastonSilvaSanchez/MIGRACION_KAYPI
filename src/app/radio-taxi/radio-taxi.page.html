@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'RadioMoviles.Titulo' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="filterItems($event)" #buscador placeholder="{{textoSearcher}}">
+  </ion-searchbar>
+  <ion-button color="danger" expand="block" (click)="showAll()">
+    {{'Botones.VerTodos' | translate}}
+  </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let taxi of visibleTaxis">
+      <img src="{{taxi.Logo}}" slot="start" (click)="showPoint(taxi)">
+      <ion-label>
+        <h2 (click)="showPoint(taxi)"><b>{{taxi.Nombre}}</b></h2>
+        <p (click)="showPoint(taxi)">{{'BusquedaDeLineas.InformacionLineas.Consultas' | translate}}</p>
+        <span *ngFor="let tel of taxi.Telefonos" class="ion-text-wrap">
+          <ion-button fill="clear" (click)="callNumber(tel)" icon-left>
+            {{tel}}
+            <ion-icon name="call" class="iconoTelf"></ion-icon>
+          </ion-button>
+        </span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

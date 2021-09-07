@@ -1,0 +1,63 @@
+$header-height: 120px;
+$footer-height: 100px;
+$header-img-height: $header-height - 5px;
+$footer-img-height: $footer-height - 5px;
+
+.header-toolbar {
+    width: 100%;
+    height: $header-height;
+    text-align: center;
+}
+
+ion-header {
+    height: $header-height;
+}
+
+.escudo {
+    height: 120px;
+}
+
+.footer-img {
+    height: $footer-img-height;
+}
+
+ion-footer {
+    text-align: center;
+    height: $footer-height;
+}
+
+.bck-cbba {
+    background-color: #44c5e5 !important;
+}
+
+ion-item {
+    margin-bottom: 15px;
+    --border-radius: 20px !important;
+}
+
+.bck-danger {
+    background-color: #d81116;
+}
+
+ion-avatar {
+    background-color: white;
+    height: 52px;
+    width: 52px;
+    line-height: 52px;
+    position: fixed;
+    margin-left: -18px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+ion-icon {
+    // display: contents !important;
+    width: 33px;
+    height: 33px;
+    vertical-align: middle;
+}
+
+h4 {
+    margin-left: 42px;
+    margin-top: 10px;
+}

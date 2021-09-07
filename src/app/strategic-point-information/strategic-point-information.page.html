@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'PuntosEstrategicos.TituloPuntosEstrategicos' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="fondo">
+    <ion-card-header style="text-align: center" class="ion-text-wrap">
+      <b>
+        <h1 class="encabezado">{{point.Nombre}}</h1>
+      </b>
+    </ion-card-header>
+    <img src="{{point.Imagen}}" class="imagen">
+    <ion-card-content style="text-align: center">
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.VerPuntoMapa' | translate}}</h3>
+      <ion-button icon-left color="danger" (click)="showPoint()">
+        <ion-icon name="navigate"></ion-icon>
+        {{'Botones.BotonVerPunto' | translate}}
+      </ion-button>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.Categoria' | translate}} </h3>
+      <p class="letra">{{'PuntosEstrategicos.Categoria.' + point.Categoria | translate}}</p>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.Direccion' | translate}}</h3>
+      <p *ngFor="let calle of point.Calles" class="letra">{{calle}}</p>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.Lineas' | translate}}</h3>
+      <ion-button icon-left color="danger" (click)="showLines()">
+        <ion-icon name="navigate"></ion-icon>
+        {{'Botones.Lineas' | translate}}
+      </ion-button>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.Zona' | translate}}:</h3>
+      <p class="letra">{{point.ZonasCBBA}}</p>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.InformacionComplementaria' | translate}}:
+      </h3>
+      <p class="letra">{{point.Descripcion}}</p>
+      <br>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

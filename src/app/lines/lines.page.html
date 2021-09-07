@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'BusquedaDeLineas.TituloBusquedaLineas' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="filterItems($event)" #buscador placeholder="{{textoSearcher}}">
+  </ion-searchbar>
+  <ion-item class="fondoCategoria">
+    <ion-label>{{ 'BusquedaDeLineas.Categoria.TituloCategoria' | translate }} </ion-label>
+    <ion-select [(ngModel)]="seleccionado" (ionChange)="onSelectChange($event)">
+      <ion-select-option *ngFor="let cat of categorias" [value]="cat.valor">
+        {{ 'BusquedaDeLineas.Categoria.' + cat.nombre | translate}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let linea of listaVisible" [routerLink]="['/lines', linea.Nombre]">
+      <ion-avatar slot="start">
+        <img src="{{linea.Imagen}}">
+      </ion-avatar>
+      <ion-label>
+        <h2><b>{{linea.Nombre}}</b></h2>
+        <p>{{linea.Categoria}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

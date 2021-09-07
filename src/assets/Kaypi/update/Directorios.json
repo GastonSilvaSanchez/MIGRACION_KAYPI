@@ -1,0 +1,247 @@
+{
+    "Directorios": [
+        {
+            "NombreCategoria": "Oficinas plaza Col\u00f3n (Pasaje de la Independencia)",
+            "Directorios": [
+                {
+                    "NombreDirectorio": "Defensor\u00eda de la Ni\u00f1ez",
+                    "Categoria": "Oficinas plaza Col\u00f3n (Pasaje de la Independencia)",
+                    "Telefonos": [
+                        "63776262"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Departamento de promoci\u00f3n deportiva",
+                    "Categoria": "Oficinas plaza Col\u00f3n (Pasaje de la Independencia)",
+                    "Telefonos": [
+                        "76362626"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Direcci\u00f3n de Desarrollo Humano",
+                    "Categoria": "Oficinas plaza Col\u00f3n (Pasaje de la Independencia)",
+                    "Telefonos": [
+                        "62522626"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Secretar\u00eda de Desarrollo Humano",
+                    "Categoria": "Oficinas plaza Col\u00f3n (Pasaje de la Independencia)",
+                    "Telefonos": [
+                        "4672282"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                }
+            ],
+            "Expandido": true
+        },
+        {
+            "NombreCategoria": "Oficinas Pasaje Sucre",
+            "Directorios": [
+                {
+                    "NombreDirectorio": "Banco de Proyectos (planta baja)",
+                    "Categoria": "Oficinas Pasaje Sucre",
+                    "Telefonos": [
+                        "65646464"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Direcci\u00f3n de Medio Ambiente (planta baja)",
+                    "Categoria": "Oficinas Pasaje Sucre",
+                    "Telefonos": [
+                        "66666666"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Direcci\u00f3n de turismo (planta baja)",
+                    "Categoria": "Oficinas Pasaje Sucre",
+                    "Telefonos": [
+                        "66666666"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                }
+            ],
+            "Expandido": true
+        },
+        {
+            "NombreCategoria": "Oficinas Edificio el Prado (Av. Ballivi\u00e1n)",
+            "Directorios": [
+                {
+                    "NombreDirectorio": "Contrataciones",
+                    "Categoria": "Oficinas Edificio el Prado (Av. Ballivi\u00e1n)",
+                    "Telefonos": [
+                        "61616116",
+                        "4561616"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                }
+            ],
+            "Expandido": true
+        },
+        {
+            "NombreCategoria": "Oficinas Edificio Col\u00f3n",
+            "Directorios": [
+                {
+                    "NombreDirectorio": "Direcci\u00f3n de bienes municipales",
+                    "Categoria": "Oficinas Edificio Col\u00f3n",
+                    "Telefonos": [
+                        "4552626"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                }
+            ],
+            "Expandido": true
+        },
+        {
+            "NombreCategoria": "Oficina Plaza Principal",
+            "Directorios": [
+                {
+                    "NombreDirectorio": "Asesor\u00eda Legal",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "77777777"
+                    ],
+                    "Punto": {
+                        "lat": -17.4212237999,
+                        "lng": -66.1329102516
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Despacho",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "78542145",
+                        "69331457"
+                    ],
+                    "Punto": {
+                        "lat": -17.4212237999,
+                        "lng": -66.1329102516
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Finanzas",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "64452626"
+                    ],
+                    "Punto": {
+                        "lat": -17.3772621279,
+                        "lng": -66.1677360535
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Secretar\u00eda de Comunicaci\u00f3n",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "4545454"
+                    ],
+                    "Punto": {
+                        "lat": -17.4212237999,
+                        "lng": -66.1329102516
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Secretar\u00eda de Gobernabilidad",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "4444444"
+                    ],
+                    "Punto": {
+                        "lat": -17.4212237999,
+                        "lng": -66.1329102516
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                },
+                {
+                    "NombreDirectorio": "Secretar\u00eda General",
+                    "Categoria": "Oficina Plaza Principal",
+                    "Telefonos": [
+                        "4444444",
+                        "4555555"
+                    ],
+                    "Punto": {
+                        "lat": -17.4212237999,
+                        "lng": -66.1329102516
+                    },
+                    "Marcador": "Abasto.png",
+                    "Descripcion": "Detalle del directorio",
+                    "HorariosdeAtencion": "6:00 a 19:00"
+                }
+            ],
+            "Expandido": true
+        }
+    ]
+}

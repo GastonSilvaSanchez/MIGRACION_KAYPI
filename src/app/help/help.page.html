@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'Ayuda.TituloAyuda' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let help of helps">
+      <ion-label>
+        <h2 class="ion-text-wrap titulo"><b>{{help.titulo}}</b></h2>
+        <p class="ion-text-wrap">{{help.descripcion}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

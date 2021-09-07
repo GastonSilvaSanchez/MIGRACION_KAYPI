@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'NoticiasTrafico.TituloNoticiasTrafico' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="selected">
+    <ion-list *ngSwitchCase="'Novedades'">
+      <ion-card *ngFor="let new of news.Noticias" (click)="new.visto = !new.visto">
+        <img src="{{new.Imagen}}" onerror="this.src='../assets/img/univalle.png'"/>
+        <ion-card-content>
+          <ion-card-title>
+            <b class="titulo">{{new.Nombre}}</b>
+            <p>{{'NoticiasTrafico.Fecha'  | translate}}: {{new.Fecha}}</p>
+            <ion-button *ngIf="!new.visto" color="danger" ion-button clear end>
+              <ion-icon name='share-alt'></ion-icon>
+              {{'Botones.VerDetalles' | translate}}
+            </ion-button>
+          </ion-card-title>
+          <div *ngIf="new.visto">
+            <p class="letra">
+              {{new.Descripcion}}
+            </p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Trafico'">
+      <ion-card *ngFor="let trafic of traficNews.Noticias">
+        <img src="{{trafic.Imagen}}" onerror="this.src='../assets/img/univalle.png'"/>
+        <ion-card-content>
+          <ion-card-title>
+            <b class="titulo">{{trafic.Nombre}}</b>
+          </ion-card-title>
+          <p class="letra">
+            {{trafic.Descripcion}}
+          </p>
+          <ion-button ion-button class="button button-full" color="danger" (click)="showPoint(trafic)">
+            {{'Botones.VerUbicacionTrafico' | translate}}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selected" color="danger">
+      <ion-segment-button value="Novedades" selected>
+        {{'NoticiasTrafico.TabNovedades' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="Trafico">
+        {{'NoticiasTrafico.TabTrafico' | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

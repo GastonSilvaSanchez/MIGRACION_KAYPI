@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "266629492600",
+    "firebase_url": "https://kaypipush.firebaseio.com",
+    "project_id": "kaypipush",
+    "storage_bucket": "kaypipush.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266629492600:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "com.kaypi.cbba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266629492600-4hejl74st6gsdn2m2vifls1musbsqqdc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeGe1x-RoYg4c2yGeq5RXO642owbZrjOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266629492600-4hejl74st6gsdn2m2vifls1musbsqqdc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

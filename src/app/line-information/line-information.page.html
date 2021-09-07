@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'BusquedaDeLineas.InformacionLineas.TituloInformacionLinea' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="fondo">
+    <ion-card-header style="text-align: center">
+      <ion-label>
+        <b><h1 class="encabezado">{{line.Nombre}}</h1></b>
+      </ion-label>
+    </ion-card-header>
+    <img src="{{line.Imagen}}" class="imagenLinea">
+    <ion-card-content style="text-align: center">
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.VerRutas' | translate}} </h3>
+      <ion-button round icon-left color="danger" (click)="showRoutes()">
+        <ion-icon name="navigate"></ion-icon>
+        {{'Botones.BotonVerRutas' | translate}}
+      </ion-button>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.CostoDelPasaje' | translate}} </h3>
+      <p class="letra" *ngFor="let p of line.Pasajes">{{p}}</p>
+      <br>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.Horarios' | translate}} </h3>
+      <p class="letra" *ngFor="let horario of line.Horarios">{{horario}}</p>
+      <br>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.CallesPrincipales' | translate}}</h3>
+      <p *ngFor="let calle of line.Calles" class="letra">{{calle}}</p>
+      <br>
+      <h3 class="titulo">{{'PuntosEstrategicos.InformacionPuntoEstrategico.Zona' | translate}}:</h3>
+      <p class="letra" *ngFor="let zona of line.ZonasCBBA">{{zona}}</p>
+      <br>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.Consultas' | translate}} </h3>
+      <p *ngFor="let telf of line.Telefonos">
+        <ion-button fill="clear" (click)="callNumber(telf)" icon-left>
+          {{telf}}
+          <ion-icon name="call" class="iconoTelf"></ion-icon>
+        </ion-button>
+      </p>
+      <br>
+      <h3 class="titulo">{{'BusquedaDeLineas.InformacionLineas.Categoria' | translate}}</h3>
+      <p class="letra">{{line.Categoria}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

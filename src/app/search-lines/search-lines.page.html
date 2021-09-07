@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="{{config.styleApp}}">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{'IrDesdeMiUbicacion.TituloMiUbicacion' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map" name="map"></div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="resultLines.length == 0" hidden>
+    <ion-fab-button color="danger" (click)="getLocation()">
+      <ion-icon name="pin"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-slides pager *ngIf="resultLines.length > 0" (ionSlideNextEnd)="slideChangedNext()"
+      (ionSlideDidChange)="slideChanged()" (ionSlidePrevEnd)="slideChangedBefore()">
+      <ion-slide *ngFor="let line of resultLines" class="offset-md-2">
+        <ion-toolbar>
+          <ion-item class="resultList">
+            <ion-avatar slot="start">
+              <img src="{{config.pathFolderImage + config.pathImages.univalle}}">
+            </ion-avatar>
+            <ion-label>
+              <h2><b>{{line.Nombre}}</b></h2>
+              <p>{{line.Categoria}}</p>
+            </ion-label>
+            <ion-label slot="end" class="ion-text-wrap">
+              <h2><b>Sentido:</b></h2>
+              <p>{{line.Ruta.Sentido | translate}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-slide>
+    </ion-slides>
+    <ion-button color="danger" [disabled]="!pointOne && !pointTwo" class="button button-full"
+      color="danger" (click)="limpiarMarcadoresEnMapa()">
+      Limpar Busqueda
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

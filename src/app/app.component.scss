@@ -1,0 +1,36 @@
+$header-height: 150px;
+
+ion-label {
+  color: #757575 !important;
+}
+
+.escudo {
+  height: $header-height;
+}
+
+.header-toolbar {
+  width: 100%;
+  height: $header-height;
+  text-align: center;
+}
+
+ion-header {
+  height: $header-height;
+}
+
+ion-footer {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-img {
+  width: 55%;
+}
+
+.bck-cbba {
+  background-color: #44c5e5 !important;
+}
+
+.bck-danger {
+  background-color: #d81116;
+}
