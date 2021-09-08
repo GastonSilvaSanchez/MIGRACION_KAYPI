@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
+
 //referencia a la vista ventana_prueba en pages
 
 class HomePage extends StatefulWidget {
@@ -14,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
+        drawer: MyDrawer(),
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
