@@ -1,11 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_kaypi">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   
    <application
   
         android:label="flutter_kaypi"
         android:icon="@mipmap/ic_launcher">
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -40,8 +43,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data 
-              android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyCSci9r2_H3VbEqKfK49AMjSqO5M0jKWQo"/>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyA2siLPr07uNsvBwNxuhG2r8gRWFfXXZbw"/>
+        
     </application>
 </manifest>
