@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_kaypi/src/locations.dart' as locations;
+import 'package:geolocator/geolocator.dart';
 
 //metodo a otra vista despues de acceder(ejemplo)
 //en ves de este enlazar con el homepage.
