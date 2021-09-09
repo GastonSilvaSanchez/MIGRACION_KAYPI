@@ -8,7 +8,7 @@ class _LineasInfoProvider {
   _LineasInfoProvider();
 
   Future<List<dynamic>> cargarData() async {
-    final resp = await rootBundle.loadString('data/Lineas.json');
+    final resp = await rootBundle.loadString('lib/utils/Lineas.json');
 
     Map dataMap = json.decode(resp);
     // print(dataMap['rutas']);
