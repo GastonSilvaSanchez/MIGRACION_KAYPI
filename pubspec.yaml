@@ -58,6 +58,7 @@ flutter:
     - assets/img/LineaTaxiTruffi.jpg
     - assets/img/ruta.jpg
     - assets/img/worldmap_cbba.png
+    - lib/utils/Lineas.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
