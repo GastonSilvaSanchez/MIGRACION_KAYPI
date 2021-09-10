@@ -58,7 +58,9 @@ class MenuScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(0),
               alignment: Alignment.topLeft,
-              margin: new EdgeInsets.symmetric(vertical: 40.0),
+              margin: new EdgeInsets.only(
+                top: 50.0,
+              ),
               child: Column(
                 children: [
                   Image.asset(
