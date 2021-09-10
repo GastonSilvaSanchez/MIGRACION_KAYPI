@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/components/my_drawer.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+//import 'package:flutter_kaypi/components/my_drawer.dart';
 
 class FormLineas extends StatefulWidget {
   const FormLineas({Key? key}) : super(key: key);
@@ -12,12 +13,13 @@ class _FormLineasState extends State<FormLineas> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter layout demo',
+        //title: 'Flutter layout demo',
         home: Scaffold(
-          drawer: MyDrawer(),
-          appBar: AppBar(
-            title: Text('Flutter layout demo'),
-          ),
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
+          onTap: () => ZoomDrawer.of(context)!.toggle(),
+          child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),
+          
           body: Center(
             child: Text('Informacion de las lineas'),
           ),

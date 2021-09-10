@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:flutter_kaypi/src/locations.dart' as locations;
 
 //metodo a otra vista despues de acceder(ejemplo)
@@ -37,11 +37,12 @@ class _RutasState extends State<Rutas> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Mapa'),
-          backgroundColor: Colors.green[700],
-        ),
-        drawer: MyDrawer(),
+
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
+        onTap: () => ZoomDrawer.of(context)!.toggle(),
+        child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),
+
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(
@@ -50,7 +51,9 @@ class _RutasState extends State<Rutas> {
           ),
           markers: _markers.values.toSet(),
         ),
+
       ),
+      
     );
   }
 }

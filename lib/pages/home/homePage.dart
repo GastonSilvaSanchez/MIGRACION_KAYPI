@@ -1,31 +1,142 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/components/my_drawer.dart';
+//import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
+import 'package:flutter_kaypi/pages/Routes/ruta.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 //referencia a la vista ventana_prueba en pages
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  //final zoomDrawerController;
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+  //HomePage(this.zoomDrawerController);
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        drawer: MyDrawer(),
+        //menu lateral
         appBar: AppBar(
-          elevation: 0,
           backgroundColor: Colors.transparent,
-          /*title: Text(
-            'Bienvenido a Kaypi',
-            style: TextStyle(color: Colors.blueAccent),
+          elevation: 0,
+          leading: InkWell(
+            onTap: () => ZoomDrawer.of(context)!.toggle(),
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 28,
+            ),
           ),
-          centerTitle: true,*/
         ),
+        body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white,
+                  Colors.grey,
+                  Colors.indigo.shade400,
+                ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
+            ),
+            height: double.infinity,
+            width: double.infinity,
+            child: Stack(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                      child: Image.asset(
+                        'assets/img/KaypiLogo.png',
+                        //width: MediaQuery.of(context).size.width / 2,
+                        height: 220,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 50, bottom: 40),
+                    ),
+                    Text(
+                      '¿Que Linea Tomar? ¿Donde Bajar?',
+                      style: TextStyle(
+                        color: Colors.indigo,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                    ),
+                    Text(
+                      'Disfruta y siente la comodidad de elegir',
+                      style: TextStyle(
+                        color: Colors.indigo,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                    ),
+                    Text(
+                      'como llegar a tu destino',
+                      style: TextStyle(
+                        color: Colors.indigo,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, Routes.SPLASH);
+                      },
+                      child: const Text(
+                        'ACCEDER',
+                        style: TextStyle(color: Colors.grey, fontSize: 18),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(200, 40),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )));
+  }
+}
+
+/*class HomePage extends StatefulWidget {
+
+ 
+
+
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}*/
+
+/*class _HomePageState extends State<HomePage> {
+
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+        //extendBodyBehindAppBar: true,
+        //menu lateral
+        appBar: AppBar(title: Text("Home"),leading: InkWell(
+        onTap: () => zoomDrawerController.toggle(), 
+        child: Icon(Icons.menu),),),
+
         body: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -49,11 +160,11 @@ class _HomePageState extends State<HomePage> {
                       child: Image.asset(
                         'assets/img/KaypiLogo.png',
                         //width: MediaQuery.of(context).size.width / 2,
-                        height: 250,
+                        height: 220,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 50, bottom: 50),
+                      padding: EdgeInsets.only(top: 50, bottom: 40),
                     ),
                     Text(
                       '¿Que Linea Tomar? ¿Donde Bajar?',
@@ -85,9 +196,9 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 150),
-                    ),
+                    
+                    SizedBox(height: 20.0,),
+
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushReplacementNamed(context, Routes.SPLASH);
@@ -97,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       style: ElevatedButton.styleFrom(
-                        fixedSize: Size(200, 50),
+                        fixedSize: Size(200, 40),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),
@@ -108,4 +219,4 @@ class _HomePageState extends State<HomePage> {
               ],
             )));
   }
-}
+}*/
