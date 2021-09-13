@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:flutter_kaypi/provider/lineasInfo_provider.dart';
 
-class FormLineas extends StatelessWidget {
+
+class FormLineas extends StatefulWidget {
   const FormLineas({Key? key}) : super(key: key);
 
   @override
+  _FormLineasState createState() => _FormLineasState();
+}
+
+class _FormLineasState extends State<FormLineas> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lineas de Transporte',
-      home: Scaffold(
-        drawer: MyDrawer(),
-        appBar: AppBar(
-          title: Text('Lineas de Transporte'),
-        ),
-        body: _lista(),
-      )        
-    );
+    return Scaffold(
+          drawer: MyDrawer(),
+          appBar: AppBar(
+            title: Text('Lineas de Transporte'),
+          ),
+          body: _lista(),
+        );
   }
 
   Widget _lista() {
@@ -48,10 +51,18 @@ class FormLineas extends StatelessWidget {
 
     data?.forEach((opt) { 
       final widgetTemp = ListTile(
-            title: Text(opt['Nombre']),
+            title: Text(opt['Nombre'], 
+                    style: TextStyle(
+                      fontSize: 18.0, 
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(64, 85, 157, 1.0)
+                    ),
+                  ),
             subtitle: Text(opt['Categoria']),
-            leading: Icon(Icons.directions_bus_rounded, size: 30.0,),
-            trailing: Icon(Icons.arrow_forward_ios_rounded, size: 30.0,),
+            leading: Image.asset("assets/img/KaypiLogo.png"),
+            trailing: Icon(Icons.arrow_forward_ios_rounded, size: 30.0, 
+                        color: Color.fromRGBO(64, 85, 157, 1.0),
+                      ),
             onTap: () {},
               
             );
@@ -61,27 +72,3 @@ class FormLineas extends StatelessWidget {
     return opciones;
   }
 }
-
-/*class FormLineas extends StatefulWidget {
-  const FormLineas({Key? key}) : super(key: key);
-
-  @override
-  _FormLineasState createState() => _FormLineasState();
-}
-
-class _FormLineasState extends State<FormLineas> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter layout demo',
-        home: Scaffold(
-          drawer: MyDrawer(),
-          appBar: AppBar(
-            title: Text('Flutter layout demo'),
-          ),
-          body: Center(
-            child: Text('Informacion de las lineas'),
-          ),
-        ));
-  }
-}*/
