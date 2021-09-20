@@ -35,6 +35,9 @@ dependencies:
   http: ^0.13.3
   json_serializable: ^4.1.4
 
+  hidden_drawer_menu: ^3.0.0
+  flutter_zoom_drawer: ^2.1.1
+
 dev_dependencies:
   build_runner: ^2.1.2
   flutter_test:
@@ -51,6 +54,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/img/
     - assets/locations.json
     - assets/img/KaypiLogo.png
     - assets/img/Cochabamba_Cultura.png

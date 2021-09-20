@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/pages/Routes/pages.dart';
-import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
+import 'package:flutter_kaypi/zoom_drawer.dart';
+//import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,13 +10,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       title: 'Kaypi',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.indigo,
+        dividerColor: Colors.transparent,
       ),
-      initialRoute: Routes.HOME,
-      routes: appRoutes(),
+      home: MenuZoom(),
     );
   }
 }
