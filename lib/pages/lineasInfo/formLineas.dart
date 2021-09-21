@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/components/my_drawer.dart';
 import 'package:flutter_kaypi/provider/lineasInfo_provider.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 
 class FormLineas extends StatefulWidget {
@@ -14,12 +14,12 @@ class _FormLineasState extends State<FormLineas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          drawer: MyDrawer(),
-          appBar: AppBar(
-            title: Text('Lineas de Transporte'),
-          ),
-          body: _lista(),
-        );
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
+      onTap: () => ZoomDrawer.of(context)!.toggle(),
+      child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),   
+      body: _lista(),
+    );
   }
 
   Widget _lista() {

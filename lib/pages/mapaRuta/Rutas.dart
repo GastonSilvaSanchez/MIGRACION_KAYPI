@@ -1,6 +1,7 @@
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:flutter_kaypi/pages/mapaRuta/secrets.dart';
 
@@ -315,6 +316,12 @@ class _RutasState extends State<Rutas> {
       width: width,
       child: Scaffold(
         key: _scaffoldKey,
+        
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
+        onTap: () => ZoomDrawer.of(context)!.toggle(),
+        child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),
+
         body: Stack(
           children: <Widget>[
             // Map View
@@ -395,7 +402,7 @@ class _RutasState extends State<Rutas> {
                     ),
                     width: width * 0.9,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
