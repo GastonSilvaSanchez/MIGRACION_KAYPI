@@ -18,8 +18,9 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
           appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),
+          
           body: Center(
-            child: Text('Vista de ayuda'),
+            
           ),
         ));
   }
