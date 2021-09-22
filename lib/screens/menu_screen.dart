@@ -40,23 +40,40 @@ class MenuScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start, 
           children: <Widget> [ 
-            //Spacer(flex: 2,),
-            Container(
-              //padding: EdgeInsets.all(0),
-              margin: EdgeInsets.symmetric(vertical: 40.0),
-              alignment: Alignment.topLeft,
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/img/kaypi.png',
-                    width: 170,
-                  )
-                ],
+
+            Expanded(
+
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index){
+                  return Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Column(
+                        children: <Widget>[
+                          //SizedBox(height: 20,),
+                          Container(
+
+                            margin: EdgeInsets.symmetric(vertical: 40.0),
+                            alignment: Alignment.topLeft,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/img/kaypi.png',
+                                  width: 170,
+                                )
+                              ],
+                            ),
+                          ),
+
+                          ...MenuItems.elements.map(BuildMenuItems).toList(),
+                        ],
+                      ),
+                    )
+                  );
+                },
               ),
-            ),
-
-
-            ...MenuItems.elements.map(BuildMenuItems).toList(),
+            )
           ],
         ),
       ),

@@ -1,6 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/ayuda/CardInfo.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
+
 
 class AyudaKaypi extends StatefulWidget {
   const AyudaKaypi({Key? key}) : super(key: key);
@@ -9,9 +11,89 @@ class AyudaKaypi extends StatefulWidget {
   _AyudaKaypiState createState() => _AyudaKaypiState();
 }
 
+
+//clase donde va contener sus atributos de cada card
+//puedes aumentar mas atributos
+class CardItem {
+  late String titulo;
+  late String info;
+  late String imagen;
+
+  CardItem(String titulo, String info, String imagen)
+  {
+    this.titulo = titulo;
+    this.info = info;
+    this.imagen = imagen;
+  }
+  
+}
+
 class _AyudaKaypiState extends State<AyudaKaypi> {
+
+  //lista de la clase card item
+  List<CardItem> elementos = new List.empty(growable: true);
+
+  //editar informacion de cada card
+  _AyudaKaypiState()
+  {
+    elementos.add(new CardItem("Rutas", "Informacion", "assets/img/ruta.jpg"));
+    elementos.add(new CardItem("Rutas", "Informacion", "assets/img/ruta.jpg"));
+    elementos.add(new CardItem("Rutas", "Informacion", "assets/img/ruta.jpg"));
+    elementos.add(new CardItem("Rutas", "Informacion", "assets/img/ruta.jpg"));
+    elementos.add(new CardItem("Rutas", "Informacion", "assets/img/ruta.jpg"));
+  }
+
+  //editar card
+  Widget ListaOpciones(BuildContext context, int index){
+    return GestureDetector(
+      onTap: (){
+        //enlazar o abrir vista
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CardInfo(elementos[index])));
+      },
+      child: Card(
+        color: Colors.transparent,
+        shadowColor: Colors.transparent,
+        margin: EdgeInsets.all(10),
+
+      child: Container(
+        height: 150,
+        width: double.infinity,
+
+        //color del card
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.indigo.shade600,
+                Colors.primaries[index % Colors.primaries.length],
+              ],
+              
+
+            ),
+
+            borderRadius: BorderRadius.circular(25)
+            
+        ),
+
+        //editar
+        child: Row(
+          
+          //tiutlo e imagen
+          children: <Widget> [
+            Hero(tag: elementos[index], child: Image.asset(elementos[index].imagen, height: 150,),),
+            SizedBox(width: 20,),
+            Text(elementos[index].titulo),
+
+
+          ],
+        )
+      ),
+    ));
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
         home: Scaffold(
@@ -27,27 +109,46 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
             padding: const EdgeInsets.all(0),
              child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: <Widget>[ 
                 Expanded(
-                  child:orientacion == Orientation.portrait?  ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index){
-                      return Center(
-                        child: ItemCard(color: Colors.primaries[index % Colors.primaries.length])
-                      );
-                    }
-                  ) 
+
+                  //animacion
+                  child: AnimatedSwitcher(
+                  //transicion
+                  duration: const Duration(seconds: 2),
+
+                  //estilo de transicion
+                  
+                  transitionBuilder: (widget, animation){
+                    return ScaleTransition(
+                      scale: animation,
+                      child: widget,
+                    );
+
+                  },
+                  
+
+                  child: orientacion == Orientation.portrait?  ListView.builder(
+
+                    //cantidad de cards
+                    itemCount: elementos.length,
+
+                    //generar lista de cards
+                    itemBuilder: (context, index) =>  ListaOpciones(context, index)
+
+                  )
+
                   : GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                    itemCount: 5,
-                    itemBuilder: (context, index){
-                      return Center(
-                        child: ItemCard(color: Colors.primaries[index % Colors.primaries.length])
-                      );
-                    }, 
+                    //cantidad de cards
+                    itemCount: elementos.length,
+                    //generar lista de cards
+                    itemBuilder: (context, index) =>  ListaOpciones(context, index),
+                   
                   ),
 
-                ),
+                ),),
 
               ]
             )
@@ -58,51 +159,3 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   }
 }
 
-
-//modificar cards
-class ItemCard extends StatelessWidget {
-
-  final Color color;
-
-  const ItemCard({Key? key, required this.color}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-
-        child: Container(
-          height: 170,
-          width: double.infinity,
-          //modificar colores
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.indigo.shade600,
-                color,
-              ],
-              
-
-            ),
-
-            borderRadius: BorderRadius.circular(25)
-          ),
-
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: <Widget>[
-                Image.asset('assets/img/ruta.jpg', width: 150,),
-
-                SizedBox(height: 20,),
-
-                Text("Rutas de las lineas", style: TextStyle(color: Colors.white, fontSize: 18.0),),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
