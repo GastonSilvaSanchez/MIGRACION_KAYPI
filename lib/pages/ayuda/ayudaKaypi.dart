@@ -61,7 +61,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         "Configuración",
         "Modifica el aspecto de la aplicación para una mejor experiencia.",
         "assets/img/ayudaImg/configuracionayuda.png", [
-      "Modifcar el idioma . \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
+      "Modifcar al idioma de su preferencia. \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
     ], [
       "assets/img/ayudaImg/configuracion.PNG"
     ]));

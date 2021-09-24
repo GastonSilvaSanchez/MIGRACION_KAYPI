@@ -66,7 +66,7 @@ class CardInfoState extends State<CardInfo> {
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(height: 30),
+                              SizedBox(height: 20),
                             ],
                           ),
                           new Column(
