@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
 
 
 class FormPuntos extends StatefulWidget {
@@ -16,7 +16,7 @@ class _FormPuntosState extends State<FormPuntos> {
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-          drawer: MyDrawer(),
+         
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
