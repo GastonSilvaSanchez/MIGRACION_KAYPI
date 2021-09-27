@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/components/my_drawer.dart';
 
+
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
 
@@ -9,18 +10,38 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter layout demo',
-        home: Scaffold(
+    return MaterialApp(    
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
           drawer: MyDrawer(),
           appBar: AppBar(
-            title: Text('Flutter layout demo'),
+            bottom: const TabBar(
+              tabs: [
+                Tab(text: "PUNTOS ESTRATEGICOS",),
+                Tab(text: "MIS PUNTOS",),                
+              ],
+            ),
+            title: Text('Puntos estrategicos'),
           ),
-          body: Center(
-            child: Text('Vista de puntos estrategicos'),
-          ),
-        ));
+          body: const TabBarView(
+            children: [
+              //Agregar contenido o redirecionamiento aca
+              Icon(Icons.directions_car),
+              Icon(Icons.directions_transit),
+            ],
+            ),
+        ),
+      ),
+          
+          
+          
+     );
   }
+ 
+
+ 
 }
