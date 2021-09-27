@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/components/my_drawer.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 
 class FormPuntos extends StatefulWidget {
@@ -9,8 +9,7 @@ class FormPuntos extends StatefulWidget {
   _FormPuntosState createState() => _FormPuntosState();
 }
 
-class _FormPuntosState extends State<FormPuntos> {
-  
+class _FormPuntosState extends State<FormPuntos> {  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(    
@@ -33,15 +32,9 @@ class _FormPuntosState extends State<FormPuntos> {
               Icon(Icons.directions_car),
               Icon(Icons.directions_transit),
             ],
-            ),
-        ),
-      ),
-          
-          
-          
-     );
+          ),
+        ), 
+      ),  
+    );
   }
- 
-
- 
 }

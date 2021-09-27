@@ -4,11 +4,18 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
         {
-            "type": "pwa-chrome",
-            //"program": "lib/pages/home/homePage.dart",
-            "request": "launch",            
+            "name": "MyApp",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "MyApp (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "we5bRoot": "${workspaceFolder}"
