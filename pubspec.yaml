@@ -44,6 +44,7 @@ flutter:
     - assets/img/ruta.jpg
     - assets/img/worldmap_cbba.png
     - lib/utils/Lineas.json
+    - lib/utils/PuntosEstrategicos.json
 
 
 
