@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 
 class LineaPage extends StatelessWidget {
@@ -61,7 +62,12 @@ class LineaPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               //Aca incorporar para vizualizar rutas de la lina.
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LineaRuta()),
+                );
+              },
             ),
             const SizedBox(height: 25),
             Text(

@@ -7,6 +7,7 @@ class Linea {
   final List<String> calles;
   final String imagen;
   final List<String> zonasCBBA;
+  final List<Ruta> ruta;
 
   const Linea({
     required this.nombre,
@@ -17,6 +18,7 @@ class Linea {
     required this.calles,
     required this.imagen,
     required this.zonasCBBA,
+    required this.ruta,
   });
 
   factory Linea.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,46 @@ class Linea {
       calles: json['Calles'].cast<String>(),
       imagen: json['Imagen'],
       zonasCBBA: json['ZonasCBBA'].cast<String>(),
+      ruta: json['Rutas'].cast<Ruta>(),
     );
   }
+}
+
+class Ruta {
+  final String sentido;
+  final String color;
+  final List<Puntos> puntos;
+
+  Ruta({
+    required this.sentido,
+    required this.color,
+    required this.puntos,
+  });
+
+  factory Ruta.fromJson(Map<String, dynamic> json) {
+    return new Ruta(
+      sentido: json['sentido'].cast<String>(),
+      color: json['Color'].cast<String>(),
+      puntos: json['Puntos'].cast<Puntos>(),
+    );
+  }
+}
+
+class Puntos {
+
+  final double lat;
+  final double lng;
+
+  Puntos({
+    required this.lat,
+    required this.lng,
+  });
+
+  factory Puntos.fromJson(Map<String, dynamic> json) {
+    return new Puntos(
+      lat: json['lat'].cast<double>(),
+      lng: json['lng'].cast<double>(),
+    );
+  }
+
 }

@@ -8,5 +8,5 @@ abstract class Routes {
   static const CONFIGURACION = '/configuracion';
   static const AYUDA = '/ayuda';
   static const INFO = '/info';
-
+  static const RUTAMAPA = '/rutamapa';
 }
