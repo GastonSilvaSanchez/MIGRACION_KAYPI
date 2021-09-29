@@ -21,6 +21,5 @@ Map<String, Widget Function(BuildContext)> appRoutes() {
     Routes.AYUDA: (_) => const AyudaKaypi(),
     Routes.PUNTOSESTRATEGICOS: (_) => const FormPuntos(),
     Routes.INFO: (_) => const InfoApp(),
-
   };
 }
