@@ -18,7 +18,7 @@ class LineasApi {
     final list = data['Lineas'] as List<dynamic>;
 
     list.sort((a, b) => a.toString().compareTo(b.toString()));
-
+    
     return info = list.map((e) => Linea.fromJson(e)).toList();
   }
 

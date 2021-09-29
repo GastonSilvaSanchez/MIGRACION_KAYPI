@@ -22,6 +22,8 @@ class Linea {
   });
 
   factory Linea.fromJson(Map<String, dynamic> json) {
+    var list = json['Rutas'] as List;
+    List<Ruta> rutasList = list.map((ruta) => Ruta.fromJson(ruta)).toList();
     return new Linea(
       nombre: json['Nombre'],
       categoria: json['Categoria'],
@@ -31,7 +33,7 @@ class Linea {
       calles: json['Calles'].cast<String>(),
       imagen: json['Imagen'],
       zonasCBBA: json['ZonasCBBA'].cast<String>(),
-      ruta: json['Rutas'].cast<Ruta>(),
+      ruta: rutasList,
     );
   }
 }
@@ -48,10 +50,12 @@ class Ruta {
   });
 
   factory Ruta.fromJson(Map<String, dynamic> json) {
+    var list = json['Puntos'] as List;
+    List<Puntos> puntosList = list.map((puntos) => Puntos.fromJson(puntos)).toList();
     return new Ruta(
-      sentido: json['sentido'].cast<String>(),
-      color: json['Color'].cast<String>(),
-      puntos: json['Puntos'].cast<Puntos>(),
+      sentido: json['sentido'].toString(),
+      color: json['Color'].toString(),
+      puntos: puntosList,
     );
   }
 }
@@ -68,9 +72,8 @@ class Puntos {
 
   factory Puntos.fromJson(Map<String, dynamic> json) {
     return new Puntos(
-      lat: json['lat'].cast<double>(),
-      lng: json['lng'].cast<double>(),
+      lat: json['lat'].toDouble(),
+      lng: json['lng'].toDouble(),
     );
   }
-
 }
