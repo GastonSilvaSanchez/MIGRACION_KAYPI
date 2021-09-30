@@ -92,7 +92,7 @@ class _LineaRutaState extends State<LineaRuta> {
         visible: true,
         points: latlng,
         width: 3,
-        color: Colors.red,
+        color: Color.fromRGBO(64, 85, 157, 1.0),
       ));
     });
   }
