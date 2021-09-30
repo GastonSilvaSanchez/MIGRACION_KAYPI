@@ -36,6 +36,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/
+    - assets/img/ayudaImg/
     - assets/locations.json
     - assets/img/KaypiLogo.png
     - assets/img/Cochabamba_Cultura.png
