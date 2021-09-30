@@ -14,9 +14,11 @@ class LineaRuta extends StatefulWidget {
 class _LineaRutaState extends State<LineaRuta> {
 
   GoogleMapController? controller;
-
-   Set<Polyline> polyline = Set<Polyline>();
-   List<LatLng> latlng = [];
+  
+  Set<Marker> markers ={};
+  Set<Polyline> polyline = Set<Polyline>();
+  List<LatLng> latlng = [];
+  List<Marker> _markers = [];
 
   static final CameraPosition cameraPosition = CameraPosition(
     target: LatLng(-17.4139766, -66.1653224),
@@ -28,14 +30,32 @@ class _LineaRutaState extends State<LineaRuta> {
   Widget build(BuildContext context) {
 
     final todo = ModalRoute.of(context)!.settings.arguments as Linea;
-    //print('AAAAAAAA');
     
-    //List<double> puntos = <double>[];
-    for (var e in todo.ruta[1].puntos) { 
-                  //print(e.lat);
-                  latlng.add(new LatLng(e.lat, e.lng));
+    var cont=0;
+    
+    latlng.clear();
+    for (var e in todo.ruta[0].puntos) { 
+      latlng.add(new LatLng(e.lat, e.lng));
+    
+        if(cont==0){
+          _markers.add(
+            Marker(
+              markerId: MarkerId('origin'),
+              position: LatLng(e.lat, e.lng)
+            )
+          );
+        }
+        else if (cont == todo.ruta[0].puntos.length-1) {
+          _markers.add(
+          Marker(
+            markerId: MarkerId('destination'),
+            position: LatLng(e.lat, e.lng)
+          )
+        );
+      }
+      cont++;
     }
-    print(latlng);
+    
     return Scaffold(
       extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -53,6 +73,7 @@ class _LineaRutaState extends State<LineaRuta> {
         body: GoogleMap(
           initialCameraPosition: cameraPosition,
           mapType: MapType.normal,
+          markers: Set<Marker>.of(_markers),
           polylines: _polyline,
           onMapCreated: _OnMapCreated,
       ),
@@ -65,15 +86,14 @@ class _LineaRutaState extends State<LineaRuta> {
       controller = mapController;
 
       _polyline.add(Polyline(
+        startCap: Cap.roundCap,
+        endCap: Cap.roundCap,
         polylineId: PolylineId('linea'),
         visible: true,
         points: latlng,
-        width: 2,
+        width: 3,
         color: Colors.red,
       ));
     });
-
-
   }
-
 }

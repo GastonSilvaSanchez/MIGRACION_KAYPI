@@ -86,20 +86,6 @@ class LineaPage extends StatelessWidget {
                 
               },
             ),
-            ElevatedButton(
-              child: Text(
-                'RUTAS 2',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-              //Aca incorporar para vizualizar rutas de la lina.
-              onPressed: () {
-                /*Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LineaRuta()),
-                );*/
-                
-              },
-            ),
             const SizedBox(height: 25),
             Text(
               'PASAJES',
