@@ -14,24 +14,23 @@ class LineaRuta extends StatefulWidget {
 class _LineaRutaState extends State<LineaRuta> {
 
   GoogleMapController? controller;
-  
   Set<Marker> markers ={};
   Set<Polyline> polyline = Set<Polyline>();
   List<LatLng> latlng = [];
+  List<LatLng> latlng2 = [];
   List<Marker> _markers = [];
+  var cont=0;
 
-  static final CameraPosition cameraPosition = CameraPosition(
+  final CameraPosition cameraPosition = CameraPosition(
     target: LatLng(-17.4139766, -66.1653224),
-    zoom: 14,
+    zoom: 12.5,
   );
-  
   final Set<Polyline> _polyline = {};
+
   @override
   Widget build(BuildContext context) {
 
     final todo = ModalRoute.of(context)!.settings.arguments as Linea;
-    
-    var cont=0;
     
     latlng.clear();
     for (var e in todo.ruta[0].puntos) { 
@@ -41,7 +40,7 @@ class _LineaRutaState extends State<LineaRuta> {
           _markers.add(
             Marker(
               markerId: MarkerId('origin'),
-              position: LatLng(e.lat, e.lng)
+              position: LatLng(e.lat, e.lng),
             )
           );
         }
@@ -54,6 +53,11 @@ class _LineaRutaState extends State<LineaRuta> {
         );
       }
       cont++;
+    }
+    
+    latlng2.clear();
+    for(var i in todo.ruta[1].puntos){
+        latlng2.add(new LatLng(i.lat, i.lng));
     }
     
     return Scaffold(
@@ -92,7 +96,15 @@ class _LineaRutaState extends State<LineaRuta> {
         visible: true,
         points: latlng,
         width: 3,
-        color: Color.fromRGBO(64, 85, 157, 1.0),
+        color: Color.fromRGBO(48, 79, 254, 1.0),
+      ));
+
+      _polyline.add(Polyline(
+        polylineId: PolylineId('linea2'),
+        visible: true,
+        points: latlng2,
+        width: 3,
+        color: Color.fromRGBO(255, 23, 68, 1.0),
       ));
     });
   }
