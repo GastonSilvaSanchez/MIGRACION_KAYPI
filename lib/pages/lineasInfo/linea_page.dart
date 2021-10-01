@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 
 class LineaPage extends StatelessWidget {
   final Linea linea;
-
   const LineaPage({
     Key? key,
     required this.linea,
@@ -61,7 +61,30 @@ class LineaPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               //Aca incorporar para vizualizar rutas de la lina.
-              onPressed: () {},
+              onPressed: () {
+                /*print(0);
+                print("------");
+                  List<double> listLat = <double>[];
+                  List<double> listLng = <double>[];
+                  int cont=0;
+                  for (var e in linea.ruta[0].puntos) { 
+                  print('${e.lat}'+'${e.lng}');
+                  listLat.add(e.lat);
+                  listLng.add(e.lng);
+                  cont++;
+                  }
+                print("------");
+                print(cont);*/
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LineaRuta(),
+                    settings: RouteSettings(
+                      arguments: linea 
+                    ),
+                  ),
+                );
+                
+              },
             ),
             const SizedBox(height: 25),
             Text(

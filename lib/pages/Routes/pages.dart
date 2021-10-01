@@ -4,6 +4,7 @@ import 'package:flutter_kaypi/pages/configuracion/configuracion.dart';
 import 'package:flutter_kaypi/pages/home/homePage.dart';
 import 'package:flutter_kaypi/pages/info/info.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/formLineas.dart';
+import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
 import 'package:flutter_kaypi/pages/mapaRuta/Rutas.dart';
 import 'package:flutter_kaypi/pages/puntosEstrategicos/formpuntos.dart';
 import 'package:flutter_kaypi/pages/requestPermission/requestPermissionPage.dart';
@@ -21,5 +22,6 @@ Map<String, Widget Function(BuildContext)> appRoutes() {
     Routes.AYUDA: (_) => const AyudaKaypi(),
     Routes.PUNTOSESTRATEGICOS: (_) => const FormPuntos(),
     Routes.INFO: (_) => const InfoApp(),
+    Routes.RUTAMAPA: (_) => const LineaRuta(),
   };
 }
