@@ -14,6 +14,7 @@ class _InfoAppState extends State<InfoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+          backgroundColor: Colors.indigo[800],
           extendBodyBehindAppBar: true,
           appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
@@ -32,6 +33,13 @@ class _InfoAppState extends State<InfoApp> {
                           child: Column(
                             children: <Widget>[
                               Container(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                    'assets/img/kaypi.png',
+                                    width: 170,
+                                ),
+                              ),
+                              /*Container(
                                 margin: EdgeInsets.all(20),
                                 alignment: Alignment.center,
                                 child: Text('Kaypi',
@@ -44,12 +52,12 @@ class _InfoAppState extends State<InfoApp> {
                                     fontWeight: FontWeight.bold
                                   ),
                                 ),
-                              ),
+                              ),*/
 
 
                               Align(
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/univalle.png',
+                                child: Image.asset('assets/img/univalle.png',
                                 width: 150,
                                 height: 150,),
                               ),
@@ -110,7 +118,7 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(0),
       elevation: 10,
       child: Column(
         children: <Widget>[
@@ -124,17 +132,17 @@ class _InfoAppState extends State<InfoApp> {
               ),
               FadeInImage(
                 alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/loading.gif'),
-                image: AssetImage('assets/descargacocha.png'),
+                placeholder: AssetImage('assets/img/loading.gif'),
+                image: AssetImage('assets/img/descargacocha.png'),
                 height: 40,
                 width: 40,
               ),
               Container(
-                margin: EdgeInsets.all(20),
+                margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
                 padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
                 child: Text(
-                    "Contribuciones\n\nGobierno Autónomo Municipal de Cochabamba"),
+                    "Contribuciones\n\nGobierno Municipal de Cochabamba"),
               ),
             ],
           )
@@ -146,7 +154,7 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard2() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(0),
       elevation: 10,
       child: Column(
         children: <Widget>[
@@ -160,15 +168,15 @@ class _InfoAppState extends State<InfoApp> {
               ),
               FadeInImage(
                 alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/loading.gif'),
-                image: AssetImage('assets/univalle.png'),
+                placeholder: AssetImage('assets/img/loading.gif'),
+                image: AssetImage('assets/img/uni.png'),
                 height: 40,
                 width: 40,
               ),
               Container(
-                margin: EdgeInsets.all(20),
+                margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 175, 5),
+                padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
                 child: Text(
                     "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
               ),
@@ -194,15 +202,16 @@ class _InfoAppState extends State<InfoApp> {
               ),
               FadeInImage(
                 alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/loading.gif'),
-                image: AssetImage('assets/tramitecochabamba.png'),
+                placeholder: AssetImage('assets/img/loading.gif'),
+                image: AssetImage('assets/img/tramitecochabamba.png'),
                 height: 30,
                 width: 30,
               ),
+
               Container(
                 margin: EdgeInsets.all(20),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 1),
+                padding: EdgeInsets.fromLTRB(5, 10, 40, 0),
                 child: Text("Trámites Cochabamba\n\n"),
               ),
 
@@ -236,15 +245,15 @@ class _InfoAppState extends State<InfoApp> {
               ),
               FadeInImage(
                 alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/loading.gif'),
-                image: AssetImage('assets/ciudadanoac.png'),
+                placeholder: AssetImage('assets/img/loading.gif'),
+                image: AssetImage('assets/img/ciudadanoac.png'),
                 height: 40,
                 width: 40,
               ),
               Container(
                 margin: EdgeInsets.all(20),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
+                padding: EdgeInsets.fromLTRB(5, 10, 60, 0),
                 child: Text("Ciudadano Activo\n\n"),
               ),
               Center(
