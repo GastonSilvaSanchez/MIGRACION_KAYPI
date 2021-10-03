@@ -57,7 +57,7 @@ class _InfoAppState extends State<InfoApp> {
 
                               Align(
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/img/univalle.png',
+                                child: Image.asset('assets/img/uni.png',
                                 width: 150,
                                 height: 150,),
                               ),
@@ -77,6 +77,10 @@ class _InfoAppState extends State<InfoApp> {
                                 ),
                               ),
 
+                              SizedBox(
+                                height: 20,
+                              ),
+                              
                               miCard(),
                               miCard2(),
 
@@ -118,7 +122,7 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(0),
+      margin: EdgeInsets.all(10),
       elevation: 10,
       child: Column(
         children: <Widget>[
@@ -154,7 +158,7 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard2() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(0),
+      margin: EdgeInsets.all(10),
       elevation: 10,
       child: Column(
         children: <Widget>[
