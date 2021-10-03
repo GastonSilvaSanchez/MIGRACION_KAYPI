@@ -173,15 +173,13 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                     child: orientacion == Orientation.portrait
                         ? ListView.builder(
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index))
+                            itemBuilder: (context, index) => ListaOpciones(context, index))
                         : GridView.builder(
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index),
+                            itemBuilder: (context, index) => ListaOpciones(context, index),
                           ),
                   ),
                 ),
