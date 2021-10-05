@@ -7,7 +7,7 @@ class MenuItems {
   static const lineas = MenuItem('Lineas', Icons.directions_bus);
   static const paradas =
       MenuItem('Puntos Estrategicos', Icons.departure_board_rounded);
-  static const lugares = MenuItem('Lugares Turíticos', Icons.location_city);
+  static const lugares = MenuItem('Lugares Turísticos', Icons.location_city);
   static const configuracion =
       MenuItem('Configuracion', Icons.settings_applications);
   static const ayuda = MenuItem('Ayuda', Icons.help_center_rounded);
