@@ -45,6 +45,23 @@ flutter:
     - assets/img/ruta.jpg
     - assets/img/worldmap_cbba.png
     - lib/utils/Lineas.json
+    - assets/imgPuntos/1p.jpg
+    - assets/imgPuntos/2p.jpg
+    - assets/imgPuntos/3p.jpg
+    - assets/imgPuntos/4p.jpg
+    - assets/imgPuntos/5p.jpg
+    - assets/imgPuntos/6p.jpg
+    - assets/imgPuntos/7p.jpg
+    - assets/imgPuntos/8p.jpg
+    - assets/imgPuntos/9p.jpg
+    - assets/imgPuntos/10p.jpg
+    - assets/imgPuntos/11p.jpg
+    - assets/imgPuntos/12p.jpg
+    - assets/imgPuntos/13p.jpg
+    - assets/imgPuntos/14p.jpg
+    - assets/imgPuntos/15p.jpg
+    - assets/imgPuntos/16p.jpg
+    - assets/PuntosEstrategicos.json
 
 
 
