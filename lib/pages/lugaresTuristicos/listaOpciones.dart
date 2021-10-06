@@ -43,7 +43,12 @@ Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0.0),
                         side: BorderSide(color: Colors.indigo)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondRoute()),
+                      );
+                    },
                     padding: EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10, bottom: 10),
                     color: Colors.white,
@@ -102,4 +107,66 @@ Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
       ),
     ),
   ));
+}
+
+///INFO LUGARES TURÍSTICOS
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade400,
+        elevation: 0,
+        title: new Text('Información',
+            style: new TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white)),
+      ),
+      //body: Center(),
+      body: Container(
+        child: Column(
+          children: <Widget>[miCard()],
+        ),
+      ),
+    );
+  }
+}
+
+Card miCard() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: EdgeInsets.all(10),
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text("  "),
+            ),
+            SizedBox(
+              height: 400,
+              width: 60,
+            ),
+            /*FadeInImage(
+              alignment: Alignment.centerLeft,
+              placeholder: AssetImage('assets/img/loading.gif'),
+              image: AssetImage('assets/img/descargacocha.png'),
+              height: 40,
+              width: 40,
+            ),*/
+            Container(
+              margin: EdgeInsets.all(0),
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.fromLTRB(5, 10, 200, 5),
+              child: Text(
+                  "Nombre:\n\nCategoría:\n\nCalles:\n\nImagen:\n\nDescripción:\n\n"),
+            ),
+          ],
+        )
+      ],
+    ),
+  );
 }
