@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/lugar.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/info_Lugar.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/infoLugarTuristico.dart';
 
 Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
   buildExpanded1() {
@@ -48,6 +50,10 @@ Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
                         context,
                         MaterialPageRoute(builder: (context) => SecondRoute()),
                       );
+                      /*Navigator.of(context).push(
+                      MaterialPageRoute<Null>(builder: (BuildContext context) {
+                    return new LineaPages();
+                  }));*/
                     },
                     padding: EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10, bottom: 10),
