@@ -9,7 +9,10 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
+  //variable que almacena la lista con todos los datos del json
   late List data;
+
+  //variable ocupada para decodificar el json y obtener los datos de la lista
   var newData;
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,10 @@ class _FormPuntosState extends State<FormPuntos> {
             future: DefaultAssetBundle.of(context)
                 .loadString('PuntosEstrategicos.json'),
             builder: (context, snapshot) {
-              // Decode the JSON
+              // decodificacion del json
               newData = json.decode(snapshot.data.toString());
 
+              //listview que contiene nombre y descripcion de los puntos estrategicos
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   return Card(
@@ -38,10 +42,10 @@ class _FormPuntosState extends State<FormPuntos> {
                         // Los bordes del contenido del card se cortan usando BorderRadius
                         borderRadius: BorderRadius.circular(30),
 
-                        // EL widget hijo que será recortado segun la propiedad anterior
+                        // widget hijo que será recortado segun la propiedad anterior
                         child: Column(
                           children: <Widget>[
-                            // Usamos el widget Image para mostrar una imagen
+                            // widget Image para mostrar una imagen
                             SizedBox(
                               height: 10,
                             ),
@@ -116,15 +120,15 @@ class _FormPuntosState extends State<FormPuntos> {
 
 // ignore: must_be_immutable
 class InfoPunto extends StatelessWidget {
-  // Declara un campo que contenga el objeto Todo
+  // variable que tiene los datos de donde se realizo el click
   var newData;
 
-  // En el constructor, se requiere un objeto Todo
+  // Constructor donde se pasan los datos
   InfoPunto({Key? key, @required this.newData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Usa el objeto Todo para crear nuestra UI
+    // Usa el objeto Todo(newData) para crear nuestra UI
     return Scaffold(
       appBar: AppBar(
         title: Text(newData['Nombre']),
