@@ -3,8 +3,10 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/lugar.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/info_Lugar.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/infoLugarTuristico.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/mostrarInfoLugarTuristico.dart';
 
-Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
+Widget ListaOpciones(
+    BuildContext context, int index, List<InforLugarTuristico> elementos) {
   buildExpanded1() {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +50,9 @@ Widget ListaOpciones(BuildContext context, int index, List<Lugar> elementos) {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SecondRoute()),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                LineaPages(linea: elementos[index])),
                       );
                       /*Navigator.of(context).push(
                       MaterialPageRoute<Null>(builder: (BuildContext context) {

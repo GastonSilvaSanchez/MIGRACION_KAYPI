@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/infoLugarTuristico.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaOpciones.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/lugar.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
@@ -12,17 +13,15 @@ class ListaLugaresTuristicos extends StatefulWidget {
 }
 
 class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
-  List<Lugar> elementos = new List.empty(growable: true);
+  List<InforLugarTuristico> elementos = new List.empty(growable: true);
 
   _ListaLugaresTuristicosState() {
-    elementos.add(new Lugar(
-        "Lugar 1",
-        "Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1",
-        "assets/img/lugar1.jpg"));
-    elementos
-        .add(new Lugar("Lugar 2", "Descripción 2", "assets/img/lugar1.jpg"));
-    elementos
-        .add(new Lugar("Lugar 3", "Descripción 3", "assets/img/lugar1.jpg"));
+    elementos.add(new InforLugarTuristico(
+        nombre: "Nombre 1",
+        categoria: "Categoria 1",
+        calles: ["c1", "c2"],
+        imagen: "assets/img/lugar1.jpg",
+        descripcion: "descripcion"));
   }
 
   @override
