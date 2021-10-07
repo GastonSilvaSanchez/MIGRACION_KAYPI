@@ -80,27 +80,6 @@ class LineaPages extends StatelessWidget {
                 }),
             const SizedBox(height: 25),
             Text(
-              'CALLES',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            ListView.builder(
-              padding: EdgeInsets.only(top: 5),
-              physics: BouncingScrollPhysics(),
-              itemCount: linea.calles.length,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      linea.calles[index],
-                    ),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 25),
-            Text(
               'IMAGEN',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -120,14 +99,23 @@ class LineaPages extends StatelessWidget {
                   );
                 }),
             const SizedBox(height: 25),
+            const SizedBox(height: 25),
             Text(
+              'DESCRIPCIÓN',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(linea.descripcion),
+            const SizedBox(height: 25),
+            /*Text(
               'DESCRIPCIÓN',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             ListView.builder(
                 padding: EdgeInsets.only(top: 5),
                 physics: BouncingScrollPhysics(),
-                itemCount: linea.descripcion.length,
+                Text(linea.categoria),
+                //itemCount: linea.descripcion.length,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, index) {
                   return Padding(
@@ -138,7 +126,7 @@ class LineaPages extends StatelessWidget {
                       ),
                     ),
                   );
-                }),
+                }),*/
             const SizedBox(height: 25),
           ],
         ),
