@@ -74,13 +74,71 @@ class _LineaRutaState extends State<LineaRuta> {
             ),
           ),
         ),
-        body: GoogleMap(
-          initialCameraPosition: cameraPosition,
-          mapType: MapType.normal,
-          markers: Set<Marker>.of(_markers),
-          polylines: _polyline,
-          onMapCreated: _OnMapCreated,
-      ),
+        body: Stack(
+          children: [
+            
+            GoogleMap(
+              initialCameraPosition: cameraPosition,
+              mapType: MapType.normal,
+              markers: Set<Marker>.of(_markers),
+              polylines: _polyline,
+              onMapCreated: _OnMapCreated,
+              zoomControlsEnabled: false,
+            ),
+            Positioned(
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.only(bottom: 50.0),
+                child: Card(
+                  color: Color.fromRGBO(61, 90, 254, 1.0),
+                  child: Container(
+                    height: 90.0,
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: AssetImage('assets/img/KaypiLogo.png'),
+                            backgroundColor: Colors.white,
+                            radius: 32.0,
+                          ),
+                          title: Text(todo.nombre, style: TextStyle(fontSize: 26,color: Colors.white)),
+                          subtitle: Text(todo.categoria, style: TextStyle(fontSize: 18, color: Colors.white),),
+                        )
+                      ],
+                    ),
+                  ),
+                  elevation: 10.0,
+                  shadowColor: Color.fromRGBO(64, 85, 157, 1.0),
+                  borderOnForeground: true,
+                )
+              )
+            ),
+            Positioned(
+              child: Container(
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(top: 120),
+                width: 160.0,
+                child: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        leading: Icon(Icons.circle, color: Color.fromRGBO(48, 79, 254, 1.0),),
+                        title: Text(todo.ruta[0].sentido, style: TextStyle(fontSize: 12))
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.circle, color: Color.fromRGBO(255, 23, 68, 1.0),),
+                        title: Text(todo.ruta[1].sentido, style: TextStyle(fontSize: 12))
+                      ),
+                    ],
+                  ),
+                )
+              )
+            ),
+          ],
+        )
     );
   }
 
