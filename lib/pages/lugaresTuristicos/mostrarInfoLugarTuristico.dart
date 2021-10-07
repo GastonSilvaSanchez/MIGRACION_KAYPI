@@ -79,7 +79,15 @@ class LineaPages extends StatelessWidget {
                   );
                 }),
             const SizedBox(height: 25),
+            const SizedBox(height: 25),
             Text(
+              'IMAGEN',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(linea.imagen),
+            const SizedBox(height: 25),
+            /*Text(
               'IMAGEN',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -98,7 +106,7 @@ class LineaPages extends StatelessWidget {
                     ),
                   );
                 }),
-            const SizedBox(height: 25),
+            const SizedBox(height: 25),*/
             const SizedBox(height: 25),
             Text(
               'DESCRIPCIÓN',

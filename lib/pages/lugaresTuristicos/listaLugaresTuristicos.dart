@@ -22,7 +22,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         calles: ["Av", "de la Concordia"],
         imagen: "assets/img/lugar1.jpg",
         descripcion:
-            "El Cristo de la Concordia es una colosal estatua monumental de Jasucristo que se encuentra sobre el cerro de San Pedro en la ciudad de Cochabamba, Bolivia, a una altura de 265 m sobre la ciudad."));
+            " El Cristo de la Concordia es una colosal estatua monumental de Jesucristo que se encuentra sobre el cerro de San Pedro en la ciudad de Cochabamba, Bolivia, a una altura de 265 m sobre la ciudad."));
   }
 
   @override
