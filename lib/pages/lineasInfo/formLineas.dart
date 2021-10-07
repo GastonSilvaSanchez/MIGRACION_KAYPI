@@ -30,6 +30,7 @@ class _FormLineasState extends State<FormLineas> {
         body: _lista(context),
       );
 
+  //Widget de visualizacion de rutas en lista
   Widget _lista(context) => FutureBuilder<List<Linea>>(
         future: lineasApi.cargarData(),
         initialData: [],
