@@ -3,6 +3,7 @@ import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 
 class LineaPage extends StatelessWidget {
+  //Declaracion de variable para manejo de linea de transporte
   final Linea linea;
   const LineaPage({
     Key? key,
@@ -27,6 +28,7 @@ class LineaPage extends StatelessWidget {
         body: _detalleLineaView(context),
       );
 
+//widget de visualizacion de datos
   Widget _detalleLineaView(context) => SingleChildScrollView(
         padding: EdgeInsets.only(top: 100),
         child: Column(
@@ -77,13 +79,11 @@ class LineaPage extends StatelessWidget {
                 print(cont);*/
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LineaRuta(),
-                    settings: RouteSettings(
-                      arguments: linea 
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => LineaRuta(),
+                    settings: RouteSettings(arguments: linea),
                   ),
                 );
-                
               },
             ),
             const SizedBox(height: 25),

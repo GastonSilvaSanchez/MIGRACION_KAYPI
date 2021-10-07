@@ -54,6 +54,7 @@ class _FormLineasState extends State<FormLineas> {
         },
       );
 
+  //widget con informacion de linas individuales
   Widget _buildLineas(List<Linea> lineas, context) {
     return ListView.builder(
       physics: BouncingScrollPhysics(),
