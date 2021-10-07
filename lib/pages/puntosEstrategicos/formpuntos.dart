@@ -1,5 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
+import 'package:flutter_kaypi/pages/model/linea.dart';
+import 'package:flutter_kaypi/pages/model/puntosEstrategico.dart';
+import 'package:flutter_kaypi/pages/puntosEstrategicos/lineaspuntos.dart';
+import 'package:flutter_kaypi/provider/lineas_api.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+List<String> listalineas = <String>[];
 
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
@@ -9,13 +19,28 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
-  late List data;
+  List? data;
+  List<Linea>? li;
+  Linea? linea;
+  PuntoEstrategicos? puntoEstrategicos;
   var newData;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
+        //menu lateral
         appBar: AppBar(
-          title: Text('Puntos Estrategicos'),
+          title: Text("PUNTOS ESTRATEGICOS"),
+          backgroundColor: Colors.blue,
+          elevation: 0,
+          leading: InkWell(
+            onTap: () => ZoomDrawer.of(context)!.toggle(),
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 28,
+            ),
+          ),
         ),
         body: Center(
           child: FutureBuilder(
@@ -83,7 +108,16 @@ class _FormPuntosState extends State<FormPuntos> {
                                       backgroundColor: Colors.blue,
                                       onSurface: Colors.grey,
                                     ),
-                                    onPressed: () => {},
+                                    onPressed: () => {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    PuntosMarcadorGoogle(
+                                                      newdata: newData[index],
+                                                    )),
+                                          )
+                                        },
                                     child: Text('Puntos')),
                                 SizedBox(
                                   width: 15,
@@ -92,13 +126,31 @@ class _FormPuntosState extends State<FormPuntos> {
                                   Icons.play_arrow,
                                   color: Colors.black,
                                 ),
-                                TextButton(
+                                ElevatedButton(
                                     style: TextButton.styleFrom(
                                       primary: Colors.white,
                                       backgroundColor: Colors.blue,
                                       onSurface: Colors.grey,
                                     ),
-                                    onPressed: () => {},
+                                    onPressed: () => {
+                                          //print(newData[index]['Lineas']),
+                                          for (var linea in newData[index]
+                                              ['Lineas'])
+                                            {listalineas.add(linea)},
+                                          /*List<String> listLineas = <String>[];
+                                          for (var p in newData[index]
+                                              ['Lineas'])
+                                            {listalineas.add(p)},
+                                          for (var r in listalineas) {print(r)},*/
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LineasPuntos(
+                                                        listalineas:
+                                                            listalineas)),
+                                          )
+                                        },
                                     child: Text('Lineas'))
                               ],
                             )
@@ -115,23 +167,79 @@ class _FormPuntosState extends State<FormPuntos> {
 }
 
 // ignore: must_be_immutable
-class InfoPunto extends StatelessWidget {
-  // Declara un campo que contenga el objeto Todo
-  var newData;
-
-  // En el constructor, se requiere un objeto Todo
-  InfoPunto({Key? key, @required this.newData}) : super(key: key);
+class PuntosMarcadorGoogle extends StatelessWidget {
+  var newdata;
+  late GoogleMapController mapController;
+  late Position _currentPosition;
+  CameraPosition _initialLocation =
+      CameraPosition(target: LatLng(-17.399468, -66.157664));
+  late Marker m;
+  BitmapDescriptor customIcon = BitmapDescriptor.defaultMarker;
+  PuntosMarcadorGoogle({Key? key, @required this.newdata}) : super(key: key);
+  Set<Marker> _createMarker() {
+    double longitude = double.parse(newdata['Punto']['lng'].toString());
+    double latitude = double.parse(newdata['Punto']['lat'].toString());
+    return {
+      Marker(
+          markerId: MarkerId("marker_2"),
+          position: LatLng(latitude, longitude),
+          infoWindow: InfoWindow(
+              title: newdata['Nombre'], snippet: newdata['Descripcion'])),
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Usa el objeto Todo para crear nuestra UI
     return Scaffold(
-      appBar: AppBar(
-        title: Text(newData['Nombre']),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text(newData['Descripcion']),
+      appBar: AppBar(title: Text("VISTA DE MARCADOR")),
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            markers: _createMarker(),
+            initialCameraPosition: _initialLocation,
+            minMaxZoomPreference: MinMaxZoomPreference(13, 17),
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+            mapType: MapType.normal,
+            onMapCreated: (GoogleMapController controller) {
+              controller.showMarkerInfoWindow(MarkerId('marker_2'));
+            },
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
+                child: ClipOval(
+                  child: Material(
+                    color: Colors.orange.shade100, // button color
+                    child: InkWell(
+                      splashColor: Colors.orange, // inkwell color
+                      child: SizedBox(
+                        width: 56,
+                        height: 56,
+                        child: Icon(Icons.my_location),
+                      ),
+                      onTap: () {
+                        mapController.animateCamera(
+                          CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                              target: LatLng(
+                                _currentPosition.latitude,
+                                _currentPosition.longitude,
+                              ),
+                              zoom: 18.0,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

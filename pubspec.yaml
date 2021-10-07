@@ -62,6 +62,7 @@ flutter:
     - assets/imgPuntos/15p.jpg
     - assets/imgPuntos/16p.jpg
     - assets/PuntosEstrategicos.json
+    - assets/Lineas.json
 
 
 
