@@ -77,25 +77,73 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           shadowColor: Colors.transparent,
           margin: EdgeInsets.all(2.5),
           child: Container(
-              height: double.infinity,
+              height: 220,
               width: double.infinity,
-              padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
+              padding: EdgeInsets.only(left: 0, bottom: 10, top: 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [Colors.grey, Colors.indigo.shade800],),
                 borderRadius: BorderRadius.circular(15)
               ),
               child: Column(
                 children: <Widget>[
-                  Hero(
-                    tag: elementos[index],
-                    child: Image.asset(
-                      elementos[index].imagen,
-                      height: 100,
-                      width: 200,
-                    ),
+                  ListView.builder(
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      return Hero(
+                        tag: elementos[index],
+                        child: Image.asset(
+                          elementos[index].imagen,
+                          width: 200,
+                        ),
+                      );
+                      
+                    }
                   ),
+
                   Expanded(
-                    child: new Container(
+                    child: ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: EdgeInsets.all(20),
+                          child: new Column(
+
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+
+                            children: [
+                              new Expanded(
+                                child: Text(
+                                  elementos[index].titulo,
+                                  textAlign: TextAlign.center,
+                                  style: new TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.grey.shade700,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Roboto"
+                                  ),
+                                ),
+                              ),
+
+                              new Expanded(
+                                child: Text(
+                                  elementos[index].info,
+                                  textAlign: TextAlign.center,
+                                  style: new TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.grey.shade700,
+                                    fontFamily: "Roboto"
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+
+                        );
+                      }
+
+                    ),
+                    /*child: new Container(
                       padding: EdgeInsets.all(20),
                       child: new Column(
                         mainAxisSize: MainAxisSize.min,
@@ -106,7 +154,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                               elementos[index].titulo,
                               textAlign: TextAlign.left,
                               style: new TextStyle(
-                                  fontSize: 18.0,
+                                  fontSize: 20.0,
                                   color: Colors.grey.shade700,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Roboto"),
@@ -116,17 +164,18 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                             child: Text(
                               elementos[index].info,
                               style: new TextStyle(
-                                  fontSize: 14.0,
+                                  fontSize: 16.0,
                                   color: Colors.grey.shade700,
                                   fontFamily: "Roboto"),
                             ),
                           )
                         ],
                       ),
-                    ),
+                    ),*/
                   ),
                 ],
-              )),
+              )
+            ),
         ));
   }
 
@@ -135,9 +184,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.white,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade600,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: InkWell(
@@ -163,7 +212,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                         child: widget,
                       );
                     },
-                    child: orientacion == Orientation.portrait
+                    child: orientacion == Orientation.landscape
                         ? ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           itemCount: elementos.length,

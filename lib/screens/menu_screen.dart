@@ -48,7 +48,7 @@ class MenuScreen extends StatelessWidget {
                 itemCount: 1,
                 itemBuilder: (context, index) {
                   return Center(
-                      child: Padding(
+                  child: Padding(
                     padding: EdgeInsets.all(0),
                     child: Column(
                       children: <Widget>[
