@@ -77,15 +77,14 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           shadowColor: Colors.transparent,
           margin: EdgeInsets.all(2.5),
           child: Container(
-              height: 200,
+              height: double.infinity,
               width: double.infinity,
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.white, Colors.indigo.shade100],
-                  ),
-                  borderRadius: BorderRadius.circular(25)),
-              child: Row(
+                gradient: LinearGradient(colors: [Colors.grey, Colors.indigo.shade800],),
+                borderRadius: BorderRadius.circular(15)
+              ),
+              child: Column(
                 children: <Widget>[
                   Hero(
                     tag: elementos[index],
@@ -98,7 +97,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                   Expanded(
                     child: new Container(
                       padding: EdgeInsets.all(20),
-                      child: new Row(
+                      child: new Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -164,7 +163,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                         child: widget,
                       );
                     },
-                    child: orientacion == Orientation.landscape
+                    child: orientacion == Orientation.portrait
                         ? ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           itemCount: elementos.length,

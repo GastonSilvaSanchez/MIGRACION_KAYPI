@@ -49,7 +49,7 @@ class CardLugarState extends State<CardLugar> {
                       child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Container(
-                      child: Column(
+                      child:Column(
                         children: [
                           new Column(
                             children: [
