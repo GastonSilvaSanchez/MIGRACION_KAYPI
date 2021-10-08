@@ -70,12 +70,19 @@ class CardLugarState extends State<CardLugar> {
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 20),
+
+                              ElevatedButton(
+                                child: Text("Ver Ubicacion"),
+                                onPressed: (){},
+                              ),
                             ],
                           ),
+
                           new Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                          
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
@@ -115,12 +122,28 @@ class CardLugarState extends State<CardLugar> {
                                           height: 280,
                                         ),
                                       ),
+                                    
+
                                     ],
+
+                                    
                                   ),
                                 );
-                              }))
+                              })),
+
+                              
                             ],
-                          )
+                          ),
+
+                          new Column(
+                            children: [
+                              ElevatedButton(
+                              child: Text("Mas Informacíon"),
+                                onPressed: (){},
+                              ),
+                            ],
+                                  
+                          ),
                         ],
                       ),
                     ),

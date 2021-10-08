@@ -61,6 +61,28 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
       "La cobertura muestra el alcance actual que tiene la aplicación."], 
       ["assets/img/ayudaImg/rutas2.jpeg","assets/img/ayudaImg/rutas3.jpeg","assets/img/ayudaImg/rutas3.1.PNG"]
     ));
+
+    elementos.add(new Lugar("Lugar 4", "Descripción 3", "assets/img/lugar1.jpg",
+      ["Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
+      "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
+      "La cobertura muestra el alcance actual que tiene la aplicación."], 
+      ["assets/img/ayudaImg/rutas2.jpeg","assets/img/ayudaImg/rutas3.jpeg","assets/img/ayudaImg/rutas3.1.PNG"]
+    ));
+
+    elementos.add(new Lugar("Lugar 5", "Descripción 3", "assets/img/lugar1.jpg",
+      ["Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
+      "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
+      "La cobertura muestra el alcance actual que tiene la aplicación."], 
+      ["assets/img/ayudaImg/rutas2.jpeg","assets/img/ayudaImg/rutas3.jpeg","assets/img/ayudaImg/rutas3.1.PNG"]
+    ));
+
+    elementos.add(new Lugar("Lugar 6", "Descripción 3", "assets/img/lugar1.jpg",
+      ["Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
+      "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
+      "La cobertura muestra el alcance actual que tiene la aplicación."], 
+      ["assets/img/ayudaImg/rutas2.jpeg","assets/img/ayudaImg/rutas3.jpeg","assets/img/ayudaImg/rutas3.1.PNG"]
+    ));
+
   }
 
 
@@ -77,31 +99,26 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           shadowColor: Colors.transparent,
           margin: EdgeInsets.all(2.5),
           child: Container(
-              height: 220,
+              height: 340,
               width: double.infinity,
               padding: EdgeInsets.only(left: 0, bottom: 10, top: 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [Colors.grey, Colors.indigo.shade800],),
-                borderRadius: BorderRadius.circular(15)
+                borderRadius: BorderRadius.circular(8)
               ),
               child: Column(
                 children: <Widget>[
-                  ListView.builder(
-                    itemCount: 1,
-                    itemBuilder: (context, index) {
-                      return Hero(
-                        tag: elementos[index],
-                        child: Image.asset(
-                          elementos[index].imagen,
-                          width: 200,
-                        ),
-                      );
-                      
-                    }
+                  Hero(
+                    tag: elementos[index],
+                    child: Image.asset(
+                      elementos[index].imagen,
+                      //height: 100,
+                      width: double.infinity,
+                    ),
                   ),
-
+                  
                   Expanded(
-                    child: ListView.builder(
+                    /*child: ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Container(
@@ -142,9 +159,10 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                         );
                       }
 
-                    ),
-                    /*child: new Container(
-                      padding: EdgeInsets.all(20),
+                    ),*/
+                    
+                    child: new Container(
+                      padding: EdgeInsets.all(10),
                       child: new Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,24 +172,16 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                               elementos[index].titulo,
                               textAlign: TextAlign.left,
                               style: new TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.grey.shade700,
+                                  fontSize: 18.0,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Roboto"),
                             ),
                           ),
-                          new Expanded(
-                            child: Text(
-                              elementos[index].info,
-                              style: new TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.grey.shade700,
-                                  fontFamily: "Roboto"),
-                            ),
-                          )
+                          
                         ],
                       ),
-                    ),*/
+                    ),
                   ),
                 ],
               )
@@ -184,7 +194,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
         home: Scaffold(
-        backgroundColor: Colors.indigo.shade600,
+        backgroundColor: Colors.indigo.shade800,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -213,7 +223,8 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                       );
                     },
                     child: orientacion == Orientation.landscape
-                        ? ListView.builder(
+                        ? GridView.builder(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                           physics: const BouncingScrollPhysics(),
                           itemCount: elementos.length,
                           itemBuilder: (context, index) => ListaOpciones(context, index)
