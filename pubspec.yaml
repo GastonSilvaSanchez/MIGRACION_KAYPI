@@ -37,6 +37,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/
+    - assets/img/lugaresTuristicosImg/
     - assets/img/ayudaImg/
     - assets/locations.json
     - assets/img/KaypiLogo.png
