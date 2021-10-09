@@ -1,0 +1,70 @@
+/* Style the list items */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 2px 4px 2px 4px;
+    font-size: 12px;
+    transition: 0.2s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ul li:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+
+/* Darker background-color on hover */
+
+ul li:hover {
+    background: #ddd;
+}
+
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+
+/* Style the close button */
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 2px 5px 2px 5px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, white, gray, rgb(116, 116, 151), blue);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#P,
+#C,
+#T,
+#Z,
+#H {
+    color: white;
+}
