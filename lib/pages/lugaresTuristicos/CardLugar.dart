@@ -77,6 +77,8 @@ class CardLugarState extends State<CardLugar> {
                                   
                                 },
                               ),
+                              
+                              SizedBox(height: 20),
                             ],
                           ),
 
@@ -93,13 +95,13 @@ class CardLugarState extends State<CardLugar> {
                                 ),
                               ),
                               SizedBox(height: 10),
-                              Text(
+                             /* Text(
                                 "Funcionalidades",
                                 style: TextStyle(
                                     color: Colors.indigo.shade700,
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold),
-                              ),
+                              ),*/
                               SizedBox(height: 10),
                               new Column(
                                   children: List.generate(
