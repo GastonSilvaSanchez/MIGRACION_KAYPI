@@ -17,13 +17,17 @@ class Lugar {
   late String imagen;
   late List<String> listaFuncionalidades;
   late List<String> listaImagenes;
+  late String infoSitio;
+  late String ubicacion;
 
-  Lugar(String titulo, String info, String imagen,List<String> listaFuncionalidades, List<String> listaImagenes) {
+  Lugar(String titulo, String info, String imagen,List<String> listaFuncionalidades, List<String> listaImagenes, String infoSitio, String ubicacion) {
     this.titulo = titulo;
     this.info = info;
     this.imagen = imagen;
     this.listaFuncionalidades = listaFuncionalidades;
     this.listaImagenes = listaImagenes;
+    this.infoSitio = infoSitio;
+    this.ubicacion = ubicacion;
   }
 
   /*Lugar(String titulo, String info, String imagen){
@@ -52,7 +56,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
 
       [
         "assets/img/lugaresTuristicosImg/cristo.jpg"
-      ]
+      ],
+      "https://cochabambabolivia.net/atractivos/cristo-de-la-concordia/",
+      "https://www.google.com/maps/place/Monumento+Cristo+de+la+Concordia/@-17.384351,-66.134977,16z/data=!4m5!3m4!1s0x0:0x2732d0d1aee659ff!8m2!3d-17.3843417!4d-66.1349253?hl=es"
     ));
 
     elementos.add(new Lugar(
@@ -67,7 +73,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
       [
         "assets/img/lugaresTuristicosImg/plaza2.jpg",
         "assets/img/lugaresTuristicosImg/plaza3.jpg"
-      ]
+      ],
+      "https://cochabambabolivia.net/atractivos/plaza-14-de-septiembre/",
+      "https://www.google.com/maps/place/Pl.+14+de+Septiembre.,+Cochabamba,+Bolivia/@-17.3935053,-66.1563054,17.93z/data=!4m13!1m7!3m6!1s0x93e373f657a099d5:0xda6f3efcd4738ba7!2sPl.+14+de+Septiembre.,+Cochabamba,+Bolivia!3b1!8m2!3d-17.3932385!4d-66.1565377!3m4!1s0x93e373f657a099d5:0xda6f3efcd4738ba7!8m2!3d-17.3932385!4d-66.1565377?hl=es-US"
     ));
 
     elementos.add(new Lugar(
@@ -82,7 +90,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
       [
         "assets/img/lugaresTuristicosImg/foto2.jpg",
         "assets/img/lugaresTuristicosImg/foto3.jpg"
-      ]
+      ],
+      "https://centropatino.fundacionpatino.org/areas/palacio-portales/",
+      "https://www.google.com/maps/place/Palacio+Portales+de+Bolivia/@-17.374943,-66.15282,14z/data=!4m5!3m4!1s0x0:0x1e901665fecf3f73!8m2!3d-17.3749307!4d-66.1529623?hl=es-US"
     ));
 
     elementos.add(new Lugar(
@@ -98,7 +108,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
       [
         "assets/img/lugaresTuristicosImg/catedral1.jpg",
         "assets/img/lugaresTuristicosImg/catedral3.jpg"
-      ]
+      ],
+      "https://cochabambabolivia.net/atractivos/catedral-metropolitana/",
+      "https://www.google.com/maps/place/Catedral+Metropolitana+de+San+Sebasti%C3%A1n/@-17.3943615,-66.1566811,21z/data=!4m19!1m13!4m12!1m4!2m2!1d-63.2149994!2d-17.8123755!4e1!1m6!1m2!1s0x93e373f6e3a55555:0x3ffc7924cd327dab!2scatedral+metropolitana+de+cochabamba!2m2!1d-66.1568054!2d-17.3943143!3m4!1s0x93e373f6e3a55555:0x3ffc7924cd327dab!8m2!3d-17.3943143!4d-66.1568054"
     ));
 
     elementos.add(new Lugar(
@@ -115,7 +127,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         "assets/img/lugaresTuristicosImg/parque3.jpg",
         "assets/img/lugaresTuristicosImg/fot1.jpg",
         "assets/img/lugaresTuristicosImg/fot3.jpg"
-      ]
+      ],
+      "https://cochabambabolivia.net/parques-recreativos/",
+      "https://www.google.com/maps/place/Parque+De+la+Familia/@-17.3866244,-66.1627752,19.85z/data=!4m19!1m13!4m12!1m4!2m2!1d-63.2149994!2d-17.8123755!4e1!1m6!1m2!1s0x93e3740b9cf67133:0x637b2a0ff714f1d6!2sparque+de+la+familia+cochabamba!2m2!1d-66.1628018!2d-17.386378!3m4!1s0x93e3740b9cf67133:0x637b2a0ff714f1d6!8m2!3d-17.386378!4d-66.1628018"
     ));
 
     elementos.add(new Lugar(
@@ -130,7 +144,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
       [
         "assets/img/lugaresTuristicosImg/acu1.jpg",
         "assets/img/lugaresTuristicosImg/acu3.jpg"
-      ]
+      ],
+      "https://cochabambabolivia.net/parques-recreativos/",
+      "https://www.google.com/maps/place/Mariscal+Santa+Cruz/@-17.4007564,-66.1745026,18.12z/data=!4m12!1m6!3m5!1s0x0:0x51486ed3d15fd204!2sMariscal+Santa+Cruz!8m2!3d-17.4005556!4d-66.1741667!3m4!1s0x0:0x51486ed3d15fd204!8m2!3d-17.4005556!4d-66.1741667"
     ));
   }
 

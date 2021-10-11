@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CardLugar extends StatefulWidget {
   //atributo
@@ -30,8 +32,9 @@ class CardLugarState extends State<CardLugar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo.shade600,
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.indigoAccent.shade400,
         elevation: 0,
         title: Text(
           _lugar.titulo,
@@ -65,19 +68,27 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.titulo.toUpperCase(),
                                 style: TextStyle(
-                                    color: Colors.indigo.shade700,
+                                    color: Colors.white,
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 20),
 
                               ElevatedButton(
-                                child: Text("Ver Ubicacion"),
+                                child: Text("Ver Ubicación", style: TextStyle(color: Colors.indigoAccent.shade400, fontSize: 18, fontWeight: FontWeight.bold),),
                                 onPressed: (){
-                                  
+                                  launch(_lugar.ubicacion);
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  animationDuration: Duration(seconds: 4),
+                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.indigoAccent.shade400, width: 2), borderRadius: BorderRadius.circular(15)),
+                                  elevation: 18,
+                                  primary: Colors.transparent,
+                                  shadowColor: Colors.grey.shade400,
+                                )
                               ),
-                              
+
                               SizedBox(height: 20),
                             ],
                           ),
@@ -90,7 +101,7 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
-                                  color: Colors.grey.shade800,
+                                  color: Colors.white,
                                   fontSize: 16.0,
                                 ),
                               ),
@@ -114,7 +125,7 @@ class CardLugarState extends State<CardLugar> {
                                         _lugar.listaFuncionalidades[index]
                                             .toString(),
                                         style: TextStyle(
-                                          color: Colors.grey.shade800,
+                                          color: Colors.white,
                                           fontSize: 16.0,
                                         ),
                                       ),
@@ -142,10 +153,19 @@ class CardLugarState extends State<CardLugar> {
                           new Column(
                             children: [
                               ElevatedButton(
-                              child: Text("Mas Informacíon"),
+                              child: Text("Más Información", style: TextStyle(color: Colors.indigoAccent.shade400, fontSize: 18, fontWeight: FontWeight.bold),),
                                 onPressed: (){
-                                  
+                                  launch(_lugar.infoSitio);
                                 },
+
+                                style: ElevatedButton.styleFrom(
+                                  animationDuration: Duration(seconds: 4),
+                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.indigoAccent.shade400, width: 2), borderRadius: BorderRadius.circular(15)),
+                                  elevation: 18,
+                                  primary: Colors.transparent,
+                                  shadowColor: Colors.grey.shade400,
+                                )
                               ),
                             ],
                                   
