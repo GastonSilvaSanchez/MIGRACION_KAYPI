@@ -53,7 +53,7 @@ class Ruta {
     var list = json['Puntos'] as List;
     List<Puntos> puntosList = list.map((puntos) => Puntos.fromJson(puntos)).toList();
     return new Ruta(
-      sentido: json['sentido'].toString(),
+      sentido: json['Sentido'].toString(),
       color: json['Color'].toString(),
       puntos: puntosList,
     );
