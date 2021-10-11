@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CardLugar extends StatefulWidget {
   //atributo
@@ -75,7 +74,7 @@ class CardLugarState extends State<CardLugar> {
                               ElevatedButton(
                                 child: Text("Ver Ubicacion"),
                                 onPressed: (){
-                                  launch("https://www.google.com/maps/place/Palacio+Portales+de+Bolivia/@-17.3747321,-66.1517139,14z/data=!4m18!1m12!4m11!1m3!2m2!1d-66.1525514!2d-17.3750176!1m6!1m2!1s0x93e3741a0ad63119:0x1e901665fecf3f73!2sPalacio+Portales+de+Bolivia+Potosi+1392+Cochabamba+Bolivia!2m2!1d-66.1529623!2d-17.3749307!3m4!1s0x93e3741a0ad63119:0x1e901665fecf3f73!8m2!3d-17.3749307!4d-66.1529623");
+                                  
                                 },
                               ),
                             ],
@@ -143,7 +142,7 @@ class CardLugarState extends State<CardLugar> {
                               ElevatedButton(
                               child: Text("Mas Informacíon"),
                                 onPressed: (){
-                                  launch("https://cochabambabolivia.net/atractivos-turisticos-de-cochabamba/");
+                                  
                                 },
                               ),
                             ],
