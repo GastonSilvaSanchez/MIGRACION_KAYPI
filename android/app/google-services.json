@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1032388608269",
+    "project_id": "migracion-kaypi",
+    "storage_bucket": "migracion-kaypi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032388608269:android:6803d9d74cf5720636f044",
+        "android_client_info": {
+          "package_name": "com.example.flutter_kaypi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032388608269-fuu9cupo7fcp3nebh2cg3qpub9c623nj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_kaypi",
+            "certificate_hash": "1d93622d976b93459c2ca7db634d1166e387aad4"
+          }
+        },
+        {
+          "client_id": "1032388608269-ff0mb65bobi042ukks6hmc2qvf12420g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnr736u23B90ahCtjSihDKEt888bpF6vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032388608269-ff0mb65bobi042ukks6hmc2qvf12420g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
