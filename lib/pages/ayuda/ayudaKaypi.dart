@@ -143,15 +143,13 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: new Text('Ayuda',
-            style: new TextStyle(fontWeight: FontWeight.bold)),
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
-            color: Colors.white,
+            color: Colors.grey,
             size: 28,
           ),
         ),
@@ -173,17 +171,17 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                     child: orientacion == Orientation.portrait
                         ? ListView.builder(
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index))
+                            itemBuilder: (context, index) => ListaOpciones(context, index)
+                          )
                         : GridView.builder(
-                            gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                             itemCount: elementos.length,
                             itemBuilder: (context, index) => ListaOpciones(context, index),
                           ),
                   ),
                 ),
-              ])),
+              ])
+      ),
     ));
   }
 }
