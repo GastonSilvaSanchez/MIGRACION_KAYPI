@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/CardLugar.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-//import 'package:expandable/expandable.dart';
+
 
 class ListaLugaresTuristicos extends StatefulWidget {
   ListaLugaresTuristicos({Key? key}) : super(key: key);
@@ -29,13 +29,7 @@ class Lugar {
     this.infoSitio = infoSitio;
     this.ubicacion = ubicacion;
   }
-
-  /*Lugar(String titulo, String info, String imagen){
-    //List<String> listaFuncionalidades, List<String> listaImagenes) {
-    this.titulo = titulo;
-    this.info = info;
-    this.imagen = imagen;
-  }*/
+  
 }
 
 
