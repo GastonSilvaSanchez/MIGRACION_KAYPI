@@ -29,7 +29,6 @@ class Lugar {
     this.infoSitio = infoSitio;
     this.ubicacion = ubicacion;
   }
-  
 }
 
 
