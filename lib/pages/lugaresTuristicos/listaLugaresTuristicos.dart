@@ -175,6 +175,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           color: Colors.transparent,
           shadowColor: Colors.transparent,
           margin: EdgeInsets.all(2.5),
+          //falta detallar
           child: Container(
               height: 340,
               width: double.infinity,
@@ -227,6 +228,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     //Ésta línea de código hará que el widget se construya automáticamente, es decir que su proporción
     //en la intefaz de usuario se controlará(es como un size).
     final orientacion = MediaQuery.of(context).orientation;
+    //falta detallar
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.indigo.shade800,
