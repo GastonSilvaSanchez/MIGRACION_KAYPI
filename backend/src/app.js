@@ -9,5 +9,4 @@ app.use(cors());
 
 app.use(require('./routes/lugaresTuristicos'));
 
-
 module.exports = app;
