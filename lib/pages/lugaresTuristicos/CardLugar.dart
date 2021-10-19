@@ -11,7 +11,7 @@ class CardLugar extends StatefulWidget {
     _lugar = lugar;
   }
 
-//En la línea 18 estamos definiendo el método genérico createState().
+  //En la línea 18 estamos definiendo el método genérico createState().
   @override
   State<StatefulWidget> createState() {
     return CardLugarState(_lugar);
@@ -25,8 +25,10 @@ class CardLugarState extends State<CardLugar> {
   CardLugarState(Lugar lugar) {
     _lugar = lugar;
   }
+  
 
-//Widget donde se muestra la interfaz de información de Lugar turístico
+
+  //Widget donde se muestra la interfaz de información de Lugar turístico
   @override
   Widget build(BuildContext context) {
     return Scaffold(

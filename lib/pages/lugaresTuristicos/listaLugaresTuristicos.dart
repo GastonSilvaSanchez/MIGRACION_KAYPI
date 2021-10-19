@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/CardLugar.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-//import 'package:expandable/expandable.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
-//Los widgets stateful heredan de la clase StatefulWidget.
-//La clase ListaLugaresTuristicos administra su propio estado,
-//sobreescribiendo el método createState() para crear el objeto State.
+
 class ListaLugaresTuristicos extends StatefulWidget {
-  //Se coloca una clave porque la clase hereda a la clase StatefulWidget, es decir,
-  // cuando se maneja un estado(State)
+  
   ListaLugaresTuristicos({Key? key}) : super(key: key);
 
-//El framework llama a createState() cuando quiere construir el widget.
-//En este código, createState() crea una instancia de _ListaLugaresTuristicosState
   @override
   _ListaLugaresTuristicosState createState() => _ListaLugaresTuristicosState();
 }
 
-//Se creó la clase Lugar para operar sobre estos campos(variables)
-//los datos del json(que contiene la información de los lugares turísticos).
+
 class Lugar {
   late String titulo;
   late String info;
@@ -28,7 +24,6 @@ class Lugar {
   late String infoSitio;
   late String ubicacion;
 
-//Constructor de la clase Lugar
   Lugar(
       String titulo,
       String info,
@@ -45,22 +40,13 @@ class Lugar {
     this.infoSitio = infoSitio;
     this.ubicacion = ubicacion;
   }
-
-  /*Lugar(String titulo, String info, String imagen){
-    //List<String> listaFuncionalidades, List<String> listaImagenes) {
-    this.titulo = titulo;
-    this.info = info;
-    this.imagen = imagen;
-  }*/
 }
 
-//Clase donde se establecen los valores estáticos para mostrarlos en la interfaz de
-//información de lugares turísticos
+
 class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
-  //Enviar los valores a la clase Lugar en forma de lista
+  
   List<Lugar> elementos = new List.empty(growable: true);
 
-//Constructor donde se envian los valores o elementos a una lista
   _ListaLugaresTuristicosState() {
     elementos.add(new Lugar(
         "Cristo de la Concordia",
@@ -158,17 +144,40 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         "https://www.google.com/maps/place/Mariscal+Santa+Cruz/@-17.4007564,-66.1745026,18.12z/data=!4m12!1m6!3m5!1s0x0:0x51486ed3d15fd204!2sMariscal+Santa+Cruz!8m2!3d-17.4005556!4d-66.1741667!3m4!1s0x0:0x51486ed3d15fd204!8m2!3d-17.4005556!4d-66.1741667"));
   }
 
-//Este Widget muestra una lista de opciones de los lugares turísticos registrados.
+  Map elements = new Map();
+  List listElements = new List.empty(growable: true);
+
+  getLugaresTuristicos() async {
+    //http para emulador virtual
+    //http.Response response = await http.get(Uri.parse('http://10.0.2.2:4000/api/lugares'));
+    //http para emulador de google
+    http.Response response = await http.get(Uri.parse('http://localhost:4000/api/lugares'));
+    debugPrint(response.body);
+
+    elements = json.decode(response.body);
+
+    setState(() {
+      listElements = elements['lugares'];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLugaresTuristicos();
+  }
+
+
   Widget ListaOpciones(BuildContext context, int index) {
     //Retornamos un GestureDetector, que nos sirve para hacer una interacción con el usuario,
     //es decir que le damos al widget la capacidad de poder detectar un click(en este caso,
     //detectar un click en un card).
     return GestureDetector(
         onTap: () {
-          Navigator.push(
+          /*Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CardLugar(elementos[index])));
+                  builder: (context) => CardLugar(listElements[index])));*/
         },
         //Definimos un card(una tarjeta donde se visualizará un lugar turístico).
         child: Card(
@@ -188,9 +197,9 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
               child: Column(
                 children: <Widget>[
                   Hero(
-                    tag: elementos[index],
-                    child: Image.asset(
-                      elementos[index].imagen,
+                    tag: listElements[index],
+                    child: Image.network(
+                      listElements[index]['portada'],
                       //height: 100,
                       width: double.infinity,
                     ),
@@ -204,7 +213,8 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                         children: [
                           new Expanded(
                             child: Text(
-                              elementos[index].titulo,
+                              listElements[index]['titulo'],
+                              //"${listElements[index]["titulo"]}",
                               textAlign: TextAlign.left,
                               style: new TextStyle(
                                   fontSize: 18.0,
@@ -222,13 +232,11 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         ));
   }
 
-//Este widget build...
   @override
   Widget build(BuildContext context) {
     //Ésta línea de código hará que el widget se construya automáticamente, es decir que su proporción
     //en la intefaz de usuario se controlará(es como un size).
     final orientacion = MediaQuery.of(context).orientation;
-    //falta detallar
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.indigo.shade800,
@@ -265,17 +273,15 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2),
                             physics: const BouncingScrollPhysics(),
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index))
+                            itemCount: listElements.length,
+                            itemBuilder: (context, index) => ListaOpciones(context, index))
                         : GridView.builder(
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2),
                             physics: const BouncingScrollPhysics(),
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index),
+                            itemCount: listElements.length,
+                            itemBuilder: (context, index) => ListaOpciones(context, index),
                           ),
                   ),
                 ),
