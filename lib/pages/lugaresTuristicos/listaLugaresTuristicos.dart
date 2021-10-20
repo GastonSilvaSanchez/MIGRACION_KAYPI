@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/pages/lugaresTuristicos/CardLugar.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/CardLugarP1.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-
 class ListaLugaresTuristicos extends StatefulWidget {
-  
   ListaLugaresTuristicos({Key? key}) : super(key: key);
 
   @override
   _ListaLugaresTuristicosState createState() => _ListaLugaresTuristicosState();
 }
 
-
+/*
 class Lugar {
   late String titulo;
   late String info;
@@ -41,12 +39,10 @@ class Lugar {
     this.ubicacion = ubicacion;
   }
 }
-
-
+*/
 class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
-  
-  List<Lugar> elementos = new List.empty(growable: true);
-
+//  List<Lugar> elementos = new List.empty(growable: true);
+/*
   _ListaLugaresTuristicosState() {
     elementos.add(new Lugar(
         "Cristo de la Concordia",
@@ -143,17 +139,17 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         "https://cochabambabolivia.net/parques-recreativos/",
         "https://www.google.com/maps/place/Mariscal+Santa+Cruz/@-17.4007564,-66.1745026,18.12z/data=!4m12!1m6!3m5!1s0x0:0x51486ed3d15fd204!2sMariscal+Santa+Cruz!8m2!3d-17.4005556!4d-66.1741667!3m4!1s0x0:0x51486ed3d15fd204!8m2!3d-17.4005556!4d-66.1741667"));
   }
-
+*/
   Map elements = new Map();
   List listElements = new List.empty(growable: true);
 
   getLugaresTuristicos() async {
     //http para emulador virtual
-    //http.Response response = await http.get(Uri.parse('http://10.0.2.2:4000/api/lugares'));
+    // http.Response response =
+    //   await http.get(Uri.parse('http://10.0.2.2:4000/api/lugares'));
     //http para emulador de google
-    http.Response response = await http.get(Uri.parse('http://localhost:4000/api/lugares'));
-    debugPrint(response.body);
-
+    http.Response response =
+        await http.get(Uri.parse('http://localhost:4000/api/lugares'));
     elements = json.decode(response.body);
 
     setState(() {
@@ -167,17 +163,17 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     getLugaresTuristicos();
   }
 
-
   Widget ListaOpciones(BuildContext context, int index) {
     //Retornamos un GestureDetector, que nos sirve para hacer una interacción con el usuario,
     //es decir que le damos al widget la capacidad de poder detectar un click(en este caso,
     //detectar un click en un card).
     return GestureDetector(
         onTap: () {
-          /*Navigator.push(
+          Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CardLugar(listElements[index])));*/
+                  builder: (context) =>
+                      CardLugar(listElements[index]["_id"].toString())));
         },
         //Definimos un card(una tarjeta donde se visualizará un lugar turístico).
         child: Card(
@@ -274,14 +270,16 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                                     crossAxisCount: 2),
                             physics: const BouncingScrollPhysics(),
                             itemCount: listElements.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index))
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index))
                         : GridView.builder(
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2),
                             physics: const BouncingScrollPhysics(),
                             itemCount: listElements.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index),
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index),
                           ),
                   ),
                 ),

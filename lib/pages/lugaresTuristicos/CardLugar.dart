@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -192,3 +192,4 @@ class CardLugarState extends State<CardLugar> {
     );
   }
 }
+*/

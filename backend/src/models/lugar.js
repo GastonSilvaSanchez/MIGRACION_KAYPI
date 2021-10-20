@@ -8,8 +8,6 @@ const lugarSchema = new Schema({
     imagenes: Array, 
     ubicacion: Object, 
     sitioWeb: String
-
-
 });
 
 module.exports = model('lugaresTuristicos', lugarSchema);

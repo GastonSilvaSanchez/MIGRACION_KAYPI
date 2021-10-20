@@ -1,21 +1,23 @@
 const {Router} = require('express');
 const router = Router();
 
-const lugar = require('../models/lugar');
+const Lugar = require('../models/lugar');
 const faker = require('faker');
+const { Types } = require('mongoose');
 
-/*router.get('/api/LugaresTuristicos', (req, res) => {
-    res.json('Lista de lugares');
-});*/
+router.get('/api/lugares/:id',async (req, res) => {
+    const lugar = await Lugar.findById(Types.ObjectId(req.params.id));
+    res.json(lugar);
+});
 
 router.get('/api/lugares', async (req, res) => {
-    const lugares = await lugar.find();
+    const lugares = await Lugar.find();
     res.json({lugares});
 });
 
 router.get('/api/lugares/create', async (req, res) => {
     for (let i = 0; i < 1; i++) {
-        await lugar.create({
+        await Lugar.create({
             titulo: "Catedral Metropolitana",
             portada: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/ad/8d/ce/catedrale-metropolitana.jpg?w=1200&h=-1&s=1",
             categoria: "Iglesias y Catedrales",
