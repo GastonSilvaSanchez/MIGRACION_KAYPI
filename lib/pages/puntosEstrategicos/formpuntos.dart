@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
@@ -12,24 +14,33 @@ class FormPuntos extends StatefulWidget {
 class _FormPuntosState extends State<FormPuntos> {
   late List data;
   var newData;
-  bool isCenEduVisible = true;
-  bool isCenTurVisible = true;
-  bool isRecCulVisible = true;
-  bool isCenAbaVisible = true;
-  bool isAteSalVisible = true;
-  bool isEntPubVisible = true;
-  bool isCenTraVisible = true;
+  bool _isCenEduVisible = true;
+  bool _isCenTurVisible = true;
+  bool _isRecCulVisible = true;
+  bool _isCenAbaVisible = true;
+  bool _isAteSalVisible = true;
+  bool _isEntPubVisible = true;
+  bool _isCenTraVisible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
-          title: Text('Puntos Estrategicos'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: InkWell(
+            onTap: () => ZoomDrawer.of(context)!.toggle(),
+            child: Icon(
+              Icons.menu,
+              color: Colors.grey[600],
+              size: 28,
+            ),
+          ),
         ),
         body: Container(
           padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
           child: FutureBuilder(
-            future: DefaultAssetBundle.of(context)
-                .loadString('PuntosEstrategicos.json'),
+            future: cargarData(context),
             builder: (context, snapshot) {
               // Decode the JSON
               newData = json.decode(snapshot.data.toString());
@@ -48,107 +59,208 @@ class _FormPuntosState extends State<FormPuntos> {
               List jsonCentTransp =
                   getPointsFromCat("Centros de Transporte", newData);
               return SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isCenEduVisible = !isCenEduVisible),
-                        child: Text("Centros Educativos")),
-                    Visibility(
-                      visible: isCenEduVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonEducativos.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonEducativos, index);
-                          }),
+                    ListTile(),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isCenEduVisible = !_isCenEduVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonEducativos[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Centros Educativos",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isCenEduVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_outlined,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isCenTurVisible = !isCenTurVisible),
-                        child: Text("Centros Turísticos")),
-                    Visibility(
-                      visible: isCenTurVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonTuristicos.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonTuristicos, index);
-                          }),
+                    _categoryList(_isCenEduVisible, jsonEducativos),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isCenTurVisible = !_isCenTurVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonTuristicos[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Centros Turísticos",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isCenTurVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isRecCulVisible = !isRecCulVisible),
-                        child: Text("Recreación y Cultura")),
-                    Visibility(
-                      visible: isRecCulVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonRecCultura.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonRecCultura, index);
-                          }),
+                    _categoryList(_isCenTurVisible, jsonTuristicos),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isRecCulVisible = !_isRecCulVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonRecCultura[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Recreación y Cultura",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isRecCulVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isCenAbaVisible = !isCenAbaVisible),
-                        child: Text("Centros de Abasto")),
-                    Visibility(
-                      visible: isCenAbaVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonCentAbasto.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonCentAbasto, index);
-                          }),
+                    _categoryList(_isRecCulVisible, jsonRecCultura),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isCenAbaVisible = !_isCenAbaVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonCentAbasto[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Centros de Abasto",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isCenAbaVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isAteSalVisible = !isAteSalVisible),
-                        child: Text("Centros de Atención en Salud")),
-                    Visibility(
-                      visible: isAteSalVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonCenAtSalud.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonCenAtSalud, index);
-                          }),
+                    _categoryList(_isCenAbaVisible, jsonCentAbasto),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isAteSalVisible = !_isAteSalVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonCenAtSalud[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Centros de Atención en Salud",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isAteSalVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isEntPubVisible = !isEntPubVisible),
-                        child: Text("Entidades Publicas")),
-                    Visibility(
-                      visible: isEntPubVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonEntPublica.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonEntPublica, index);
-                          }),
+                    _categoryList(_isAteSalVisible, jsonCenAtSalud),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isEntPubVisible = !_isEntPubVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonEntPublica[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Entidades Publicas",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isEntPubVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
-                    TextButton(
-                        onPressed: () =>
-                            setState(() => isCenTraVisible = !isCenTraVisible),
-                        child: Text("Centros de Transporte")),
-                    Visibility(
-                      visible: isCenTraVisible,
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: jsonCentTransp.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return infoPointCard(jsonCentTransp, index);
-                          }),
+                    _categoryList(_isEntPubVisible, jsonEntPublica),
+                    ListTile(
+                      onTap: () =>
+                          setState(() => _isCenTraVisible = !_isCenTraVisible),
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage(jsonCentTransp[0]['Imagen']),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      title: Text(
+                        "Centros de Transporte",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                      ),
+                      trailing: _isCenTraVisible == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 30.0,
+                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                            ),
                     ),
+                    _categoryList(_isCenTraVisible, jsonCentTransp),
                   ],
                 ),
               );
@@ -158,7 +270,7 @@ class _FormPuntosState extends State<FormPuntos> {
   }
 }
 
-Widget infoPointCard(List lst, index) {
+Widget _infoPointCard(List lst, index) {
   return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       margin: EdgeInsets.all(15),
@@ -232,6 +344,25 @@ Widget infoPointCard(List lst, index) {
           ],
         ),
       ));
+}
+
+Widget _categoryList(_isVisible, jsonEducativos) {
+  return Visibility(
+    visible: _isVisible,
+    child: ListView.builder(
+        padding: EdgeInsets.zero,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: jsonEducativos.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _infoPointCard(jsonEducativos, index);
+        }),
+  );
+}
+
+Future cargarData(context) async {
+  return await DefaultAssetBundle.of(context)
+      .loadString('PuntosEstrategicos.json');
 }
 
 getPointsFromCat(String cat, newData) {
