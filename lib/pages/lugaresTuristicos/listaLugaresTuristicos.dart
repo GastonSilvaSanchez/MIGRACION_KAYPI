@@ -45,7 +45,6 @@ class Lugar {
     this.infoSitio = infoSitio;
     this.ubicacion = ubicacion;
   }
-
   /*Lugar(String titulo, String info, String imagen){
     //List<String> listaFuncionalidades, List<String> listaImagenes) {
     this.titulo = titulo;
@@ -165,12 +164,15 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     //detectar un click en un card).
     return GestureDetector(
         onTap: () {
+          //Este código lo que hace es navegar a la página CardLugar,
+          // donde se encuentra la interfaz de información de un lugar turítico.
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => CardLugar(elementos[index])));
         },
-        //Definimos un card(una tarjeta donde se visualizará un lugar turístico).
+        //Definimos un card(una tarjeta donde se visualizará un lugar turístico,
+        //que presionando el card nos direccionará a la página de interfaz de información de un lugar turítico).
         child: Card(
           color: Colors.transparent,
           shadowColor: Colors.transparent,
@@ -222,17 +224,19 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
         ));
   }
 
-//Este widget build...
+//Este widget build lo que hace es construir un espacio,
+//donde se mostrará los cards de las listas de lugares turísticos
   @override
   Widget build(BuildContext context) {
     //Ésta línea de código hará que el widget se construya automáticamente, es decir que su proporción
     //en la intefaz de usuario se controlará(es como un size).
     final orientacion = MediaQuery.of(context).orientation;
-    //falta detallar
+
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.indigo.shade800,
       extendBodyBehindAppBar: true,
+      //Este Código AppBar, es el menú de navegabilidad
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -245,6 +249,8 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           ),
         ),
       ),
+      // Todo lo que esta dentro del body es el codigo que maneja las columnas, en este caso dos,
+      //para el despliegue de los cards que contienen una breve descripción de un lugar turítico.
       body: Padding(
           padding: const EdgeInsets.all(0),
           child: Column(

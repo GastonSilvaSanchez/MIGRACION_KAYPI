@@ -11,7 +11,7 @@ class CardLugar extends StatefulWidget {
     _lugar = lugar;
   }
 
-//En la línea 18 estamos definiendo el método genérico createState().
+//En ésta línea estamos definiendo el método genérico createState().
   @override
   State<StatefulWidget> createState() {
     return CardLugarState(_lugar);
@@ -55,6 +55,9 @@ class CardLugarState extends State<CardLugar> {
                           new Column(
                             children: [
                               SizedBox(height: 20),
+                              //Lo que hace este código es llamar a la variable
+                              // de tipo objeto de la clase Lugar que está ubicada en la página listaLugaresTuríticos,
+                              //para poder visualizar la imagen del lugar turístico.
                               Hero(
                                 tag: _lugar,
                                 child: Image.asset(
@@ -63,6 +66,8 @@ class CardLugarState extends State<CardLugar> {
                                 ),
                               ),
                               SizedBox(height: 15),
+                              //Lo mismo pasa con este código, llamamos a la variable que ya fue declarada.
+                              //visualizamos el titulo del lugar turístico.
                               Text(
                                 _lugar.titulo.toUpperCase(),
                                 style: TextStyle(
@@ -71,6 +76,7 @@ class CardLugarState extends State<CardLugar> {
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 20),
+                              //Creamos el botón ver ubicación que nos direccionará a google maps para ubicar el lugar turístico
                               ElevatedButton(
                                   child: Text(
                                     "Ver Ubicación",
@@ -103,6 +109,7 @@ class CardLugarState extends State<CardLugar> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              //En este Text se muestra la información o descripción del lugar turítico.
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
@@ -148,6 +155,8 @@ class CardLugarState extends State<CardLugar> {
                               })),
                             ],
                           ),
+                          //Este código lo que hace es crear el botón más información que nos direcciona a otra página,
+                          //donde se muestra información mas amplia acerca del lugar turítico
                           new Column(
                             children: [
                               ElevatedButton(
