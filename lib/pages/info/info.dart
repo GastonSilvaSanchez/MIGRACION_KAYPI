@@ -14,32 +14,40 @@ class _InfoAppState extends State<InfoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          backgroundColor: Colors.indigo[800],
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
+      backgroundColor: Colors.indigo.shade600,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.indigo.shade600,
+        elevation: 0,
+        leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
-          child: Icon(Icons.menu, color: Colors.grey[600], size: 28,),),),
-
-          body: Container(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 1,
-                    itemBuilder: (context, index){
-                      return Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                alignment: Alignment.center,
-                                child: Image.asset(
-                                    'assets/img/kaypi.png',
-                                    width: 170,
-                                ),
-                              ),
-                              /*Container(
+          child: Icon(
+            Icons.menu,
+            color: Colors.grey[600],
+            size: 28,
+          ),
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'assets/img/kaypi.png',
+                              width: 170,
+                            ),
+                          ),
+                          /*Container(
                                 margin: EdgeInsets.all(20),
                                 alignment: Alignment.center,
                                 child: Text('Kaypi',
@@ -54,226 +62,269 @@ class _InfoAppState extends State<InfoApp> {
                                 ),
                               ),*/
 
-
-                              Align(
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/img/uni.png',
-                                width: 150,
-                                height: 150,),
-                              ),
-
-                              SizedBox(height: 10.0),
-
-                              Align(
-                                alignment: Alignment.center,
-                                child: Text('\n',textAlign: TextAlign.center,),
-                              ),
-
-                              Align(
-                                alignment: Alignment.center,
-                                child: Text('Versión 2.0', textAlign: TextAlign.center,
-                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red[900],
-                                  letterSpacing: 2.0,),
-                                ),
-                              ),
-
-                              SizedBox(
-                                height: 20,
-                              ),
-                              
-                              miCard(),
-                              miCard2(),
-
-                              Divider(
-                                height: 90.0,
-                                color: Colors.grey[600],
-                              ),
-                              Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  'Otras Aplicaciones',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.grey[600],
-                                    letterSpacing: 2.0,
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 30.0),
-            
-                              miCard3(),
-                              miCardDesign(),
-
-                            ],
+                          Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'assets/img/uni.png',
+                              width: 150,
+                              height: 150,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
-          ),
-          
-        ));
+                          SizedBox(height: 10.0),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              '\n',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Versión 2.0',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red[900],
+                                letterSpacing: 2.0,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          miCard(),
+                          miCard2(),
+                          Divider(
+                            height: 90.0,
+                            color: Colors.grey[600],
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Otras Aplicaciones',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                                letterSpacing: 2.0,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 30.0),
+                          miCard3(),
+                          miCardDesign(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    ));
   }
 
   Card miCard() {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Colors.transparent,
       margin: EdgeInsets.all(10),
       elevation: 10,
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("       "),
-              ),
-              FadeInImage(
-                alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/img/loading.gif'),
-                image: AssetImage('assets/img/descargacocha.png'),
-                height: 40,
-                width: 40,
-              ),
-              Container(
-                margin: EdgeInsets.all(0),
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
-                child: Text(
-                    "Contribuciones\n\nGobierno Municipal de Cochabamba"),
-              ),
-            ],
-          )
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.white,
+                Colors.grey,
+                Colors.indigo.shade400,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+            borderRadius: BorderRadius.circular(25)),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text("       "),
+                ),
+                FadeInImage(
+                  alignment: Alignment.centerRight,
+                  placeholder: AssetImage('assets/img/loading.gif'),
+                  image: AssetImage('assets/img/descargacocha.png'),
+                  height: 40,
+                  width: 40,
+                ),
+                Container(
+                  margin: EdgeInsets.all(0),
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
+                  child: Text(
+                      "Contribuciones\n\nGobierno Municipal de Cochabamba"),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
 
   Card miCard2() {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Colors.transparent,
       margin: EdgeInsets.all(10),
       elevation: 10,
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("       "),
-              ),
-              FadeInImage(
-                alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/img/loading.gif'),
-                image: AssetImage('assets/img/uni.png'),
-                height: 40,
-                width: 40,
-              ),
-              Container(
-                margin: EdgeInsets.all(0),
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
-                child: Text(
-                    "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
-              ),
-            ],
-          )
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.white,
+                Colors.grey,
+                Colors.indigo.shade400,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+            borderRadius: BorderRadius.circular(25)),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text("       "),
+                ),
+                FadeInImage(
+                  alignment: Alignment.centerRight,
+                  placeholder: AssetImage('assets/img/loading.gif'),
+                  image: AssetImage('assets/img/uni.png'),
+                  height: 40,
+                  width: 40,
+                ),
+                Container(
+                  margin: EdgeInsets.all(0),
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
+                  child: Text(
+                      "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
 
   Card miCard3() {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Colors.transparent,
       margin: EdgeInsets.all(10),
       elevation: 10,
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("       "),
-              ),
-              FadeInImage(
-                alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/img/loading.gif'),
-                image: AssetImage('assets/img/tramitecochabamba.png'),
-                height: 30,
-                width: 30,
-              ),
-
-              Container(
-                margin: EdgeInsets.all(20),
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 40, 0),
-                child: Text("Trámites Cochabamba\n\n"),
-              ),
-
-              Center(
-                child: ElevatedButton (
-                    child: Text("Descargar"),
-                    onPressed: () {
-                      launch(
-                          "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
-                    }),
-              ),
-            ],
-          )
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.white,
+                Colors.grey,
+                Colors.indigo.shade400,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+            borderRadius: BorderRadius.circular(25)),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                FadeInImage(
+                  alignment: Alignment.centerRight,
+                  placeholder: AssetImage('assets/img/loading.gif'),
+                  image: AssetImage('assets/img/tramitecochabamba.png'),
+                  height: 40,
+                  width: 40,
+                ),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
+                  child: Text("Trámites Cochabamba\n\n"),
+                ),
+                Center(
+                  child: ElevatedButton(
+                      child: Text("Descargar"),
+                      onPressed: () {
+                        launch(
+                            "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
+                      }),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
 
   Card miCardDesign() {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Colors.transparent,
       margin: EdgeInsets.all(10),
       elevation: 10,
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("       "),
-              ),
-              FadeInImage(
-                alignment: Alignment.centerRight,
-                placeholder: AssetImage('assets/img/loading.gif'),
-                image: AssetImage('assets/img/ciudadanoac.png'),
-                height: 40,
-                width: 40,
-              ),
-              Container(
-                margin: EdgeInsets.all(20),
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 0),
-                child: Text("Ciudadano Activo\n\n"),
-              ),
-              Center(
-                child: ElevatedButton(
-                    child: Text("Descargar"),
-                    onPressed: () {
-                      launch(
-                          "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");
-                    }),
-              ),
-            ],
-          )
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.white,
+                Colors.grey,
+                Colors.indigo.shade400,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+            borderRadius: BorderRadius.circular(25)),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                FadeInImage(
+                  alignment: Alignment.centerRight,
+                  placeholder: AssetImage('assets/img/loading.gif'),
+                  image: AssetImage('assets/img/ciudadanoac.png'),
+                  height: 40,
+                  width: 40,
+                ),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.fromLTRB(5, 10, 35, 0),
+                  child: Text("Ciudadano Activo\n\n"),
+                ),
+                Center(
+                  child: ElevatedButton(
+                      child: Text("Descargar"),
+                      onPressed: () {
+                        launch(
+                            "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");
+                      }),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
-
 }
-

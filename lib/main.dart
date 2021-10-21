@@ -10,13 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       title: 'Kaypi',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         dividerColor: Colors.transparent,
       ),
       home: MenuZoom(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

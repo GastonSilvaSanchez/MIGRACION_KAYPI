@@ -48,7 +48,7 @@ class MenuScreen extends StatelessWidget {
                 itemCount: 1,
                 itemBuilder: (context, index) {
                   return Center(
-                  child: Padding(
+                      child: Padding(
                     padding: EdgeInsets.all(0),
                     child: Column(
                       children: <Widget>[
@@ -66,7 +66,7 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
 
-                        ...MenuItems.elements.map(BuildMenuItems).toList(),
+                        ...MenuItems.elements.map(buildMenuItems).toList(),
                       ],
                     ),
                   ));
@@ -80,7 +80,7 @@ class MenuScreen extends StatelessWidget {
   }
 
   //no modificar
-  Widget BuildMenuItems(MenuItem data) => ListTileTheme(
+  Widget buildMenuItems(MenuItem data) => ListTileTheme(
         child: ListTile(
           selected: menuItem == data,
           minLeadingWidth: 20,
