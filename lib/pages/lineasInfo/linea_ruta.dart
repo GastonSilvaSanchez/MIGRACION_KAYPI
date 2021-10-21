@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
+import 'package:flutter_kaypi/provider/lineas_api.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -63,13 +64,13 @@ class _LineaRutaState extends State<LineaRuta> {
     return Scaffold(
       extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          title: Text('Rutas'),
           elevation: 0,
           leading: InkWell(
             onTap: () => Navigator.of(context).pop(),
             child: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.grey[600],
+              color: Colors.white,
               size: 28,
             ),
           ),
