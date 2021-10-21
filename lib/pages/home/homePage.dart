@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:flutter_kaypi/pages/Routes/routesPage.dart';
+import 'package:flutter_kaypi/pages/Routes/ruta.dart';
 
 //referencia a la vista ventana_prueba en pages
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  //final zoomDrawerController;
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+  //HomePage(this.zoomDrawerController);
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         extendBodyBehindAppBar: true,
         //menu lateral
-        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, leading: InkWell(
-        onTap: () => ZoomDrawer.of(context)!.toggle(),
-        child: Icon(Icons.menu, color: Colors.white, size: 28,),),),
-        
-
-
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: InkWell(
+            onTap: () => ZoomDrawer.of(context)!.toggle(),
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 28,
+            ),
+          ),
+        ),
         body: Container(
+            padding: EdgeInsets.only(top: 50),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -38,7 +43,8 @@ class _HomePageState extends State<HomePage> {
             ),
             height: double.infinity,
             width: double.infinity,
-            child: Stack(
+            child: ListView(
+              physics: BouncingScrollPhysics(),
               children: <Widget>[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       '¿Que Linea Tomar? ¿Donde Bajar?',
                       style: TextStyle(
-                        color: Colors.indigo,
+                        color: Colors.white70,
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -67,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       'Disfruta y siente la comodidad de elegir',
                       style: TextStyle(
-                        color: Colors.indigo,
+                        color: Colors.white70,
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -75,18 +81,17 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.only(bottom: 5),
                     ),
-
                     Text(
                       'como llegar a tu destino',
                       style: TextStyle(
-                        color: Colors.indigo,
+                        color: Colors.white70,
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
-                    SizedBox(height: 20.0,),
-
+                    SizedBox(
+                      height: 100.0,
+                    ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pushReplacementNamed(context, Routes.SPLASH);

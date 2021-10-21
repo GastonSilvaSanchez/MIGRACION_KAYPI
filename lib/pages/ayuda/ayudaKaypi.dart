@@ -86,7 +86,13 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.white, Colors.indigo.shade100],
+                    colors: [
+                      Colors.white,
+                      Colors.grey,
+                      Colors.indigo.shade400,
+                    ],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
                   ),
                   borderRadius: BorderRadius.circular(25)),
               child: Row(
@@ -140,10 +146,10 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.indigo.shade600,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.indigo.shade600,
         elevation: 0,
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
@@ -171,17 +177,19 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                     child: orientacion == Orientation.portrait
                         ? ListView.builder(
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index)
-                          )
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index))
                         : GridView.builder(
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index),
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index),
                           ),
                   ),
                 ),
-              ])
-      ),
+              ])),
     ));
   }
 }
