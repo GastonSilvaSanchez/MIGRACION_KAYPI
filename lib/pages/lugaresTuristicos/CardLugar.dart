@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
+//import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -37,7 +37,6 @@ class CardLugarState extends State<CardLugar> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getLugaresTuristicos();
   }
@@ -124,7 +123,7 @@ class CardLugarState extends State<CardLugar> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Caegoria: " + data['categoria'],
+                                      "Categoria: " + data['categoria'],
                                       style: TextStyle(
                                           color: Colors.grey.shade800,
                                           fontSize: 16.0,
