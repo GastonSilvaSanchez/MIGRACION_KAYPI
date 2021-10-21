@@ -6,7 +6,7 @@ import 'package:flutter_kaypi/pages/info/info.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/formLineas.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
 import 'package:flutter_kaypi/pages/mapaRuta/Rutas.dart';
-import 'package:flutter_kaypi/pages/puntosEstrategicos/formpuntos.dart';
+import 'package:flutter_kaypi/pages/puntos/formPuntos.dart';
 import 'package:flutter_kaypi/pages/requestPermission/requestPermissionPage.dart';
 import 'package:flutter_kaypi/pages/splash/splash_pages.dart';
 import 'package:flutter/widgets.dart';
