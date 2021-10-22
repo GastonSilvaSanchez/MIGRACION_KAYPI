@@ -17,7 +17,7 @@ class _InfoAppState extends State<InfoApp> {
       backgroundColor: Colors.indigo.shade600,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.indigo.shade600,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
@@ -129,9 +129,13 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard() {
     return Card(
       color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(10),
-      elevation: 10,
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -143,32 +147,44 @@ class _InfoAppState extends State<InfoApp> {
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(25)),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text("       "),
-                ),
-                FadeInImage(
-                  alignment: Alignment.centerRight,
-                  placeholder: AssetImage('assets/img/loading.gif'),
-                  image: AssetImage('assets/img/descargacocha.png'),
-                  height: 40,
-                  width: 40,
-                ),
                 Container(
-                  margin: EdgeInsets.all(0),
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
-                  child: Text(
-                      "Contribuciones\n\nGobierno Municipal de Cochabamba"),
+                  width: 70.0,
+                  height: 70.0,
+                  color: Colors.lightBlue,
+                  child: FadeInImage(
+                    alignment: Alignment.center,
+                    placeholder: AssetImage('assets/img/loading.gif'),
+                    image: AssetImage('assets/img/descargacocha.png'),
+                    height: 30,
+                    width: 30,
+                  ),
+                ),
+                SizedBox(width: 6.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(" Contribuciones",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                    Text(" Gobierno Municipal de Cochabamba",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                  ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -178,9 +194,13 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard2() {
     return Card(
       color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(10),
-      elevation: 10,
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -192,32 +212,57 @@ class _InfoAppState extends State<InfoApp> {
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(25)),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text("       "),
-                ),
-                FadeInImage(
-                  alignment: Alignment.centerRight,
-                  placeholder: AssetImage('assets/img/loading.gif'),
-                  image: AssetImage('assets/img/uni.png'),
-                  height: 40,
-                  width: 40,
-                ),
                 Container(
-                  margin: EdgeInsets.all(0),
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
-                  child: Text(
-                      "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
+                  //Devolver a tamaño promedio
+                  //Width y Height = 70
+                  width: 70.0,
+                  height: 70.0,
+                  color: Colors.white,
+                  child: FadeInImage(
+                    alignment: Alignment.center,
+                    placeholder: AssetImage('assets/img/loading.gif'),
+                    image: AssetImage('assets/img/uni.png'),
+                    //y esta parte de Width y Height = 30
+                    height: 30,
+                    width: 30,
+                    //Nota: en caso de modificar tamaños, puedes configurar el tamaño de logos con estos 4 valores, usarlo en caso de modificar diseño
+                  ),
+                ),
+                SizedBox(width: 6.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(" Desarrollado por:",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                    Text(" Universidad Privada Del Valle",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                    Text(" Desarolladores:",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    Text(
+                        " \n Axel Eddy Martinez Ayala\n Miguel Angel Terrazas Challapa\n Heidi Ivanna Huanca Chambi\n Luis Angel Jallasa Mamani\n Mirko Marca Moreno\n Christopher Joaquin Jimenez Huamani\n Gabriel Sebastian Clavijo Alessandri\n Sergio Lara Rocabado\n Eric Emmanuel Galleguillos Soudy\n Jimena Gonzales Guarayo\n Axel Matias Miranda Clavel\n Carolina Vivian Escobar Coca\n Paulo David Crespo Orellana\n Noemi Sanchez Aguilar\n Edward Rene Jimenez Veizaga\n Michael Sanabria Suarez",
+                        style: TextStyle(color: Colors.black, fontSize: 18.0)),
+                  ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -227,9 +272,13 @@ class _InfoAppState extends State<InfoApp> {
   Card miCard3() {
     return Card(
       color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(10),
-      elevation: 10,
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -241,35 +290,49 @@ class _InfoAppState extends State<InfoApp> {
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(25)),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                FadeInImage(
-                  alignment: Alignment.centerRight,
-                  placeholder: AssetImage('assets/img/loading.gif'),
-                  image: AssetImage('assets/img/tramitecochabamba.png'),
-                  height: 40,
-                  width: 40,
-                ),
                 Container(
-                  margin: EdgeInsets.all(20),
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.fromLTRB(5, 10, 10, 0),
-                  child: Text("Trámites Cochabamba\n\n"),
+                  width: 70.0,
+                  height: 70.0,
+                  color: Colors.white,
+                  child: FadeInImage(
+                    alignment: Alignment.center,
+                    placeholder: AssetImage('assets/img/loading.gif'),
+                    image: AssetImage('assets/img/tramitecochabamba.png'),
+                    height: 30,
+                    width: 30,
+                  ),
                 ),
-                Center(
-                  child: ElevatedButton(
-                      child: Text("Descargar"),
-                      onPressed: () {
-                        launch(
-                            "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
-                      }),
+                SizedBox(width: 6.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(" Trámites Cochabamba\n\n",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                  ],
                 ),
               ],
-            )
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: ElevatedButton(
+                  child: Text("Descargar"),
+                  onPressed: () {
+                    launch(
+                        "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
+                  }),
+            ),
           ],
         ),
       ),
@@ -279,9 +342,13 @@ class _InfoAppState extends State<InfoApp> {
   Card miCardDesign() {
     return Card(
       color: Colors.transparent,
+      shadowColor: Colors.transparent,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(10),
-      elevation: 10,
       child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -293,38 +360,121 @@ class _InfoAppState extends State<InfoApp> {
               end: Alignment.bottomLeft,
             ),
             borderRadius: BorderRadius.circular(25)),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                FadeInImage(
-                  alignment: Alignment.centerRight,
-                  placeholder: AssetImage('assets/img/loading.gif'),
-                  image: AssetImage('assets/img/ciudadanoac.png'),
-                  height: 40,
-                  width: 40,
-                ),
                 Container(
-                  margin: EdgeInsets.all(20),
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.fromLTRB(5, 10, 35, 0),
-                  child: Text("Ciudadano Activo\n\n"),
+                  width: 70.0,
+                  height: 70.0,
+                  color: Colors.white,
+                  child: FadeInImage(
+                    alignment: Alignment.center,
+                    placeholder: AssetImage('assets/img/loading.gif'),
+                    image: AssetImage('assets/img/ciudadanoac.png'),
+                    height: 30,
+                    width: 30,
+                  ),
                 ),
-                Center(
-                  child: ElevatedButton(
-                      child: Text("Descargar"),
-                      onPressed: () {
-                        launch(
-                            "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");
-                      }),
+                SizedBox(width: 6.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(" Ciudadano Activo\n\n",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                  ],
                 ),
               ],
-            )
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: ElevatedButton(
+                  child: Text("Descargar"),
+                  onPressed: () {
+                    launch(
+                        "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");
+                  }),
+            ),
           ],
         ),
       ),
     );
   }
 }
+/*
+  Card miCardDesign() {
+    return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      margin: EdgeInsets.all(10),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: 70.0,
+                  height: 70.0,
+                  color: Colors.lightBlue,
+                  child: FadeInImage(
+                    alignment: Alignment.center,
+                    placeholder: AssetImage('assets/img/loading.gif'),
+                    image: AssetImage('assets/img/uni.png'),
+                    height: 30,
+                    width: 30,
+                  ),
+                ),
+                SizedBox(width: 6.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                     Text(" Desarrollado por:",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                    Text(" Universidad Privada Del Valle",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(height: 5.0),
+                    Text(" \nAxel Eddy Martinez Ayala\nMiguel Angel Terrazas Challapa\nHeidi Ivanna Huanca Chambi\nLuis Angel Jallasa Mamani\nMirko Marca Moreno\nChristopher Joaquin Jimenez Huamani\nGabriel Sebastian Clavijo Alessandri\nSergio Lara Rocabado\nEric Emmanuel Galleguillos Soudy\nJimena Gonzales Guarayo\nAxel Matias Miranda Clavel\nCarolina Vivian Escobar Coca\nPaulo David Crespo Orellana\nNoemi Sanchez Aguilar\nEdward Rene Jimenez Veizaga\nMichael Sanabria Suarez",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0)),
+                  ],
+                ),
+              ],
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: ElevatedButton(
+                  child: Text("Descargar"),
+                  onPressed: () {
+                    launch(
+                        "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
+                  }),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/
