@@ -20,6 +20,7 @@ class CardLugarState extends State<CardLugar> {
   late String _lugar;
   late Map data = new Map();
   List dataInformacion = [];
+  List dataInformacionImages = [];
   CardLugarState(String lugar) {
     _lugar = lugar;
   }
@@ -32,6 +33,7 @@ class CardLugarState extends State<CardLugar> {
     setState(() {
       data = json.decode(response.body);
       dataInformacion = data['informacion'];
+      dataInformacionImages = data['imagenes'];
     });
   }
 
@@ -75,7 +77,9 @@ class CardLugarState extends State<CardLugar> {
                                       tag: data,
                                       child: Image.network(
                                         data['portada'],
-                                        height: 100,
+                                        height:
+                                            MediaQuery.of(context).size.width /
+                                                3,
                                       ),
                                     ),
                                     SizedBox(height: 15),
@@ -86,7 +90,6 @@ class CardLugarState extends State<CardLugar> {
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    SizedBox(height: 20),
                                     SizedBox(height: 20),
                                     ElevatedButton(
                                         child: Text(
@@ -156,9 +159,43 @@ class CardLugarState extends State<CardLugar> {
                                           ],
                                         ),
                                       );
+                                    })),
+                                    SizedBox(height: 10),
+                                    new Row(
+                                        children: List.generate(
+                                            dataInformacionImages.length,
+                                            (index) {
+                                      return Container(
+                                        alignment: Alignment.center,
+                                        padding: EdgeInsets.all(
+                                            MediaQuery.of(context).size.width /
+                                                90),
+                                        child: new Column(
+                                          children: [
+                                            Hero(
+                                              tag: data,
+                                              child: Image.network(
+                                                dataInformacionImages[index],
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    5.1,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    3.6,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                            SizedBox(width: 20),
+                                          ],
+                                        ),
+                                      );
                                     }))
                                   ],
                                 ),
+                                SizedBox(width: 20),
                                 new Column(
                                   children: [
                                     ElevatedButton(
