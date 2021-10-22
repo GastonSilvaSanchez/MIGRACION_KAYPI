@@ -1,3 +1,6 @@
+/// Nombre de la aplicación: listaLugaresTuristicos
+/// Nombre del desarrollador: Axel Miranda, Carolina Escobar, Noemi Sanchez
+/// Fecha de creación: 20/10/2021
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/CardLugar.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
