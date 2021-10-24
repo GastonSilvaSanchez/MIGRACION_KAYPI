@@ -13,10 +13,10 @@
             "type": "dart",
             "flutterMode": "profile"
         },
-        {
+        /*{
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "we5bRoot": "${workspaceFolder}"
-        }
+        }*/
     ]
 }

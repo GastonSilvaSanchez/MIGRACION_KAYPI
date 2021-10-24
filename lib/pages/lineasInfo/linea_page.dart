@@ -13,13 +13,13 @@ class LineaPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          title: Text(linea.nombre),
           elevation: 0,
           leading: InkWell(
             onTap: () => Navigator.of(context).pop(),
             child: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.grey[600],
+              color: Colors.white,
               size: 28,
             ),
           ),

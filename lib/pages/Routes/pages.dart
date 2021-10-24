@@ -10,8 +10,10 @@ import 'package:flutter_kaypi/pages/puntosEstrategicos/formpuntos.dart';
 import 'package:flutter_kaypi/pages/requestPermission/requestPermissionPage.dart';
 import 'package:flutter_kaypi/pages/splash/splash_pages.dart';
 import 'package:flutter/widgets.dart';
+//import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 Map<String, Widget Function(BuildContext)> appRoutes() {
+  
   return {
     Routes.SPLASH: (_) => const SplashPage(),
     Routes.PERMISSIONS: (_) => const RequestPermissionPage(),

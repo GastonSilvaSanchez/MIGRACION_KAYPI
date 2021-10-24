@@ -16,16 +16,17 @@ class _FormLineasState extends State<FormLineas> {
   Widget build(BuildContext context) => Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          //backgroundColor: Colors.transparent,
           elevation: 0,
           leading: InkWell(
             onTap: () => ZoomDrawer.of(context)!.toggle(),
             child: Icon(
               Icons.menu,
-              color: Colors.grey[600],
+              color: Colors.white,
               size: 28,
             ),
           ),
+          title: Text('Lineas'),
         ),
         body: _lista(context),
       );

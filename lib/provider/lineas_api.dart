@@ -10,7 +10,7 @@ class LineasApi {
   LineasApi();
 
   //Metodo cargarData()
-  //Obtiene de un json localmente y retorna una lista parseo Json
+  /*Obtiene de un json localmente y retorna una lista parseo Json
   Future<List<Linea>> cargarData() async {
     final listJson = 'lib/utils/Lineas.json';
     final response = await rootBundle.loadString(listJson);
@@ -24,16 +24,16 @@ class LineasApi {
 
   //Metodo getLineas()
   //Obtiene de una url el json y retorna una lista parseo Json
-  /*
-  Future<List<Linea>> getLineas() async {
-    final url = 'Here your line link url json';
-    final response = await http.get(url);
+  */
+  Future<List<Linea>> cargarData() async {
+    http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/lineas'));
     final body = await json.decode(response.body);
-    final list = body['Lineas'] as List<dynamic>;
+
+    final list = body['lineas'] as List<dynamic>;
 
     return info = list.map((e) => Linea.fromJson(e)).toList();
   }
-  */
+  
 }
 
 final lineasApi = new LineasApi();
