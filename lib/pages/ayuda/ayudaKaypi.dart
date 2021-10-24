@@ -9,12 +9,16 @@ class AyudaKaypi extends StatefulWidget {
   _AyudaKaypiState createState() => _AyudaKaypiState();
 }
 
+///clase Carditem
 class CardItem {
+  ///atributos
   late String titulo;
   late String info;
   late String imagen;
   late List<String> listaFuncionalidades;
   late List<String> listaImagenes;
+
+  ///contructor de la clase CardItem para insertar
 
   CardItem(String titulo, String info, String imagen,
       List<String> listaFuncionalidades, List<String> listaImagenes) {
@@ -26,48 +30,72 @@ class CardItem {
   }
 }
 
+/// clase para la insercion de cardItems
 class _AyudaKaypiState extends State<AyudaKaypi> {
   List<CardItem> elementos = new List.empty(growable: true);
+
+  ///se define una nueva lista de la clase carditem
   _AyudaKaypiState() {
+    ///se empieza a instanciar los elementos de la lista
     elementos.add(new CardItem(
+
+        ///intancia los atributos
         "Rutas",
         "Funcionalidades sobre las posibles rutas que se pueden seleccionar.",
-        "assets/img/ayudaImg/rutasayuda.png", [
-      "Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
-      "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
-      "La cobertura muestra el alcance actual que tiene la aplicación."
-    ], [
-      "assets/img/ayudaImg/rutas2.jpeg",
-      "assets/img/ayudaImg/rutas3.jpeg",
-      "assets/img/ayudaImg/rutas3.1.PNG"
-    ]));
+        "assets/img/ayudaImg/rutasayuda.png",
+        [
+          "Elija un punto de partida (puede ser su misma ubicación u otra diferente seleccionada del mapa).",
+          "Elija un punto de destino,  y la aplicación le mostrará las líneas más cercanas que pueden llevarle a su destino.",
+          "La cobertura muestra el alcance actual que tiene la aplicación."
+        ],
+        [
+          ///hace llamdo a las imagenes a usar
+          "assets/img/ayudaImg/rutas2.jpeg",
+          "assets/img/ayudaImg/rutas3.jpeg",
+          "assets/img/ayudaImg/rutas3.1.PNG"
+        ]));
     elementos.add(new CardItem(
+
+        ///intancia los atributos
         "Lineas",
         "Visualiza información cobre determinadas lineas de transporte.",
-        "assets/img/ayudaImg/lineasayuda.png", [
-      "Escriba parte o nombre de una línea para encontrar el resultado. Existen criterios  que permiten filtrar la búsqueda  a través de calles y tipos específicos de servicios de transporte."
-    ], [
-      "assets/img/ayudaImg/lineas.jpeg"
-    ]));
+        "assets/img/ayudaImg/lineasayuda.png",
+        [
+          "Escriba parte o nombre de una línea para encontrar el resultado. Existen criterios  que permiten filtrar la búsqueda  a través de calles y tipos específicos de servicios de transporte."
+        ],
+        [
+          ///hace llamdo a las imagenes a usar
+          "assets/img/ayudaImg/lineas.jpeg"
+        ]));
     elementos.add(new CardItem(
+
+        ///intancia los atributos
         "Puntos Estrategicos",
         "Visualiza información sobre un punto estrategico especifico y sus posibles rutas.",
-        "assets/img/ayudaImg/puntosestayuda.png", [
-      "Elegido un punto estratégico es posible  determinar las líneas que pasan por dicho punto así como trazar una ruta desde su ubicación actual. La aplicación le permite crear sus propios puntos estratégicos."
-    ], [
-      "assets/img/ayudaImg/puntosestrategicos1.PNG"
-    ]));
+        "assets/img/ayudaImg/puntosestayuda.png",
+        [
+          "Elegido un punto estratégico es posible  determinar las líneas que pasan por dicho punto así como trazar una ruta desde su ubicación actual. La aplicación le permite crear sus propios puntos estratégicos."
+        ],
+        [
+          ///hace llamdo a las imagenes a usar
+          "assets/img/ayudaImg/puntosestrategicos1.PNG"
+        ]));
     elementos.add(new CardItem(
+
+        ///intancia los atributos
         "Configuración",
         "Modifica el aspecto de la aplicación para una mejor experiencia.",
-        "assets/img/ayudaImg/configuracionayuda.png", [
-      "Modifcar al idioma de su preferencia. \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
-    ], [
-      "assets/img/ayudaImg/configuracion.PNG"
-    ]));
+        "assets/img/ayudaImg/configuracionayuda.png",
+        [
+          "Modifcar al idioma de su preferencia. \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
+        ],
+        [
+          ///hace llamdo a las imagenes a usar
+          "assets/img/ayudaImg/configuracion.PNG"
+        ]));
   }
 
-  //editar card
+  //widget de edicion del card
   Widget ListaOpciones(BuildContext context, int index) {
     return GestureDetector(
         onTap: () {
@@ -75,12 +103,18 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
               context,
               MaterialPageRoute(
                   builder: (context) => CardInfo(elementos[index])));
+
+          ///muestra los elementos guardados en la lista carditem
         },
+
+        ///se instancia los valores de configuracion del card
         child: Card(
           color: Colors.transparent,
           shadowColor: Colors.transparent,
           margin: EdgeInsets.all(2.5),
           child: Container(
+
+              /// divicion por container
               height: 150,
               width: double.infinity,
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
@@ -90,8 +124,10 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                   ),
                   borderRadius: BorderRadius.circular(25)),
               child: Row(
+                ///divicion por filas
                 children: <Widget>[
                   Hero(
+                    /// se intancia una imagen a muestrar
                     tag: elementos[index],
                     child: Image.asset(
                       elementos[index].imagen,
@@ -135,6 +171,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ));
   }
 
+  ///widget principal (build)
   @override
   Widget build(BuildContext context) {
     final orientacion = MediaQuery.of(context).orientation;
@@ -145,6 +182,8 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
       appBar: AppBar(
         backgroundColor: Colors.indigo,
         elevation: 0,
+
+        ///se establece el nombre y los detalles del titulo de la ventana
         title: new Text('Ayuda',
             style: new TextStyle(fontWeight: FontWeight.bold)),
         leading: InkWell(
@@ -156,6 +195,8 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
           ),
         ),
       ),
+
+      ///se establece el cuerppo de la ventana
       body: Padding(
           padding: const EdgeInsets.all(0),
           child: Column(
@@ -173,13 +214,17 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                     child: orientacion == Orientation.portrait
                         ? ListView.builder(
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index))
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index))
+
+                        ///lee y muestra las items de la lista
                         : GridView.builder(
                             gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2),
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
                             itemCount: elementos.length,
-                            itemBuilder: (context, index) => ListaOpciones(context, index),
+                            itemBuilder: (context, index) =>
+                                ListaOpciones(context, index),
                           ),
                   ),
                 ),
