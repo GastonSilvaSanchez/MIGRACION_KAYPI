@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/Routes/ruta.dart';
 import 'package:flutter_kaypi/pages/ayuda/ayudaKaypi.dart';
 
-<<<<<<< Updated upstream
-=======
-///intancia de la clase clard info
->>>>>>> Stashed changes
 class CardInfo extends StatefulWidget {
   //atributo
   late CardItem _cardItem;

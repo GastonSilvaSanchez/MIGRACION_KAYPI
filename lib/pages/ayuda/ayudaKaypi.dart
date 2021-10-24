@@ -188,13 +188,10 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
       appBar: AppBar(
         backgroundColor: Colors.indigo.shade600,
         elevation: 0,
-<<<<<<< HEAD
 
         ///se establece el nombre y los detalles del titulo de la ventana
         title: new Text('Ayuda',
             style: new TextStyle(fontWeight: FontWeight.bold)),
-=======
->>>>>>> 2227f645edd97def8cd21c5e0718783642472853
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
@@ -225,11 +222,8 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
                             itemCount: elementos.length,
                             itemBuilder: (context, index) =>
                                 ListaOpciones(context, index))
-<<<<<<< HEAD
 
                         ///lee y muestra las items de la lista
-=======
->>>>>>> 2227f645edd97def8cd21c5e0718783642472853
                         : GridView.builder(
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
