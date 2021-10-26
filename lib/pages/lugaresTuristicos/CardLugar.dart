@@ -48,12 +48,13 @@ class CardLugarState extends State<CardLugar> {
   Widget build(BuildContext context) {
     return data.isNotEmpty
         ? Scaffold(
+            backgroundColor: Colors.grey.shade300,
             appBar: AppBar(
-              backgroundColor: Colors.indigo,
+              backgroundColor: Colors.indigo.shade800,
               elevation: 0,
               title: Text(
                 data['titulo'],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.shade300),
               ),
             ),
             body: Center(
