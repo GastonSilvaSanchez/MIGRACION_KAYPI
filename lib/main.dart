@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         dividerColor: Colors.transparent,
       ),
       home: MenuZoom(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

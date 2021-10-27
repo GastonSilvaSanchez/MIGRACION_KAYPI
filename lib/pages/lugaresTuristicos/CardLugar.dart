@@ -1,34 +1,32 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CardLugar extends StatefulWidget {
-  //atributo
+  //Declaramos una variable privada _lugar de tipo objeto de la clase Lugar.
   late Lugar _lugar;
 
-  //constructor
+  //constructor de la clase CardLugar
   CardLugar(Lugar lugar) {
     _lugar = lugar;
   }
 
+//En ésta línea estamos definiendo el método genérico createState().
   @override
   State<StatefulWidget> createState() {
     return CardLugarState(_lugar);
   }
-
 }
 
 class CardLugarState extends State<CardLugar> {
-
   late Lugar _lugar;
 
-  //constructor
+  //constructor de la clase CardLugarState
   CardLugarState(Lugar lugar) {
     _lugar = lugar;
   }
 
-
+//Widget donde se muestra la interfaz de información de Lugar turístico
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,11 +50,14 @@ class CardLugarState extends State<CardLugar> {
                       child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Container(
-                      child:Column(
+                      child: Column(
                         children: [
                           new Column(
                             children: [
                               SizedBox(height: 20),
+                              //Lo que hace este código es llamar a la variable
+                              // de tipo objeto de la clase Lugar que está ubicada en la página listaLugaresTuríticos,
+                              //para poder visualizar la imagen del lugar turístico.
                               Hero(
                                 tag: _lugar,
                                 child: Image.asset(
@@ -65,6 +66,8 @@ class CardLugarState extends State<CardLugar> {
                                 ),
                               ),
                               SizedBox(height: 15),
+                              //Lo mismo pasa con este código, llamamos a la variable que ya fue declarada.
+                              //visualizamos el titulo del lugar turístico.
                               Text(
                                 _lugar.titulo.toUpperCase(),
                                 style: TextStyle(
@@ -73,31 +76,40 @@ class CardLugarState extends State<CardLugar> {
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 20),
-
+                              //Creamos el botón ver ubicación que nos direccionará a google maps para ubicar el lugar turístico
                               ElevatedButton(
-                                child: Text("Ver Ubicación", style: TextStyle(color: Colors.indigoAccent.shade400, fontSize: 18, fontWeight: FontWeight.bold),),
-                                onPressed: (){
-                                  launch(_lugar.ubicacion);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  animationDuration: Duration(seconds: 4),
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.indigoAccent.shade400, width: 2), borderRadius: BorderRadius.circular(15)),
-                                  elevation: 18,
-                                  primary: Colors.transparent,
-                                  shadowColor: Colors.grey.shade400,
-                                )
-                              ),
-
+                                  child: Text(
+                                    "Ver Ubicación",
+                                    style: TextStyle(
+                                        color: Colors.indigoAccent.shade400,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {
+                                    launch(_lugar.ubicacion);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    animationDuration: Duration(seconds: 4),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Colors.indigoAccent.shade400,
+                                            width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    elevation: 18,
+                                    primary: Colors.transparent,
+                                    shadowColor: Colors.grey.shade400,
+                                  )),
                               SizedBox(height: 20),
                             ],
                           ),
-
                           new Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                          
+                              //En este Text se muestra la información o descripción del lugar turítico.
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
@@ -106,7 +118,7 @@ class CardLugarState extends State<CardLugar> {
                                 ),
                               ),
                               SizedBox(height: 10),
-                             /* Text(
+                              /* Text(
                                 "Funcionalidades",
                                 style: TextStyle(
                                     color: Colors.indigo.shade700,
@@ -137,38 +149,42 @@ class CardLugarState extends State<CardLugar> {
                                           height: 280,
                                         ),
                                       ),
-                                    
-
                                     ],
-
-                                    
                                   ),
                                 );
                               })),
-
-                              
                             ],
                           ),
-
+                          //Este código lo que hace es crear el botón más información que nos direcciona a otra página,
+                          //donde se muestra información mas amplia acerca del lugar turítico
                           new Column(
                             children: [
                               ElevatedButton(
-                              child: Text("Más Información", style: TextStyle(color: Colors.indigoAccent.shade400, fontSize: 18, fontWeight: FontWeight.bold),),
-                                onPressed: (){
-                                  launch(_lugar.infoSitio);
-                                },
-
-                                style: ElevatedButton.styleFrom(
-                                  animationDuration: Duration(seconds: 4),
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.indigoAccent.shade400, width: 2), borderRadius: BorderRadius.circular(15)),
-                                  elevation: 18,
-                                  primary: Colors.transparent,
-                                  shadowColor: Colors.grey.shade400,
-                                )
-                              ),
+                                  child: Text(
+                                    "Más Información",
+                                    style: TextStyle(
+                                        color: Colors.indigoAccent.shade400,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {
+                                    launch(_lugar.infoSitio);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    animationDuration: Duration(seconds: 4),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Colors.indigoAccent.shade400,
+                                            width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    elevation: 18,
+                                    primary: Colors.transparent,
+                                    shadowColor: Colors.grey.shade400,
+                                  )),
                             ],
-                                  
                           ),
                         ],
                       ),

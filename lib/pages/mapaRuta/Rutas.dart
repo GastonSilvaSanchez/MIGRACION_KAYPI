@@ -1,11 +1,10 @@
+//importaciones de paquetes necesario para Rutas.dart
+
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-
 import 'package:flutter_kaypi/pages/mapaRuta/secrets.dart';
-
-import 'package:flutter_kaypi/src/locations.dart' as locations;
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'dart:math' show cos, sqrt, asin;
@@ -17,30 +16,25 @@ class Rutas extends StatefulWidget {
 }
 
 class _RutasState extends State<Rutas> {
+  //variables para la utilizacion de manejo de mapas.
   CameraPosition _initialLocation = CameraPosition(target: LatLng(0.0, 0.0));
   late GoogleMapController mapController;
-
   late Position _currentPosition;
   String _currentAddress = '';
-
   final startAddressController = TextEditingController();
   final destinationAddressController = TextEditingController();
-
   final startAddressFocusNode = FocusNode();
   final desrinationAddressFocusNode = FocusNode();
-
   String _startAddress = '';
   String _destinationAddress = '';
   String? _placeDistance;
-
   Set<Marker> markers = {};
-
   late PolylinePoints polylinePoints;
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
-
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+//metodo de creacion de componentes y variables
   Widget _textField({
     required TextEditingController controller,
     required FocusNode focusNode,
@@ -50,7 +44,10 @@ class _RutasState extends State<Rutas> {
     required Icon prefixIcon,
     Widget? suffixIcon,
     required Function(String) locationCallback,
-  }) {
+  })
+  //creacion del componente donde se colocara el donde quieres ir,
+  //donde te encuentras
+  {
     return Container(
       width: width * 0.8,
       child: TextField(
@@ -90,6 +87,7 @@ class _RutasState extends State<Rutas> {
     );
   }
 
+//metodo para obtener la ubicacion actual del dispositivo de manera asincronica
   // Method for retrieving the current location
   _getCurrentLocation() async {
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
@@ -112,6 +110,7 @@ class _RutasState extends State<Rutas> {
     });
   }
 
+//metodo de obtener la direccion de manera asincronica
   // Method for retrieving the address
   _getAddress() async {
     try {
@@ -131,17 +130,20 @@ class _RutasState extends State<Rutas> {
     }
   }
 
-  // Method for calculating the distance between two places
+// metodo asincronico que calcula y marca a que lugar quieres ir y donde te encuentras
+//para marcar en el mapa el trazo que debes seguir
+
+  // Método para calcular la distancia entre dos lugares.
   Future<bool> _calculateDistance() async {
     try {
-      // Retrieving placemarks from addresses
+      // Recuperando marcas de posición de direcciones
       List<Location> startPlacemark = await locationFromAddress(_startAddress);
       List<Location> destinationPlacemark =
           await locationFromAddress(_destinationAddress);
 
-      // Use the retrieved coordinates of the current position,
-      // instead of the address if the start position is user's
-      // current position, as it results in better accuracy.
+      // Utilice las coordenadas recuperadas de la posición actual,
+      // en lugar de la dirección si la posición de inicio es del usuario
+      // posición actual, ya que da como resultado una mejor precisión.
       double startLatitude = _startAddress == _currentAddress
           ? _currentPosition.latitude
           : startPlacemark[0].latitude;
@@ -157,7 +159,7 @@ class _RutasState extends State<Rutas> {
       String destinationCoordinatesString =
           '($destinationLatitude, $destinationLongitude)';
 
-      // Start Location Marker
+      // Marcador de ubicación de inicio
       Marker startMarker = Marker(
         markerId: MarkerId(startCoordinatesString),
         position: LatLng(startLatitude, startLongitude),
@@ -168,7 +170,7 @@ class _RutasState extends State<Rutas> {
         icon: BitmapDescriptor.defaultMarker,
       );
 
-      // Destination Location Marker
+      // Marcador de ubicación de destino
       Marker destinationMarker = Marker(
         markerId: MarkerId(destinationCoordinatesString),
         position: LatLng(destinationLatitude, destinationLongitude),
@@ -179,7 +181,7 @@ class _RutasState extends State<Rutas> {
         icon: BitmapDescriptor.defaultMarker,
       );
 
-      // Adding the markers to the list
+      // Agregar los marcadores a la lista
       markers.add(startMarker);
       markers.add(destinationMarker);
 
@@ -190,8 +192,8 @@ class _RutasState extends State<Rutas> {
         'DESTINATION COORDINATES: ($destinationLatitude, $destinationLongitude)',
       );
 
-      // Calculating to check that the position relative
-      // to the frame, and pan & zoom the camera accordingly.
+      // Calculando para comprobar que la posición relativa
+      // al encuadre y desplazar y acercar la cámara en consecuencia.
       double miny = (startLatitude <= destinationLatitude)
           ? startLatitude
           : destinationLatitude;
@@ -211,8 +213,8 @@ class _RutasState extends State<Rutas> {
       double northEastLatitude = maxy;
       double northEastLongitude = maxx;
 
-      // Accommodate the two locations within the
-      // camera view of the map
+      // Acomode las dos ubicaciones dentro del
+      // vista de cámara del mapa
       mapController.animateCamera(
         CameraUpdate.newLatLngBounds(
           LatLngBounds(
@@ -237,8 +239,8 @@ class _RutasState extends State<Rutas> {
 
       double totalDistance = 0.0;
 
-      // Calculating the total distance by adding the distance
-      // between small segments
+      // Calcular la distancia total sumando la distancia
+      // entre pequeños segmentos
       for (int i = 0; i < polylineCoordinates.length - 1; i++) {
         totalDistance += _coordinateDistance(
           polylineCoordinates[i].latitude,
@@ -260,8 +262,7 @@ class _RutasState extends State<Rutas> {
     return false;
   }
 
-  // Formula for calculating distance between two coordinates
-  // https://stackoverflow.com/a/54138876/11910277
+  // Fórmula para calcular la distancia entre dos coordenadas.
   double _coordinateDistance(lat1, lon1, lat2, lon2) {
     var p = 0.017453292519943295;
     var c = cos;
@@ -271,7 +272,7 @@ class _RutasState extends State<Rutas> {
     return 12742 * asin(sqrt(a));
   }
 
-  // Create the polylines for showing the route between two places
+  // Crea las polilíneas para mostrar la ruta entre dos lugares.
   _createPolylines(
     double startLatitude,
     double startLongitude,
@@ -331,7 +332,7 @@ class _RutasState extends State<Rutas> {
         ),
         body: Stack(
           children: <Widget>[
-            // Map View
+            // vista del Mapa
             GoogleMap(
               markers: Set<Marker>.from(markers),
               initialCameraPosition: _initialLocation,
@@ -345,7 +346,7 @@ class _RutasState extends State<Rutas> {
                 mapController = controller;
               },
             ),
-            // Show zoom buttons
+            // mostrar botones de zoom
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0),
@@ -393,8 +394,8 @@ class _RutasState extends State<Rutas> {
                 ),
               ),
             ),
-            // Show the place input fields & button for
-            // showing the route
+            // Mostrar los campos de entrada del lugar y el botón para
+            // mostrando la ruta
             SafeArea(
               child: Align(
                 alignment: Alignment.topCenter,
@@ -522,7 +523,7 @@ class _RutasState extends State<Rutas> {
                 ),
               ),
             ),
-            // Show current location button
+            // Mostrar botón de ubicación actual
             SafeArea(
               child: Align(
                 alignment: Alignment.bottomRight,
