@@ -23,7 +23,7 @@ class _InfoAppState extends State<InfoApp> {
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
-            color: Colors.grey[600],
+            color: Colors.white,
             size: 28,
           ),
         ),
@@ -98,7 +98,7 @@ class _InfoAppState extends State<InfoApp> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.red[900],
+                                color: Colors.white,
                                 letterSpacing: 2.0,
                               ),
                             ),
@@ -114,7 +114,7 @@ class _InfoAppState extends State<InfoApp> {
 
                           Divider(
                             height: 90.0,
-                            color: Colors.grey[600],
+                            color: Colors.white,
                           ),
 
                           ///divicion de partes dentro de la ventana
@@ -125,7 +125,7 @@ class _InfoAppState extends State<InfoApp> {
                               'Otras Aplicaciones',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Colors.grey[600],
+                                color: Colors.white,
                                 letterSpacing: 2.0,
                               ),
                             ),
@@ -169,15 +169,16 @@ class _InfoAppState extends State<InfoApp> {
                 alignment: Alignment.centerRight,
                 placeholder: AssetImage('assets/img/loading.gif'),
                 image: AssetImage('assets/img/descargacocha.png'),
-                height: 40,
-                width: 40,
+                height: 60,
+                width: 60,
               ),
               Container(
                 margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
+                padding: EdgeInsets.fromLTRB(10, 20, 50, 20),
                 child:
                     Text("Contribuciones\n\nGobierno Municipal de Cochabamba"),
+                    
               ),
             ],
           )
@@ -219,7 +220,7 @@ class _InfoAppState extends State<InfoApp> {
               Container(
                 margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
+                padding: EdgeInsets.fromLTRB(20, 30, 100, 30),
                 child: Text(
                     "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
               ),
@@ -267,8 +268,15 @@ class _InfoAppState extends State<InfoApp> {
 
               /// enlace para redirigir a la descarga de la aplicacion el googleplaystore
               Center(
-                child: ElevatedButton(
-                    child: Text("Descargar"),
+                child: MaterialButton(
+                    color: Colors.blueAccent,
+                    textColor: Colors.white,
+                    child: Icon(
+                           Icons.download,
+                           size: 24,
+                    ),
+                    padding: EdgeInsets.all(16),
+                    shape: CircleBorder(),
                     onPressed: () {
                       launch(
                           "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
@@ -318,8 +326,15 @@ class _InfoAppState extends State<InfoApp> {
 
               /// enlace para redirigir a la descarga de la aplicacion el googleplaystore
               Center(
-                child: ElevatedButton(
-                    child: Text("Descargar"),
+                child: MaterialButton(
+                    color: Colors.blueAccent,
+                    textColor: Colors.white,
+                    child: Icon(
+                           Icons.download,
+                           size: 24,
+                    ),
+                    padding: EdgeInsets.all(16),
+                    shape: CircleBorder(),
                     onPressed: () {
                       launch(
                           "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");

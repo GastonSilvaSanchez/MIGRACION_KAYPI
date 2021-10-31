@@ -16,6 +16,15 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
+   late List data;
+  var newData;
+  bool _isCenEduVisible = true;
+  bool _isCenTurVisible = true;
+  bool _isRecCulVisible = true;
+  bool _isCenAbaVisible = true;
+  bool _isAteSalVisible = true;
+  bool _isEntPubVisible = true;
+  bool _isCenTraVisible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,15 +85,7 @@ class _FormPuntosState extends State<FormPuntos> {
 
             child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.white,
-                        Colors.grey,
-                        Colors.indigo.shade400,
-                      ],
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
+                   color: Colors.white,
                     borderRadius: BorderRadius.circular(25)),
                 child: ClipRRect(
                   // Los bordes del contenido del card se cortan usando BorderRadius

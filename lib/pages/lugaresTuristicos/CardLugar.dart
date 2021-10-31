@@ -30,7 +30,7 @@ class CardLugarState extends State<CardLugar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade600,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent.shade400,
         elevation: 0,
@@ -71,7 +71,7 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.titulo.toUpperCase(),
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -94,13 +94,13 @@ class CardLugarState extends State<CardLugar> {
                                         MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            color: Colors.indigoAccent.shade400,
+                                            color: Colors.indigoAccent,
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
-                                    elevation: 18,
-                                    primary: Colors.transparent,
-                                    shadowColor: Colors.grey.shade400,
+                                   
+                                    primary: Colors.white,
+                                    
                                   )),
                               SizedBox(height: 20),
                             ],
@@ -113,7 +113,7 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                               ),
@@ -137,7 +137,7 @@ class CardLugarState extends State<CardLugar> {
                                         _lugar.listaFuncionalidades[index]
                                             .toString(),
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 16.0,
                                         ),
                                       ),
@@ -180,9 +180,9 @@ class CardLugarState extends State<CardLugar> {
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
-                                    elevation: 18,
-                                    primary: Colors.transparent,
-                                    shadowColor: Colors.grey.shade400,
+                                   
+                                    primary: Colors.white,
+                
                                   )),
                             ],
                           ),
