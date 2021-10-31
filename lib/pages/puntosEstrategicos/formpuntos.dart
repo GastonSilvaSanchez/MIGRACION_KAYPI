@@ -7,7 +7,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 List<String> listalineas = <String>[];
-
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
 
@@ -16,22 +15,60 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
-   late List data;
-  var newData;
-  bool _isCenEduVisible = true;
-  bool _isCenTurVisible = true;
-  bool _isRecCulVisible = true;
-  bool _isCenAbaVisible = true;
-  bool _isAteSalVisible = true;
-  bool _isEntPubVisible = true;
-  bool _isCenTraVisible = true;
+    void _filterPoints(value) {
+    setState(() {
+      filteredPoints = points
+          .where((point) =>
+              point['nombre'].toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+  List points = [];
+  List filteredPoints = [];
+  bool isSearching = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.indigo.shade600,
       appBar: AppBar(
-        title: Text('Puntos Estrategicos'),
+        title:  !isSearching
+            ? Text('Puntos Estrategicos')
+            
+            : TextField(
+                onChanged: (value) {
+                  _filterPoints(value);
+                },
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                    hintText: "Busca tu lugar de preferencia",
+                    hintStyle: TextStyle(color: Colors.white60)
+                ),
+              ), 
+      actions: <Widget>[
+          isSearching
+              ? IconButton(
+                  icon: Icon(Icons.cancel),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                      filteredPoints = points;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+                    });
+                  },
+                )
+        ],      
         elevation: 0,
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
@@ -42,10 +79,10 @@ class _FormPuntosState extends State<FormPuntos> {
           ),
         ),
       ),
-      body: _lista(context),
-    );
+      body:     
+       _lista(context),    
+      );
   }
-
   Widget _lista(context) => FutureBuilder<List<PuntoEstrategico>>(
         future: puntoEstrategicoApi.cargarData(),
         initialData: [],
@@ -176,6 +213,8 @@ class _FormPuntosState extends State<FormPuntos> {
   }
 }
 
+class _filterPoints {
+}
 // ignore: must_be_immutable
 class PuntosMarcadorGoogle extends StatelessWidget {
   final PuntoEstrategico puntos;
@@ -252,5 +291,7 @@ class PuntosMarcadorGoogle extends StatelessWidget {
         ],
       ),
     );
+    
   }
+  
 }

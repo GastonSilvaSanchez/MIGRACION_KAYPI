@@ -15,22 +15,83 @@ class _FormLineasState extends State<FormLineas> {
   bool _isMinBusVisible = true;
   bool _isTaxTruVisible = true;
   bool _isMicroVisible = true;
+     void _filterLines(value) {
+    setState(() {
+      filteredLines = lines
+          .where((line) =>
+              line['nombre'].toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+  List lines = [];
+  List filteredLines = [];
+  bool isSearching = true;
   @override
   Widget build(BuildContext context) => Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          title:  !isSearching
+            ? Text('Lineas de Transporte', style:TextStyle(color: Color.fromRGBO(64, 85, 157, 1.0)))
+            
+            : TextField(
+                onChanged: (value) {
+                  _filterLines(value);
+                },
+                style: TextStyle(color:  Color.fromRGBO(64, 85, 157, 1.0),),
+                decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.search,
+                      color:Color.fromRGBO(64, 85, 157, 1.0),
+                    ),
+                    hintText: "Busca tu linea de transporte",
+                    hintStyle: TextStyle(color: Color.fromRGBO(64, 85, 157, 0.5)),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                ),
+              ), 
+      actions: <Widget>[
+          isSearching
+              ? IconButton(
+                  icon: Icon(Icons.cancel),
+                  color: Color.fromRGBO(64, 85, 157, 1.0),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                      filteredLines = lines;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.search),
+                  color: Color.fromRGBO(64, 85, 157, 1.0),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+                    });
+                  },
+                )
+        ],      
+          backgroundColor: Colors.white,
           elevation: 0,
           leading: InkWell(
             onTap: () => ZoomDrawer.of(context)!.toggle(),
             child: Icon(
               Icons.menu,
-              color: Colors.grey[600],
+              color: Colors.black,
               size: 28,
             ),
           ),
         ),
-        body: _lista(context),
+        body: 
+        Column(
+          children: <Widget>[
+           SizedBox(height: 15),
+           _lista(context),
+          ],
+        )
       );
 
   //Widget de visualizacion de rutas en lista
@@ -70,7 +131,8 @@ class _FormLineasState extends State<FormLineas> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                            color: Color.fromRGBO(64, 85, 157, 1.0)
+                        ),
                       ),
                       trailing: _isMinBusVisible == true
                           ? Icon(
