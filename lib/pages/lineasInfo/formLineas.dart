@@ -4,6 +4,8 @@ import 'package:flutter_kaypi/pages/lineasInfo/linea_page.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
+
+
 class FormLineas extends StatefulWidget {
   const FormLineas({Key? key}) : super(key: key);
 
@@ -15,11 +17,19 @@ class _FormLineasState extends State<FormLineas> {
   bool _isMinBusVisible = true;
   bool _isTaxTruVisible = true;
   bool _isMicroVisible = true;
+   void initState() {
+    lineasApi.cargarData().then((data) {
+      setState(() {
+        lines = filteredLines = data;
+      });
+    });
+    super.initState();
+  }
      void _filterLines(value) {
     setState(() {
       filteredLines = lines
           .where((line) =>
-              line['nombre'].toLowerCase().contains(value.toLowerCase()))
+              line.nombre.toLowerCase().contains(value.toLowerCase()))
           .toList();
     });
   }
@@ -85,13 +95,45 @@ class _FormLineasState extends State<FormLineas> {
             ),
           ),
         ),
-        body: 
-        Column(
-          children: <Widget>[
-           SizedBox(height: 15),
-           _lista(context),
-          ],
-        )
+        body:  !isSearching
+        ? Column(
+           children: <Widget>[
+            SizedBox(height: 15),
+            _lista(context),
+           ],
+          )
+        : Container(
+        padding: EdgeInsets.all(10),
+        child: filteredLines.length > 0
+            ? ListView.builder(
+                itemCount: filteredLines.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: ()=> Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LineaPage(linea:  filteredLines[index]),
+                    )),
+                      
+                     /* Navigator.of(context).pushNamed(Country.routeName,
+                          arguments: filteredPoints[index]);*/
+                    
+                    child: Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 8),
+                        child: Text(
+                          filteredLines[index].nombre,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  );
+                })
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
+
+      ) 
       );
 
   //Widget de visualizacion de rutas en lista
