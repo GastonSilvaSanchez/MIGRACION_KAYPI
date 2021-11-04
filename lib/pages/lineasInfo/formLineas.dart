@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/provider/lineas_api.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/linea_page.dart';
@@ -55,10 +57,7 @@ class _FormLineasState extends State<FormLineas> {
                       color:Colors.blue.shade900,
                     ),
                     hintText: "Busca tu linea de transporte",
-                    hintStyle: TextStyle(color: Colors.blue.shade900),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
+                    hintStyle: TextStyle(color: Colors.blue.shade900,decoration: TextDecoration.none),
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                 ),
@@ -97,12 +96,7 @@ class _FormLineasState extends State<FormLineas> {
           ),
         ),
         body:  !isSearching
-        ? Column(
-           children: <Widget>[
-            SizedBox(height: 15),
-            _lista(context),
-           ],
-          )
+        ?  _lista(context)
         : Container(
         padding: EdgeInsets.all(10),
         child: filteredLines.length > 0
@@ -136,7 +130,9 @@ class _FormLineasState extends State<FormLineas> {
 
       ) 
       );
-
+  String dropdownvalue = 'Minibus';
+  var items =  ['Minibus','TaxiTrufi','Micro'];
+  List<Linea> listaFinal = [];
   //Widget de visualizacion de rutas en lista
   Widget _lista(context) => FutureBuilder<List<Linea>>(
         future: lineasApi.cargarData(),
@@ -157,12 +153,91 @@ class _FormLineasState extends State<FormLineas> {
               List<Linea> lineasMiniBus = getLinesFromCat("Minibus", lineas!);
               List<Linea> lineasTaxTruf = getLinesFromCat("TaxiTrufi", lineas);
               List<Linea> lineasMicro = getLinesFromCat("Micro", lineas);
-              return SingleChildScrollView(
+               
+              return ListView(  
+                children: [
+                    ListTile(
+              tileColor: Colors.white,
+              title: Text(
+                "Categorias",
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue.shade900),
+              ),
+              
+              trailing:DropdownButton(
+                value: dropdownvalue,
+                style: const TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),
+                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.blue.shade900,),
+                  items:items.map((String items) {
+                       return DropdownMenuItem(
+                           value: items,
+                           child: Text(items)
+                       );
+                  }
+                  ).toList(),
+                onChanged: (String? newValue) {
+                 setState(() {
+              
+                 dropdownvalue = newValue!;
+                 listaFinal= getLinesFromCat(dropdownvalue.toString(), lineas);
+                 });
+                },
+              ),
+           ),
+           _buildLineas(listaFinal, context, _isMinBusVisible),
+              
+                ]);
+               /*SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     ListTile(),
+                   
                     ListTile(
+              tileColor: Colors.white,
+              title: Text(
+                "Categorias",
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue.shade900),
+              ),
+              
+              trailing:DropdownButton(
+                value: dropdownvalue,
+                style: const TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),
+                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.blue.shade900,),
+                  items:items.map((String items) {
+                       return DropdownMenuItem(
+                           value: items,
+                           child: Text(items)
+                       );
+                  }
+                  ).toList(),
+                onChanged: (String? newValue) {
+                 setState(() {
+              
+                 dropdownvalue = newValue!;
+                 listaFinal= getLinesFromCat(dropdownvalue.toString(), lineas);
+                 });
+                },
+              ),
+           ),
+           Container(
+             padding: EdgeInsets.all(10),
+             child: _buildLineas(listaFinal, context, _isMinBusVisible),
+           )
+
+          
+                   /* if (dropdownvalue=="Minibus")
+                      _buildLineas(lineasMiniBus, context, _isMinBusVisible),
+                    if (dropdownvalue=="TaxiTrufi")
+                      _buildLineas(lineasTaxTruf, context, _isMinBusVisible),
+                    if (dropdownvalue=="Micro")
+                      _buildLineas(lineasMicro, context, _isMinBusVisible),*/
+                   /* ListTile(
                       onTap: () =>
                           setState(() => _isMinBusVisible = !_isMinBusVisible),
                       leading: CircleAvatar(
@@ -189,6 +264,7 @@ class _FormLineasState extends State<FormLineas> {
                               color:Colors.blue.shade900,
                             ),
                     ),
+                    
                     _buildLineas(lineasMiniBus, context, _isMinBusVisible),
                     ListTile(
                       onTap: () =>
@@ -245,10 +321,10 @@ class _FormLineasState extends State<FormLineas> {
                               color: Colors.blue.shade900,
                             ),
                     ),
-                    _buildLineas(lineasMicro, context, _isMicroVisible)
+                    _buildLineas(lineasMicro, context, _isMicroVisible)*/
                   ],
                 ),
-              );
+              );*/
           }
         },
       );
@@ -266,11 +342,9 @@ class _FormLineasState extends State<FormLineas> {
 
   //widget de lista de lineas
   Widget _buildLineas(List<Linea> lineas, context, _isVisible) {
-    return Visibility(
-        visible: _isVisible,
-        child: ListView.builder(
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
           padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: lineas.length,
           itemBuilder: (context, index) {
@@ -301,6 +375,6 @@ class _FormLineasState extends State<FormLineas> {
               ),
             );
           },
-        ));
+        );
   }
 }

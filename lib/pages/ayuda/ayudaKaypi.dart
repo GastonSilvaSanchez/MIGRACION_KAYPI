@@ -65,33 +65,33 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/lineas.jpeg"
+          "assets/img/ayudaImg/lineas.png"
         ]));
     elementos.add(new CardItem(
 
         ///intancia los atributos
         "Puntos Estrategicos",
-        "Visualiza información sobre un punto estrategico especifico y sus posibles rutas.",
+        "Visualiza información sobre un punto estrategico especifico y sus posibles rutas y su respectiva ubicación.",
         "assets/img/ayudaImg/puntosestayuda.png",
         [
           "Elegido un punto estratégico es posible  determinar las líneas que pasan por dicho punto así como trazar una ruta desde su ubicación actual. La aplicación le permite crear sus propios puntos estratégicos."
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/puntosestrategicos1.PNG"
+          "assets/img/ayudaImg/puntosestrategicos1.png"
         ]));
     elementos.add(new CardItem(
 
         ///intancia los atributos
         "Configuración",
-        "Modifica el aspecto de la aplicación para una mejor experiencia.",
+        "Cambia el tema de la aplicación, busca ayuda para las funciones de la aplicacion",
         "assets/img/ayudaImg/configuracionayuda.png",
         [
-          "Modifcar al idioma de su preferencia. \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
+          "Modifcar al tema de su preferencia. \nVer la guia de la aplicación. \nVer informacion relacionada con el desarrollo de la aplicación."
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/configuracion.PNG"
+          "assets/img/ayudaImg/configuracion.png"
         ]));
   }
 

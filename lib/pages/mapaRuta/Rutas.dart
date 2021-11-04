@@ -76,7 +76,7 @@ class _RutasState extends State<Rutas> {
               Radius.circular(10.0),
             ),
             borderSide: BorderSide(
-              color: Colors.blue.shade300,
+              color: Colors.blue.shade500,
               width: 2,
             ),
           ),
@@ -325,7 +325,7 @@ class _RutasState extends State<Rutas> {
             onTap: () => ZoomDrawer.of(context)!.toggle(),
             child: Icon(
               Icons.menu,
-              color: Colors.grey[600],
+              color: Colors.blue.shade900,
               size: 28,
             ),
           ),
@@ -355,13 +355,13 @@ class _RutasState extends State<Rutas> {
                   children: <Widget>[
                     ClipOval(
                       child: Material(
-                        color: Colors.blue.shade100, // button color
+                        color: Colors.blue.shade700, // button color
                         child: InkWell(
                           splashColor: Colors.blue, // inkwell color
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: Icon(Icons.add),
+                            child: Icon(Icons.add, color: Colors.white),
                           ),
                           onTap: () {
                             mapController.animateCamera(
@@ -374,13 +374,13 @@ class _RutasState extends State<Rutas> {
                     SizedBox(height: 20),
                     ClipOval(
                       child: Material(
-                        color: Colors.blue.shade100, // button color
+                        color: Colors.blue.shade700, // button color
                         child: InkWell(
                           splashColor: Colors.blue, // inkwell color
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: Icon(Icons.remove),
+                            child: Icon(Icons.remove, color: Colors.white),
                           ),
                           onTap: () {
                             mapController.animateCamera(
@@ -510,7 +510,7 @@ class _RutasState extends State<Rutas> {
                               ),
                             ),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              primary: Colors.blue.shade900,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
@@ -531,13 +531,13 @@ class _RutasState extends State<Rutas> {
                   padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
                   child: ClipOval(
                     child: Material(
-                      color: Colors.orange.shade100, // button color
+                      color: Colors.blue.shade900, // button color
                       child: InkWell(
-                        splashColor: Colors.orange, // inkwell color
+                        splashColor: Colors.blue, // inkwell color
                         child: SizedBox(
                           width: 56,
                           height: 56,
-                          child: Icon(Icons.my_location),
+                          child: Icon(Icons.my_location,color: Colors.white),
                         ),
                         onTap: () {
                           mapController.animateCamera(

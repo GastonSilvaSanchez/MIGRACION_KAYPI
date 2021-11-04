@@ -55,9 +55,17 @@ class _FormPuntosState extends State<FormPuntos> {
                       Icons.search,
                       color: Colors.white,
                     ),
+                    hoverColor: Colors.blueAccent.shade400,
                     hintText: "Busca tu lugar de preferencia",
-                    hintStyle: TextStyle(color: Colors.white60)
+                    hintStyle: TextStyle(color: Colors.white60, decoration:TextDecoration.none),
+                     enabledBorder: UnderlineInputBorder(      
+                      borderSide: BorderSide(color: Colors.white30),   
+                      ),  
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                   ),
                 ),
+                
               ), 
       actions: <Widget>[
           isSearching
