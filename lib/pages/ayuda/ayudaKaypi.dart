@@ -37,7 +37,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   ///se define una nueva lista de la clase carditem
   _AyudaKaypiState() {
     ///se empieza a instanciar los elementos de la lista
-    elementos.add(new CardItem(
+   /* elementos.add(new CardItem(
 
         ///intancia los atributos
         "Rutas",
@@ -53,7 +53,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
           "assets/img/ayudaImg/rutas2.jpeg",
           "assets/img/ayudaImg/rutas3.jpeg",
           "assets/img/ayudaImg/rutas3.1.PNG"
-        ]));
+        ]));*/
     elementos.add(new CardItem(
 
         ///intancia los atributos
@@ -119,15 +119,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
               width: double.infinity,
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.white,
-                      Colors.grey,
-                      Colors.indigo.shade400,
-                    ],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                  ),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(25)),
               child: Row(
                 ///divicion por filas
@@ -182,21 +174,30 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   Widget build(BuildContext context) {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
+       debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo.shade600,
+      backgroundColor: Colors.blue.shade100,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.indigo.shade600,
+        backgroundColor: Colors.blue.shade900,
         elevation: 0,
 
         ///se establece el nombre y los detalles del titulo de la ventana
         title: new Text('Ayuda',
             style: new TextStyle(fontWeight: FontWeight.bold)),
-        leading: InkWell(
+        /*leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
             color: Colors.grey,
+            size: 28,
+          ),
+        ),*/
+        leading: InkWell(
+          onTap: () => Navigator.of(context).pop(),
+          child: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
             size: 28,
           ),
         ),

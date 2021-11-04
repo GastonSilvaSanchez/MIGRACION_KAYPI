@@ -236,11 +236,13 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     final orientacion = MediaQuery.of(context).orientation;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo.shade800,
+      backgroundColor: Colors.blue.shade700,
       extendBodyBehindAppBar: true,
       //Este Código AppBar, es el menú de navegabilidad
       appBar: AppBar(
+        title: Text("Lugares Turisticos"),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: InkWell(

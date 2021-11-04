@@ -20,10 +20,8 @@ Map<String, Widget Function(BuildContext)> appRoutes() {
     Routes.HOME: (_) => const HomePage(),
     Routes.RUTA: (_) => const Rutas(),
     Routes.FORMLINEAS: (_) => const FormLineas(),
-    Routes.CONFIGURACION: (_) => const Configuracion(),
-    Routes.AYUDA: (_) => const AyudaKaypi(),
+    Routes.CONFIGURACION: (_) => const Configuracion(), 
     Routes.PUNTOSESTRATEGICOS: (_) => const FormPuntos(),
-    Routes.INFO: (_) => const InfoApp(),
     Routes.RUTAMAPA: (_) => const LineaRuta(),
   };
 }

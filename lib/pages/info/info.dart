@@ -13,16 +13,25 @@ class _InfoAppState extends State<InfoApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: Colors.blue.shade900,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: InkWell(
+        /*leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
+            color: Colors.white,
+            size: 28,
+          ),
+        ),*/
+        leading: InkWell(
+          onTap: () => Navigator.of(context).pop(),
+          child: Icon(
+            Icons.arrow_back_rounded,
             color: Colors.white,
             size: 28,
           ),

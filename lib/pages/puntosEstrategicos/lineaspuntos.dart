@@ -21,7 +21,7 @@ class _LineasPuntosState extends State<LineasPuntos> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue.shade900,
         elevation: 0,
         leading: InkWell(
           onTap: () => Navigator.of(context).pop(),
@@ -84,13 +84,13 @@ class _LineasPuntosState extends State<LineasPuntos> {
             style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(64, 85, 157, 1.0)),
+                color: Colors.blue.shade900),
           ),
           subtitle: Text(linea.categoria),
           trailing: Icon(
             Icons.arrow_forward_ios_rounded,
             size: 30.0,
-            color: Color.fromRGBO(64, 85, 157, 1.0),
+            color: Colors.blue.shade900,
           ),
         );
       },

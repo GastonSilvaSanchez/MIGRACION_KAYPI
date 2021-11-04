@@ -32,7 +32,7 @@ class CardLugarState extends State<CardLugar> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent.shade400,
+        backgroundColor: Colors.blue.shade900,
         elevation: 0,
         title: Text(
           _lugar.titulo,
@@ -81,7 +81,7 @@ class CardLugarState extends State<CardLugar> {
                                   child: Text(
                                     "Ver Ubicación",
                                     style: TextStyle(
-                                        color: Colors.indigoAccent.shade400,
+                                        color:  Colors.blue.shade900,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -94,7 +94,7 @@ class CardLugarState extends State<CardLugar> {
                                         MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            color: Colors.indigoAccent,
+                                            color: Colors.blue.shade900,
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
@@ -163,7 +163,7 @@ class CardLugarState extends State<CardLugar> {
                                   child: Text(
                                     "Más Información",
                                     style: TextStyle(
-                                        color: Colors.indigoAccent.shade400,
+                                        color:  Colors.blue.shade900,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -176,7 +176,7 @@ class CardLugarState extends State<CardLugar> {
                                         MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            color: Colors.indigoAccent.shade400,
+                                            color:  Colors.blue.shade900,
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
@@ -199,3 +199,4 @@ class CardLugarState extends State<CardLugar> {
     );
   }
 }
+

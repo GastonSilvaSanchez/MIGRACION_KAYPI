@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             onTap: () => ZoomDrawer.of(context)!.toggle(),
             child: Icon(
               Icons.menu,
-              color: Colors.white,
+              color: Colors.blue.shade900,
               size: 28,
             ),
           ),
@@ -34,8 +34,8 @@ class HomePage extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Colors.white,
-                  Colors.grey,
-                  Colors.indigo.shade400,
+                  Colors.blue.shade400,
+                  Colors.blue.shade900,
                 ],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
@@ -93,18 +93,20 @@ class HomePage extends StatelessWidget {
                       height: 100.0,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, Routes.SPLASH);
-                      },
+                      
+                      onPressed: () => ZoomDrawer.of(context)!.toggle(),
                       child: const Text(
-                        'ACCEDER',
+                        'INICIAR',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       style: ElevatedButton.styleFrom(
+                        primary: Colors.blue.shade900,
                         fixedSize: Size(200, 40),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
+                        
                         ),
+                        
                       ),
                     ),
                   ],

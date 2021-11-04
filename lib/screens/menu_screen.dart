@@ -9,9 +9,7 @@ class MenuItems {
       MenuItem('Puntos Estrategicos', Icons.departure_board_rounded);
   static const lugares = MenuItem('Lugares Turísticos', Icons.location_city);
   static const configuracion =
-      MenuItem('Configuracion', Icons.settings_applications);
-  static const ayuda = MenuItem('Ayuda', Icons.help_center_rounded);
-  static const info = MenuItem('Acerca De', Icons.info_rounded);
+      MenuItem('Configuracion y Ayuda', Icons.settings_applications);
 
   static const elements = <MenuItem>[
     home,
@@ -20,8 +18,7 @@ class MenuItems {
     paradas,
     lugares,
     configuracion,
-    ayuda,
-    info,
+
   ];
 }
 
@@ -38,7 +35,7 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[800],
+      backgroundColor: Colors.blue.shade900,
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

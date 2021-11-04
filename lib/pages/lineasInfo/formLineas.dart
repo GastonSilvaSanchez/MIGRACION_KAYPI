@@ -35,26 +35,27 @@ class _FormLineasState extends State<FormLineas> {
   }
   List lines = [];
   List filteredLines = [];
-  bool isSearching = true;
+  bool isSearching = false;
   @override
   Widget build(BuildContext context) => Scaffold(
+    
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           title:  !isSearching
-            ? Text('Lineas de Transporte', style:TextStyle(color: Color.fromRGBO(64, 85, 157, 1.0)))
+            ? Text('Lineas de Transporte', style:TextStyle(color: Colors.blue.shade900))
             
             : TextField(
                 onChanged: (value) {
                   _filterLines(value);
                 },
-                style: TextStyle(color:  Color.fromRGBO(64, 85, 157, 1.0),),
+                style: TextStyle(color:  Colors.blue.shade900,),
                 decoration: InputDecoration(
                     icon: Icon(
                       Icons.search,
-                      color:Color.fromRGBO(64, 85, 157, 1.0),
+                      color:Colors.blue.shade900,
                     ),
                     hintText: "Busca tu linea de transporte",
-                    hintStyle: TextStyle(color: Color.fromRGBO(64, 85, 157, 0.5)),
+                    hintStyle: TextStyle(color: Colors.blue.shade900),
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -66,7 +67,7 @@ class _FormLineasState extends State<FormLineas> {
           isSearching
               ? IconButton(
                   icon: Icon(Icons.cancel),
-                  color: Color.fromRGBO(64, 85, 157, 1.0),
+                  color: Colors.blue.shade900,
                   onPressed: () {
                     setState(() {
                       this.isSearching = false;
@@ -76,7 +77,7 @@ class _FormLineasState extends State<FormLineas> {
                 )
               : IconButton(
                   icon: Icon(Icons.search),
-                  color: Color.fromRGBO(64, 85, 157, 1.0),
+                  color: Colors.blue.shade900,
                   onPressed: () {
                     setState(() {
                       this.isSearching = true;
@@ -90,7 +91,7 @@ class _FormLineasState extends State<FormLineas> {
             onTap: () => ZoomDrawer.of(context)!.toggle(),
             child: Icon(
               Icons.menu,
-              color: Colors.black,
+              color: Colors.blue.shade900,
               size: 28,
             ),
           ),
@@ -123,7 +124,7 @@ class _FormLineasState extends State<FormLineas> {
                             vertical: 10, horizontal: 8),
                         child: Text(
                           filteredLines[index].nombre,
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18,color: Colors.blue.shade900),
                         ),
                       ),
                     ),
@@ -173,19 +174,19 @@ class _FormLineasState extends State<FormLineas> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(64, 85, 157, 1.0)
+                            color: Colors.blue.shade900
                         ),
                       ),
                       trailing: _isMinBusVisible == true
                           ? Icon(
                               Icons.arrow_upward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color: Colors.blue.shade900,
                             )
                           : Icon(
                               Icons.arrow_downward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color:Colors.blue.shade900,
                             ),
                     ),
                     _buildLineas(lineasMiniBus, context, _isMinBusVisible),
@@ -202,18 +203,18 @@ class _FormLineasState extends State<FormLineas> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                            color: Colors.blue.shade900),
                       ),
                       trailing: _isTaxTruVisible == true
                           ? Icon(
                               Icons.arrow_upward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color: Colors.blue.shade900,
                             )
                           : Icon(
                               Icons.arrow_downward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color: Colors.blue.shade900,
                             ),
                     ),
                     _buildLineas(lineasTaxTruf, context, _isTaxTruVisible),
@@ -230,18 +231,18 @@ class _FormLineasState extends State<FormLineas> {
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(64, 85, 157, 1.0)),
+                            color: Colors.blue.shade900),
                       ),
                       trailing: _isMicroVisible == true
                           ? Icon(
                               Icons.arrow_upward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color: Colors.blue.shade900,
                             )
                           : Icon(
                               Icons.arrow_downward_rounded,
                               size: 30.0,
-                              color: Color.fromRGBO(64, 85, 157, 1.0),
+                              color: Colors.blue.shade900,
                             ),
                     ),
                     _buildLineas(lineasMicro, context, _isMicroVisible)
@@ -276,7 +277,7 @@ class _FormLineasState extends State<FormLineas> {
             final linea = lineas[index];
             //widget con informacion de lineas individuales
             return ListTile(
-              tileColor: Color.fromRGBO(10, 25, 10, 0.035),
+              tileColor: Colors.white,
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => LineaPage(linea: linea),
               )),
@@ -290,13 +291,13 @@ class _FormLineasState extends State<FormLineas> {
                 style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(64, 85, 157, 1.0)),
+                    color: Colors.blue.shade900),
               ),
               subtitle: Text(linea.categoria),
               trailing: Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 30.0,
-                color: Color.fromRGBO(64, 85, 157, 1.0),
+                color: Colors.blue.shade900,
               ),
             );
           },

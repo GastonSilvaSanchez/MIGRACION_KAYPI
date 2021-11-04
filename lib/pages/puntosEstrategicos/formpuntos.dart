@@ -39,8 +39,9 @@ class _FormPuntosState extends State<FormPuntos> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.indigo.shade600,
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
         title:  !isSearching
             ? Text('Puntos Estrategicos')
             
@@ -154,10 +155,12 @@ class _FormPuntosState extends State<FormPuntos> {
           final puntos = puntosEstrategicos[index];
           return Card(
             color: Colors.white,
+            
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
             margin: EdgeInsets.all(15),
             elevation: 10,
+           
 
             child: Container(
                 decoration: BoxDecoration(
@@ -199,15 +202,30 @@ class _FormPuntosState extends State<FormPuntos> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
+                           TextButton(
+                              style: TextButton.styleFrom(
+                                primary: Colors.white,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
+                              ),
+                              onPressed: () => {
+                                
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                _buildPuntoEspecifico(puntos,context)),
+                                    )
+                                  },
+                              child: Text('Información')),
+                          SizedBox(
+                            width: 15,
+                          ),  
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -222,16 +240,12 @@ class _FormPuntosState extends State<FormPuntos> {
                               child: Text('Puntos')),
                           SizedBox(
                             width: 15,
-                          ),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
+                          ),                
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -255,7 +269,7 @@ class _FormPuntosState extends State<FormPuntos> {
 Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
           final puntos = puntosEstrategicos;
           return Scaffold(
-                 appBar: AppBar(title: Text(puntos.nombre)),
+                 appBar: AppBar(title: Text(puntos.nombre), backgroundColor: Colors.blue.shade900,),
                  body: Card(
             color: Colors.white,
             shape:
@@ -303,15 +317,11 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -326,16 +336,12 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
                               child: Text('Puntos')),
                           SizedBox(
                             width: 15,
-                          ),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
+                          ),                
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -384,7 +390,7 @@ class PuntosMarcadorGoogle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("VISTA DE MARCADOR")),
+      appBar: AppBar(title: Text("VISTA DE MARCADOR"), backgroundColor: Colors.blue.shade900),
       body: Stack(
         children: <Widget>[
           GoogleMap(
