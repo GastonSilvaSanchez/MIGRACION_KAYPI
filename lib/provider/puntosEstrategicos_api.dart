@@ -26,7 +26,8 @@ class PuntoEstrategicoApi {
   //Obtiene de una url el json y retorna una lista parseo Json
   */
   Future<List<PuntoEstrategico>> cargarData() async {
-    http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/puntos'));
+    //http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/puntos'));
+    http.Response response = await http.get(Uri.parse('https://swanky-buttoned-saltasaurus.glitch.me/api/puntos'));
     final body = await json.decode(response.body);
 
     final list = body['puntosEstrategicos'] as List<dynamic>;

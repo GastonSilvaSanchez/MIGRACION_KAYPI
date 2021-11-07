@@ -21,9 +21,15 @@ class _ConfiguracionState extends State<Configuracion> {
         home: Scaffold(
           
           extendBodyBehindAppBar: false,
-          appBar: AppBar(title: Text("Configuración y Ayuda"),backgroundColor: Colors.blue.shade900, elevation: 0, leading: InkWell(
-          onTap: () => ZoomDrawer.of(context)!.toggle(),
-          child: Icon(Icons.menu, color: Colors.white, size: 28,),),),
+          appBar: AppBar(
+                  title: Text("Configuración y Ayuda"),
+                  backgroundColor: Colors.blue.shade900,
+                  elevation: 0, 
+                  leading: InkWell(
+                       onTap: () => ZoomDrawer.of(context)!.toggle(),
+                       child: Icon(Icons.menu, color: Colors.white, size: 28,),
+                  ),
+          ),
           body: ListView(
            padding: const EdgeInsets.all(8),
            children:<Widget> [
@@ -93,7 +99,7 @@ class _ConfiguracionState extends State<Configuracion> {
                 color: Colors.blue.shade900,
               ),
            ),
-             ListTile(
+           ListTile(
               tileColor: Colors.white,
               leading: 
               Icon(

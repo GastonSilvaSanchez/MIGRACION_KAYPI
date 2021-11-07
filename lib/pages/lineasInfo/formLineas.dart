@@ -130,18 +130,22 @@ class _FormLineasState extends State<FormLineas> {
 
       ) 
       );
-  String dropdownvalue = 'Minibus';
-  var items =  ['Minibus','TaxiTrufi','Micro'];
+
+  List<String> items=[];
+  List<String> listaCat =[];
+  List<Linea> listaInicial = [];
   List<Linea> listaFinal = [];
+   String dropdownvalue="Todo";
+  
   //Widget de visualizacion de rutas en lista
   Widget _lista(context) => FutureBuilder<List<Linea>>(
         future: lineasApi.cargarData(),
         initialData: [],
         builder: (context, snapshot) {
-          final lineas = snapshot.data;
+          final lineas = snapshot.data;   
           switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
+            case ConnectionState.waiting: 
+              return Center(child: CircularProgressIndicator(color: Colors.blue.shade900,));
             default:
               if (snapshot.hasError) {
                 return Center(child: Text('Error'));
@@ -149,11 +153,10 @@ class _FormLineasState extends State<FormLineas> {
 
               if (!snapshot.hasData) {
                 return Center(child: Text('No hay data'));
-              }
-              List<Linea> lineasMiniBus = getLinesFromCat("Minibus", lineas!);
-              List<Linea> lineasTaxTruf = getLinesFromCat("TaxiTrufi", lineas);
-              List<Linea> lineasMicro = getLinesFromCat("Micro", lineas);
-               
+              }            
+               listaCat=getCategories(lineas!);
+               items=listaCat;
+               listaFinal= getLinesFromCat(dropdownvalue.toString(), lineas); 
               return ListView(  
                 children: [
                     ListTile(
@@ -168,178 +171,68 @@ class _FormLineasState extends State<FormLineas> {
               
               trailing:DropdownButton(
                 value: dropdownvalue,
-                style: const TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),
+                iconSize: 35,
+                underline: Container(color:Colors.blue.shade900, height:1.5),
+                style: const TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold,fontSize: 18.0,),
                   icon: Icon(Icons.keyboard_arrow_down, color: Colors.blue.shade900,),
                   items:items.map((String items) {
                        return DropdownMenuItem(
                            value: items,
                            child: Text(items)
+                           
                        );
                   }
+                  
                   ).toList(),
                 onChanged: (String? newValue) {
                  setState(() {
-              
                  dropdownvalue = newValue!;
                  listaFinal= getLinesFromCat(dropdownvalue.toString(), lineas);
                  });
                 },
               ),
+           ),
+            Divider(
+                height: 5.0,
+                color: Colors.blue.shade900,
            ),
            _buildLineas(listaFinal, context, _isMinBusVisible),
-              
-                ]);
-               /*SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    ListTile(),
-                   
-                    ListTile(
-              tileColor: Colors.white,
-              title: Text(
-                "Categorias",
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade900),
-              ),
-              
-              trailing:DropdownButton(
-                value: dropdownvalue,
-                style: const TextStyle(color: Colors.indigo,fontWeight: FontWeight.bold),
-                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.blue.shade900,),
-                  items:items.map((String items) {
-                       return DropdownMenuItem(
-                           value: items,
-                           child: Text(items)
-                       );
-                  }
-                  ).toList(),
-                onChanged: (String? newValue) {
-                 setState(() {
-              
-                 dropdownvalue = newValue!;
-                 listaFinal= getLinesFromCat(dropdownvalue.toString(), lineas);
-                 });
-                },
-              ),
-           ),
-           Container(
-             padding: EdgeInsets.all(10),
-             child: _buildLineas(listaFinal, context, _isMinBusVisible),
-           )
-
-          
-                   /* if (dropdownvalue=="Minibus")
-                      _buildLineas(lineasMiniBus, context, _isMinBusVisible),
-                    if (dropdownvalue=="TaxiTrufi")
-                      _buildLineas(lineasTaxTruf, context, _isMinBusVisible),
-                    if (dropdownvalue=="Micro")
-                      _buildLineas(lineasMicro, context, _isMinBusVisible),*/
-                   /* ListTile(
-                      onTap: () =>
-                          setState(() => _isMinBusVisible = !_isMinBusVisible),
-                      leading: CircleAvatar(
-                        backgroundImage: AssetImage('assets/img/KaypiLogo.png'),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      title: Text(
-                        "Minibus",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade900
-                        ),
-                      ),
-                      trailing: _isMinBusVisible == true
-                          ? Icon(
-                              Icons.arrow_upward_rounded,
-                              size: 30.0,
-                              color: Colors.blue.shade900,
-                            )
-                          : Icon(
-                              Icons.arrow_downward_rounded,
-                              size: 30.0,
-                              color:Colors.blue.shade900,
-                            ),
-                    ),
-                    
-                    _buildLineas(lineasMiniBus, context, _isMinBusVisible),
-                    ListTile(
-                      onTap: () =>
-                          setState(() => _isTaxTruVisible = !_isTaxTruVisible),
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/img/LineaTaxiTruffi.jpg'),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      title: Text(
-                        "Taxitrufi",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade900),
-                      ),
-                      trailing: _isTaxTruVisible == true
-                          ? Icon(
-                              Icons.arrow_upward_rounded,
-                              size: 30.0,
-                              color: Colors.blue.shade900,
-                            )
-                          : Icon(
-                              Icons.arrow_downward_rounded,
-                              size: 30.0,
-                              color: Colors.blue.shade900,
-                            ),
-                    ),
-                    _buildLineas(lineasTaxTruf, context, _isTaxTruVisible),
-                    ListTile(
-                      onTap: () =>
-                          setState(() => _isMicroVisible = !_isMicroVisible),
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/img/LineasMicros.jpg'),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      title: Text(
-                        "Micro",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade900),
-                      ),
-                      trailing: _isMicroVisible == true
-                          ? Icon(
-                              Icons.arrow_upward_rounded,
-                              size: 30.0,
-                              color: Colors.blue.shade900,
-                            )
-                          : Icon(
-                              Icons.arrow_downward_rounded,
-                              size: 30.0,
-                              color: Colors.blue.shade900,
-                            ),
-                    ),
-                    _buildLineas(lineasMicro, context, _isMicroVisible)*/
-                  ],
-                ),
-              );*/
+            ]);             
           }
         },
       );
+      
   getLinesFromCat(String cat, List<Linea> lineas) {
     List<Linea> res = [];
     Linea linea;
-    for (int i = 0; i < lineas.length; i++) {
-      linea = lineas[i];
-      if (linea.categoria == cat) {
-        res.add(linea);
+    if(cat=="Todo"){
+      res=lineas;
+    }
+    else{
+      for (int i = 0; i < lineas.length; i++) {
+        linea = lineas[i];
+        if (linea.categoria == cat) {
+          res.add(linea);
+        }
       }
     }
+   
     return res;
   }
-
+  getCategories(List<Linea> lineas) {
+    List<String> res = [];
+    Linea linea;
+    var lineaAUX; 
+    res.add("Todo");
+    var aux = 0;
+    res.add(lineas[0].categoria);
+    for (int i = 0; i < lineas.length; i++) { 
+          linea = lineas[i]; 
+          res.add(linea.categoria);
+    } 
+    lineaAUX =  res.toSet().toList();
+    return lineaAUX;
+  }
   //widget de lista de lineas
   Widget _buildLineas(List<Linea> lineas, context, _isVisible) {
     return ListView.builder(
