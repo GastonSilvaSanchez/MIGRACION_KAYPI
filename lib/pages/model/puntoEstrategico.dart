@@ -25,7 +25,7 @@ class PuntoEstrategico {
     return new PuntoEstrategico(
       nombre: json['Nombre'],
       categoria: json['Categoria'],
-      calles: json['calles'].cast<String>(),
+      calles: json['Calles'].cast<String>(),
       imagen: json['Imagen'],
       zonasCBBA: json['ZonasCBBA'],
       lineas: json['Lineas'].cast<String>(),
