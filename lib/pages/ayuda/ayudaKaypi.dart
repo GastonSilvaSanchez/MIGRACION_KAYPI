@@ -37,7 +37,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   ///se define una nueva lista de la clase carditem
   _AyudaKaypiState() {
     ///se empieza a instanciar los elementos de la lista
-   /* elementos.add(new CardItem(
+    /* elementos.add(new CardItem(
 
         ///intancia los atributos
         "Rutas",
@@ -57,7 +57,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Lineas",
+        "Líneas",
         "Visualiza información cobre determinadas lineas de transporte.",
         "assets/img/ayudaImg/lineasayuda.png",
         [
@@ -70,7 +70,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Puntos Estrategicos",
+        "Puntos Estratégicos",
         "Visualiza información sobre un punto estrategico especifico y sus posibles rutas y su respectiva ubicación.",
         "assets/img/ayudaImg/puntosestayuda.png",
         [
@@ -119,8 +119,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
               width: double.infinity,
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(25)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(25)),
               child: Row(
                 ///divicion por filas
                 children: <Widget>[
@@ -174,18 +173,18 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   Widget build(BuildContext context) {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
-       debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.blue.shade100,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade900,
-        elevation: 0,
+          backgroundColor: Colors.blue.shade100,
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.blue.shade900,
+            elevation: 0,
 
-        ///se establece el nombre y los detalles del titulo de la ventana
-        title: new Text('Ayuda',
-            style: new TextStyle(fontWeight: FontWeight.bold)),
-        /*leading: InkWell(
+            ///se establece el nombre y los detalles del titulo de la ventana
+            title: new Text('Ayuda',
+                style: new TextStyle(fontWeight: FontWeight.bold)),
+            /*leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
@@ -193,49 +192,49 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
             size: 28,
           ),
         ),*/
-        leading: InkWell(
-          onTap: () => Navigator.of(context).pop(),
-          child: Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.white,
-            size: 28,
+            leading: InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
           ),
-        ),
-      ),
 
-      ///se establece el cuerppo de la ventana
-      body: Padding(
-          padding: const EdgeInsets.all(0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(seconds: 2),
-                    transitionBuilder: (widget, animation) {
-                      return ScaleTransition(
-                        scale: animation,
-                        child: widget,
-                      );
-                    },
-                    child: orientacion == Orientation.portrait
-                        ? ListView.builder(
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index))
+          ///se establece el cuerppo de la ventana
+          body: Padding(
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(seconds: 2),
+                        transitionBuilder: (widget, animation) {
+                          return ScaleTransition(
+                            scale: animation,
+                            child: widget,
+                          );
+                        },
+                        child: orientacion == Orientation.portrait
+                            ? ListView.builder(
+                                itemCount: elementos.length,
+                                itemBuilder: (context, index) =>
+                                    ListaOpciones(context, index))
 
-                        ///lee y muestra las items de la lista
-                        : GridView.builder(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index),
-                          ),
-                  ),
-                ),
-              ])),
-    ));
+                            ///lee y muestra las items de la lista
+                            : GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2),
+                                itemCount: elementos.length,
+                                itemBuilder: (context, index) =>
+                                    ListaOpciones(context, index),
+                              ),
+                      ),
+                    ),
+                  ])),
+        ));
   }
 }

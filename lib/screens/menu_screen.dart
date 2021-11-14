@@ -4,12 +4,12 @@ import 'package:flutter_kaypi/screens/menu_item.dart';
 class MenuItems {
   static const home = MenuItem('Home', Icons.home);
   static const rutas = MenuItem('Rutas', Icons.add_road_rounded);
-  static const lineas = MenuItem('Lineas', Icons.directions_bus);
+  static const lineas = MenuItem('Líneas', Icons.directions_bus);
   static const paradas =
-      MenuItem('Puntos Estrategicos', Icons.departure_board_rounded);
+      MenuItem('Puntos Estratégicos', Icons.departure_board_rounded);
   static const lugares = MenuItem('Lugares Turísticos', Icons.location_city);
   static const configuracion =
-      MenuItem('Configuracion y Ayuda', Icons.settings_applications);
+      MenuItem('Configuración y Ayuda', Icons.settings_applications);
 
   static const elements = <MenuItem>[
     home,
@@ -18,7 +18,6 @@ class MenuItems {
     paradas,
     lugares,
     configuracion,
-
   ];
 }
 
