@@ -441,7 +441,7 @@ class _RutasState extends State<Rutas> {
                           SizedBox(height: 10),
                           _textField(
                               label: 'Destino',
-                              hint: 'ubicaion de destino',
+                              hint: 'ubicacion de destino',
                               prefixIcon: Icon(Icons.looks_two),
                               controller: destinationAddressController,
                               focusNode: desrinationAddressFocusNode,
@@ -452,16 +452,6 @@ class _RutasState extends State<Rutas> {
                                 });
                               }),
                           SizedBox(height: 10),
-                          Visibility(
-                            visible: _placeDistance == null ? false : true,
-                            child: Text(
-                              'Distancia: $_placeDistance km',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
                           SizedBox(height: 5),
                           ElevatedButton(
                             onPressed: (_startAddress != '' &&
