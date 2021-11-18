@@ -78,7 +78,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/puntosestrategicos1.png"
+          "assets/img/ayudaImg/puntosestrategicos01.png"
         ]));
     elementos.add(new CardItem(
 
@@ -91,7 +91,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/configuracion.png"
+          "assets/img/ayudaImg/configuracion1.png"
         ]));
   }
 
