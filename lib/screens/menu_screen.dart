@@ -9,7 +9,7 @@ class MenuItems {
       MenuItem('Puntos Estratégicos', Icons.departure_board_rounded);
   static const lugares = MenuItem('Lugares Turísticos', Icons.location_city);
   static const configuracion =
-      MenuItem('Configuración y Ayuda', Icons.settings_applications);
+      MenuItem('Información y Ayuda', Icons.settings_applications);
 
   static const elements = <MenuItem>[
     home,

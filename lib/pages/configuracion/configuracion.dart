@@ -19,7 +19,7 @@ class _ConfiguracionState extends State<Configuracion> {
           
           extendBodyBehindAppBar: false,
           appBar: AppBar(
-                  title: Text("Configuración y Ayuda"),
+                  title: Text("Información y Ayuda"),
                   backgroundColor: Colors.blue.shade900,
                   elevation: 0, 
                   leading: InkWell(

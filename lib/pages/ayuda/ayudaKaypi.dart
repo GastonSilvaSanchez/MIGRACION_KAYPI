@@ -83,7 +83,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Configuración y Ayuda",
+        "Información y ayuda",
         "Busca ayuda para las funciones de la aplicacion y encuentra informacion sobre el desarrollo de la app",
         "assets/img/ayudaImg/configuracionayuda.png",
         [
@@ -91,7 +91,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/configuracion1.png"
+          "assets/img/ayudaImg/configuracion01.png"
         ]));
   }
 
