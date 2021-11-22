@@ -91,11 +91,8 @@ class _PuntoSearchState extends State<PuntoSearch> {
                   );
                 })
             : Center(
-                child: Text('Punto No Encontrado'),
+                child: Text('Punto no encontrado'),
               ),
-           
-              
-
       ),
       );
     
