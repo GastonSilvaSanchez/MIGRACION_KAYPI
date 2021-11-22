@@ -192,7 +192,7 @@ class CardLugarState extends State<CardLugar> {
                             children: [
                               ElevatedButton(
                                   child: Text(
-                                    "Encontrar Lugar Como Punto Estrategico",
+                                    "Encontrar Punto Estrategico",
                                     style: TextStyle(
                                         color:  Colors.blue.shade900,
                                         fontSize: 15,
