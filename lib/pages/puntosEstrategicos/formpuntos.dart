@@ -15,10 +15,12 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
+  late Future<List<PuntoEstrategico>> futurePoints;
    List points = [];
    List filteredPoints = [];
    bool isSearching = false;
    void initState() {
+     futurePoints = puntoEstrategicoApi.cargarData();
     puntoEstrategicoApi.cargarData().then((data) {
       setState(() {
         points = filteredPoints = data;
@@ -132,7 +134,7 @@ class _FormPuntosState extends State<FormPuntos> {
       );
   }
   Widget _lista(context) => FutureBuilder<List<PuntoEstrategico>>(
-        future: puntoEstrategicoApi.cargarData(),
+        future: futurePoints,
         initialData: [],
         // ignore: non_constant_identifier_names
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
@@ -150,7 +152,12 @@ class _FormPuntosState extends State<FormPuntos> {
                 return Center(child: Text('No hay data'));
               }
 
-              return _buildLineas(lineas!, context);
+              return  RefreshIndicator(
+                  child: _buildLineas(lineas!, context),
+                  onRefresh: _pullRefresh,
+              );
+              
+              
           }
         },
       );
@@ -272,6 +279,12 @@ class _FormPuntosState extends State<FormPuntos> {
           );
         });
   }
+   Future<void> _pullRefresh() async {
+     List<PuntoEstrategico> freshPoints = await puntoEstrategicoApi.cargarData();
+     setState(() {
+      futurePoints = Future.value(freshPoints);
+    });
+ }
 }
 
 Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
