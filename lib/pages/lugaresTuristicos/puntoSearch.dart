@@ -173,14 +173,14 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
                                 onSurface: Colors.blue.shade100,
                               ),
                              onPressed: () => {
-                                   /* Navigator.push(
+                                    Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              /*PuntosMarcadorGoogle(
+                                              PuntosMarcadorGoogle(
                                                 puntos: puntos,
-                                              )),*/
-                                    )*/
+                                              )),
+                                    )
                                   },
                               child: Text('Puntos')),
                           SizedBox(
