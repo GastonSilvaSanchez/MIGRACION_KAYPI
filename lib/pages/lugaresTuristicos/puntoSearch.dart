@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
 import 'package:flutter_kaypi/pages/puntosEstrategicos/lineaspuntos.dart';
@@ -101,20 +103,6 @@ class _PuntoSearchState extends State<PuntoSearch> {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
           final puntos = puntosEstrategicos;
           return Scaffold(
@@ -172,7 +160,7 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
                                 backgroundColor: Colors.blue.shade900,
                                 onSurface: Colors.blue.shade100,
                               ),
-                             onPressed: () => {
+                              onPressed: () => {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -207,11 +195,16 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
                 )),
             // Dentro de esta propiedad usamos ClipRRect
           )
-          );
-           
+          );    
   }
 
-  class PuntosMarcadorGoogle extends StatelessWidget {
+
+
+
+  class _filterPoints {
+}
+// ignore: must_be_immutable
+class PuntosMarcadorGoogle extends StatelessWidget {
   final PuntoEstrategico puntos;
   late GoogleMapController mapController;
   late Position _currentPosition;
@@ -239,6 +232,9 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
       body: Stack(
         children: <Widget>[
           GoogleMap(
+            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
             markers: _createMarker(),
             initialCameraPosition: _initialLocation,
             minMaxZoomPreference: MinMaxZoomPreference(13, 17),
@@ -290,3 +286,18 @@ Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

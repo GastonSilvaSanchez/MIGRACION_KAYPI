@@ -4,6 +4,8 @@ import 'package:flutter_kaypi/provider/lineas_api.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 
 class LineaRuta extends StatefulWidget {
   const LineaRuta({Key? key}) : super(key: key);
@@ -80,6 +82,9 @@ class _LineaRutaState extends State<LineaRuta> {
             
             GoogleMap(
               initialCameraPosition: cameraPosition,
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
               mapType: MapType.normal,
               markers: Set<Marker>.of(_markers),
               polylines: _polyline,
