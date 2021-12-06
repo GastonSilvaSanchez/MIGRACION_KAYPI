@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/linea_ruta.dart';
+import 'package:flutter_kaypi/pages/mapaRuta/Rutas.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
+import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
 
 class LineaPage extends StatelessWidget {
+  PuntoEstrategico? p;
   final Linea linea;
-  const LineaPage({
+  LineaPage({
     Key? key,
     required this.linea,
+    this.p,
   }) : super(key: key);
 
   @override
@@ -77,13 +81,13 @@ class LineaPage extends StatelessWidget {
                 print(cont);*/
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LineaRuta(),
-                    settings: RouteSettings(
-                      arguments: linea 
+                  MaterialPageRoute(
+                    builder: (context) => LineaRuta(
+                      newdata: p,
                     ),
+                    settings: RouteSettings(arguments: linea),
                   ),
                 );
-                
               },
             ),
             const SizedBox(height: 25),

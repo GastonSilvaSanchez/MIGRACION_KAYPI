@@ -72,7 +72,10 @@ class _LineasPuntosState extends State<LineasPuntos> {
         final linea = lineas[index];
         return ListTile(
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => LineaPage(linea: linea),
+            builder: (context) => LineaPage(
+              linea: linea,
+              p: widget.puntos,
+            ),
           )),
           leading: CircleAvatar(
             //backgroundImage: AssetImage(linea.imagen),

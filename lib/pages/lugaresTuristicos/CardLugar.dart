@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/puntoSearch.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CardLugar extends StatefulWidget {
@@ -184,6 +185,41 @@ class CardLugarState extends State<CardLugar> {
                                     primary: Colors.white,
                 
                                   )),
+                                  SizedBox(height: 10),
+                           new Column(
+                            children: [
+                              ElevatedButton(
+                                  child: Text(
+                                    "Encontrar Punto Estrategico",
+                                    style: TextStyle(
+                                        color:  Colors.blue.shade900,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {
+                                   Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PuntoSearch(lugar: _lugar)
+                                      )
+                                   );
+                                  },  
+                                  style: ElevatedButton.styleFrom(
+                                    animationDuration: Duration(seconds: 4),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color:  Colors.blue.shade900,
+                                            width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                   
+                                    primary: Colors.white,
+                
+                                  )),
+                            ],
+                          ),
                             ],
                           ),
                         ],

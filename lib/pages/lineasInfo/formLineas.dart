@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/provider/lineas_api.dart';
 import 'package:flutter_kaypi/pages/lineasInfo/linea_page.dart';
@@ -14,10 +13,12 @@ class FormLineas extends StatefulWidget {
 }
 
 class _FormLineasState extends State<FormLineas> {
+  late Future<List<Linea>> futureLineas;
   bool _isMinBusVisible = true;
   bool _isTaxTruVisible = true;
   bool _isMicroVisible = true;
   void initState() {
+    futureLineas = lineasApi.cargarData();
     lineasApi.cargarData().then((data) {
       setState(() {
         lines = filteredLines = data;
@@ -143,7 +144,7 @@ class _FormLineasState extends State<FormLineas> {
 
   //Widget de visualizacion de rutas en lista
   Widget _lista(context) => FutureBuilder<List<Linea>>(
-        future: lineasApi.cargarData(),
+        future: futureLineas,
         initialData: [],
         builder: (context, snapshot) {
           final lineas = snapshot.data;
@@ -164,7 +165,8 @@ class _FormLineasState extends State<FormLineas> {
               listaCat = getCategories(lineas!);
               items = listaCat;
               listaFinal = getLinesFromCat(dropdownvalue.toString(), lineas);
-              return ListView(children: [
+              return  RefreshIndicator(
+                        child: ListView(children: [
                 ListTile(
                   tileColor: Colors.white,
                   title: Text(
@@ -205,7 +207,10 @@ class _FormLineasState extends State<FormLineas> {
                   color: Colors.blue.shade900,
                 ),
                 _buildLineas(listaFinal, context, _isMinBusVisible),
-              ]);
+              ]),
+                        onRefresh: _pullRefresh,
+                      );
+               
           }
         },
       );
@@ -279,4 +284,10 @@ class _FormLineasState extends State<FormLineas> {
       },
     );
   }
+  Future<void> _pullRefresh() async {
+     List<Linea> freshLines = await lineasApi.cargarData();
+     setState(() {
+      futureLineas = Future.value(freshLines);
+    });
+ }
 }
