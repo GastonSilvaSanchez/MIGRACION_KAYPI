@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
 import 'package:flutter_kaypi/pages/puntosEstrategicos/lineaspuntos.dart';
@@ -7,7 +9,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 List<String> listalineas = <String>[];
-
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
 
@@ -16,11 +17,12 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
-  List points = [];
-  List filteredPoints = [];
-  bool isSearching = false;
-
-  void initState() {
+  late Future<List<PuntoEstrategico>> futurePoints;
+   List points = [];
+   List filteredPoints = [];
+   bool isSearching = false;
+   void initState() {
+     futurePoints = puntoEstrategicoApi.cargarData();
     puntoEstrategicoApi.cargarData().then((data) {
       setState(() {
         points = filteredPoints = data;
@@ -28,8 +30,7 @@ class _FormPuntosState extends State<FormPuntos> {
     });
     super.initState();
   }
-
-  void _filterPoints(value) {
+    void _filterPoints(value) {
     setState(() {
       filteredPoints = points
           .where((point) =>
@@ -37,105 +38,105 @@ class _FormPuntosState extends State<FormPuntos> {
           .toList();
     });
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.blue.shade900,
-          title: !isSearching
-              ? Text('Puntos Estrategicos')
-              : TextField(
-                  onChanged: (value) {
-                    _filterPoints(value);
-                  },
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
+        title:  !isSearching
+            ? Text('Puntos Estrategicos')
+            
+            : TextField(
+                onChanged: (value) {
+                  _filterPoints(value);
+                },
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
                     icon: Icon(
                       Icons.search,
                       color: Colors.white,
                     ),
                     hoverColor: Colors.blueAccent.shade400,
                     hintText: "Busca tu lugar de preferencia",
-                    hintStyle: TextStyle(
-                        color: Colors.white60, decoration: TextDecoration.none),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white30),
-                    ),
+                    hintStyle: TextStyle(color: Colors.white60, decoration:TextDecoration.none),
+                     enabledBorder: UnderlineInputBorder(      
+                      borderSide: BorderSide(color: Colors.white30),   
+                      ),  
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
-                    ),
-                  ),
+                   ),
                 ),
-          actions: <Widget>[
-            isSearching
-                ? IconButton(
-                    icon: Icon(Icons.cancel),
-                    onPressed: () {
-                      setState(() {
-                        this.isSearching = false;
-                        filteredPoints = points;
-                      });
-                    },
-                  )
-                : IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      setState(() {
-                        this.isSearching = true;
-                      });
-                    },
-                  )
-          ],
-          elevation: 0,
-          leading: InkWell(
-            onTap: () => ZoomDrawer.of(context)!.toggle(),
-            child: Icon(
-              Icons.menu,
-              color: Colors.white,
-              size: 28,
-            ),
+                
+              ), 
+      actions: <Widget>[
+          isSearching
+              ? IconButton(
+                  icon: Icon(Icons.cancel),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                      filteredPoints = points;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+                    });
+                  },
+                )
+        ],      
+        elevation: 0,
+        leading: InkWell(
+          onTap: () => ZoomDrawer.of(context)!.toggle(),
+          child: Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 28,
           ),
         ),
-        body: !isSearching
-            ? _lista(context)
-            : Container(
-                padding: EdgeInsets.all(10),
-                child: filteredPoints.length > 0
-                    ? ListView.builder(
-                        itemCount: filteredPoints.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            onTap: () =>
-                                Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => _buildPuntoEspecifico(
-                                  filteredPoints[index], context),
-                            )),
-                            /* Navigator.of(context).pushNamed(Country.routeName,
+      ),
+      body: !isSearching    
+      ? _lista(context)
+      : Container(
+        padding: EdgeInsets.all(10),
+        child: filteredPoints.length > 0
+            ? ListView.builder(
+                itemCount: filteredPoints.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: ()=> Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>_buildPuntoEspecifico(filteredPoints[index],context),
+                    )),
+                     /* Navigator.of(context).pushNamed(Country.routeName,
                           arguments: filteredPoints[index]);*/
-                            child: Card(
-                              elevation: 10,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 8),
-                                child: Text(
-                                  filteredPoints[index].nombre,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                              ),
-                            ),
-                          );
-                        })
-                    : Center(
-                        child: CircularProgressIndicator(),
+                    child: Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 8),
+                        child: Text(
+                          filteredPoints[index].nombre,
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
-              ));
-  }
+                    ),
+                  );
+                })
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
 
+      ) 
+      );
+  }
   Widget _lista(context) => FutureBuilder<List<PuntoEstrategico>>(
-        future: puntoEstrategicoApi.cargarData(),
+        future: futurePoints,
         initialData: [],
         // ignore: non_constant_identifier_names
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
@@ -153,7 +154,12 @@ class _FormPuntosState extends State<FormPuntos> {
                 return Center(child: Text('No hay data'));
               }
 
-              return _buildLineas(lineas!, context);
+              return  RefreshIndicator(
+                  child: _buildLineas(lineas!, context),
+                  onRefresh: _pullRefresh,
+              );
+              
+              
           }
         },
       );
@@ -166,15 +172,16 @@ class _FormPuntosState extends State<FormPuntos> {
           final puntos = puntosEstrategicos[index];
           return Card(
             color: Colors.white,
-
+            
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
             margin: EdgeInsets.all(15),
             elevation: 10,
+           
 
             child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                   color: Colors.white,
                     borderRadius: BorderRadius.circular(25)),
                 child: ClipRRect(
                   // Los bordes del contenido del card se cortan usando BorderRadius
@@ -212,9 +219,25 @@ class _FormPuntosState extends State<FormPuntos> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
+                           TextButton(
+                              style: TextButton.styleFrom(
+                                primary: Colors.white,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
+                              ),
+                              onPressed: () => {
+                                
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                _buildPuntoEspecifico(puntos,context)),
+                                    )
+                                  },
+                              child: Text('Información')),
                           SizedBox(
                             width: 15,
-                          ),
+                          ),  
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
@@ -234,7 +257,7 @@ class _FormPuntosState extends State<FormPuntos> {
                               child: Text('Puntos')),
                           SizedBox(
                             width: 15,
-                          ),
+                          ),                
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
@@ -258,6 +281,12 @@ class _FormPuntosState extends State<FormPuntos> {
           );
         });
   }
+   Future<void> _pullRefresh() async {
+     List<PuntoEstrategico> freshPoints = await puntoEstrategicoApi.cargarData();
+     setState(() {
+      futurePoints = Future.value(freshPoints);
+    });
+ }
 }
 
 Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
@@ -387,6 +416,9 @@ class PuntosMarcadorGoogle extends StatelessWidget {
         children: <Widget>[
           GoogleMap(
             markers: _createMarker(),
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
             initialCameraPosition: _initialLocation,
             minMaxZoomPreference: MinMaxZoomPreference(13, 17),
             myLocationEnabled: true,

@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
@@ -116,6 +118,9 @@ class _RutasState extends State<Rutas> {
         children: [
           Expanded(
             child: GoogleMap(
+            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
               markers: Set<Marker>.from(markers),
               initialCameraPosition: _initialLocation,
               myLocationButtonEnabled: true,

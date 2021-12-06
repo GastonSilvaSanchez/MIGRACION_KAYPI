@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/linea.dart';
 import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
@@ -88,6 +90,9 @@ class _LineaRutaState extends State<LineaRuta> {
           children: [
             GoogleMap(
               initialCameraPosition: cameraPosition,
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
               mapType: MapType.normal,
               markers: Set<Marker>.of(_markers),
               polylines: _polyline,
