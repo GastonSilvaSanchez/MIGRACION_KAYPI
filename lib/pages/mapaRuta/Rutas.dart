@@ -41,7 +41,6 @@ class _RutasState extends State<Rutas> {
   bool bandera = false;
   int posicion = 0;
   final _rutasProvider = RutasProvider();
-
   int direccionRuta = 0;
 
   CameraPosition _initialLocation =
@@ -177,14 +176,14 @@ class _RutasState extends State<Rutas> {
                                 subtitle: Text(nlines[posicion].horarios[0]),
                                 trailing: //Text(nlines[posicion].categoria)
                                     TextButton(
-                                  onPressed: () {
+                                  onPressed: () { 
                                     setState(() {
-                                      if (direccionRuta == 0) {
-                                        direccionRuta = 1;
+                                      if (direccionRuta == 0) {                              
+                                        direccionRuta = 1; 
                                       } else if (direccionRuta == 1) {
-                                        direccionRuta = 0;
-                                      }
-                                      if (nlines.length > 0) {
+                                        direccionRuta = 0;      
+                                      }                                    
+                                      if (nlines.length > 0) {                                      
                                         latlng.clear();
                                         setState(() {});
                                         for (var i in nlines[posicion]
@@ -218,57 +217,8 @@ class _RutasState extends State<Rutas> {
                         activeIndex: posicion,
                         count: nlines.length),
                     SizedBox(height: 6),
-                    /*Container(
-                        height: 30,
-                        color: Colors.red,
-                        width: double.infinity,
-                        child: GestureDetector(
-                          child: Text(
-                            'Limpiar Busquedad',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          onTap: () {
-                            markers.clear();
-                            latlngPuntos.clear();
-                            polyline.clear();
-                            nlines = [];
-                            setState(() {});
-                          },
-                        )),*/
                   ],
                 )
-              // : bandera
-              //     ? Container(
-              //         height: 70,
-              //         color: Colors.red,
-              //         width: double.infinity,
-              //         child: GestureDetector(
-              //           child: Column(
-              //             children: [
-              //               Text(''),
-              //               Text(
-              //           'No se encontro rutas disponibles\n Limpiar Busquedad',
-              //                 style: TextStyle(
-              //                     color: Colors.white,
-              //                     fontSize: 18,
-              //                     fontWeight: FontWeight.bold),
-              //                 textAlign: TextAlign.center,
-              //               ),
-              //             ],
-              //           ),
-              //           onTap: () {
-              //             markers.clear();
-              //             latlngPuntos.clear();
-              //             polyline.clear();
-              //             nlines = [];
-              //              bandera=false;
-              //             setState(() {});
-              //           },
-              //         ))
               : Container(),
           Container(
               height: 30,
@@ -276,7 +226,7 @@ class _RutasState extends State<Rutas> {
               width: double.infinity,
               child: GestureDetector(
                 child: Text(
-                  'Limpiar Busquedad',
+                  'Limpiar Busqueda',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -306,11 +256,11 @@ class _RutasState extends State<Rutas> {
           infoWindow: InfoWindow(
             title: 'I am a marker',
           ),
-          //icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
         ));
       }
     });
-    if (markers.length == 2) {
+    if (markers.length == 2) { 
       _rutasProvider
           .getPuntosCercanos(points, lines, latlngPuntos)
           .then((value) => {
@@ -334,9 +284,9 @@ class _RutasState extends State<Rutas> {
               });
     }
   }
-
   void _OnMapCreated(GoogleMapController mapController) {
     setState(() {
+           
       mapController = mapController;
       polyline.add(Polyline(
         startCap: Cap.roundCap,
@@ -345,7 +295,7 @@ class _RutasState extends State<Rutas> {
         visible: true,
         points: latlng,
         width: 3,
-        color: Color.fromRGBO(48, 79, 254, 1.0),
+        color:Color.fromRGBO(48, 79, 254, 1.0)      
       ));
     });
   }
