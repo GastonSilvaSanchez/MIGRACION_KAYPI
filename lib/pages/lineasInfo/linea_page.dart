@@ -166,7 +166,7 @@ class LineaPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: Text(
-                        linea.telefonos[index].toString(),
+                        linea.telefonos[index],
                       ),
                     ),
                   );
