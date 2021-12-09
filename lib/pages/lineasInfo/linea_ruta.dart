@@ -73,7 +73,7 @@ class _LineaRutaState extends State<LineaRuta> {
     }
 
     return Scaffold(
-        extendBodyBehindAppBar: true,
+        extendBodyBehindAppBar: false,
         appBar: AppBar(
           title: Text('Rutas'),
           elevation: 0,
@@ -96,6 +96,8 @@ class _LineaRutaState extends State<LineaRuta> {
               mapType: MapType.normal,
               markers: Set<Marker>.of(_markers),
               polylines: _polyline,
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
               onMapCreated: _OnMapCreated,
               zoomControlsEnabled: false,
             ),

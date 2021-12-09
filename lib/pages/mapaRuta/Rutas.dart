@@ -122,6 +122,7 @@ class _RutasState extends State<Rutas> {
             ].toSet(),
               markers: Set<Marker>.from(markers),
               initialCameraPosition: _initialLocation,
+              myLocationEnabled: true,
               myLocationButtonEnabled: true,
               zoomControlsEnabled: true,
               zoomGesturesEnabled: true,

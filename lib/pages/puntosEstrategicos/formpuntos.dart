@@ -113,8 +113,7 @@ class _FormPuntosState extends State<FormPuntos> {
                     onTap: ()=> Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>_buildPuntoEspecifico(filteredPoints[index],context),
                     )),
-                     /* Navigator.of(context).pushNamed(Country.routeName,
-                          arguments: filteredPoints[index]);*/
+
                     child: Card(
                       elevation: 10,
                       child: Padding(
@@ -219,22 +218,6 @@ class _FormPuntosState extends State<FormPuntos> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                           TextButton(
-                              style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: Colors.blue.shade900,
-                                onSurface: Colors.blue.shade100,
-                              ),
-                              onPressed: () => {
-                                
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                _buildPuntoEspecifico(puntos,context)),
-                                    )
-                                  },
-                              child: Text('Información')),
                           SizedBox(
                             width: 15,
                           ),  
@@ -420,47 +403,14 @@ class PuntosMarcadorGoogle extends StatelessWidget {
             new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
             ].toSet(),
             initialCameraPosition: _initialLocation,
+            
             minMaxZoomPreference: MinMaxZoomPreference(13, 17),
             myLocationEnabled: true,
-            myLocationButtonEnabled: false,
+            myLocationButtonEnabled: true,
             mapType: MapType.normal,
             onMapCreated: (GoogleMapController controller) {
               controller.showMarkerInfoWindow(MarkerId('marker_2'));
             },
-          ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-                child: ClipOval(
-                  child: Material(
-                    color: Colors.orange.shade100, // button color
-                    child: InkWell(
-                      splashColor: Colors.orange, // inkwell color
-                      child: SizedBox(
-                        width: 56,
-                        height: 56,
-                        child: Icon(Icons.my_location),
-                      ),
-                      onTap: () {
-                        mapController.animateCamera(
-                          CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              target: LatLng(
-                                _currentPosition.latitude,
-                                _currentPosition.longitude,
-                              ),
-                              zoom: 18.0,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ),
         ],
       ),
