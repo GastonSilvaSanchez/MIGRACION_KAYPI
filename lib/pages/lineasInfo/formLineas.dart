@@ -58,7 +58,7 @@ class _FormLineasState extends State<FormLineas> {
                     Icons.search,
                     color: Colors.blue.shade900,
                   ),
-                  hintText: "Busca tu linea de transporte",
+                  hintText: "Ejemplo: 120",
                   hintStyle: TextStyle(
                       color: Colors.blue.shade900,
                       decoration: TextDecoration.none),
