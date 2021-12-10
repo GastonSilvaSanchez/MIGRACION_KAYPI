@@ -10,6 +10,7 @@ import 'package:flutter_kaypi/provider/puntosEstrategicos_api.dart';
 import 'package:flutter_kaypi/provider/rutas_providers.dart';
 import 'package:flutter_kaypi/zoom_drawer.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
@@ -101,14 +102,10 @@ class _RutasState extends State<Rutas> {
         title: Text('Rutas'),
         elevation: 0,
         leading: InkWell(
-          onTap: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MenuZoom()),
-            )
-          },
+          onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
-            Icons.arrow_back,
+            Icons.menu,
+            color: Colors.white,
             size: 28,
           ),
         ),
