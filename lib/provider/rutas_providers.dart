@@ -7,6 +7,7 @@ import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RutasProvider with ChangeNotifier {
+  //metodo que obtiene las lineas, mas cercanas, por los puntos estrategicos con un rango definido por marcador
   Future<List<Linea>> getPuntosCercanos(List<PuntoEstrategico> points,
       List<Linea> lines, List<LatLng> latlng) async {
     List<Linea> nlineas = [];

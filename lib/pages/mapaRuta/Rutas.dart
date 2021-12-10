@@ -26,6 +26,7 @@ class Rutas extends StatefulWidget {
 }
 
 class _RutasState extends State<Rutas> {
+  //declaracion de variables
   late GoogleMapController mapController;
   final _carouselController = new CarouselController();
   List<Linea> lines = [];
@@ -50,6 +51,7 @@ class _RutasState extends State<Rutas> {
 
 //metodo para obtener la ubicacion actual del dispositivo de manera asincronica
   // Method for retrieving the current location
+  // ignore: unused_element
   _getCurrentLocation() async {
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
         .then((Position position) async {
@@ -70,6 +72,7 @@ class _RutasState extends State<Rutas> {
     });
   }
 
+  //obteniendo puntos de los puntos estrategicos para referencia en el mapa.
   getPuntos() {
     puntoEstrategicoApi.cargarData().then((puntos) {
       setState(() {
@@ -78,6 +81,7 @@ class _RutasState extends State<Rutas> {
     });
   }
 
+  //obteniendo todas las lineas de la base de datos
   getLineas() {
     lineasApi.cargarData().then((lineas) {
       setState(() {
@@ -88,6 +92,7 @@ class _RutasState extends State<Rutas> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     getPuntos();
@@ -114,9 +119,11 @@ class _RutasState extends State<Rutas> {
         children: [
           Expanded(
             child: GoogleMap(
-            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
-            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
-            ].toSet(),
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+                new Factory<OneSequenceGestureRecognizer>(
+                  () => new EagerGestureRecognizer(),
+                )
+              ].toSet(),
               markers: Set<Marker>.from(markers),
               initialCameraPosition: _initialLocation,
               myLocationEnabled: true,
@@ -174,14 +181,14 @@ class _RutasState extends State<Rutas> {
                                 subtitle: Text(nlines[posicion].horarios[0]),
                                 trailing: //Text(nlines[posicion].categoria)
                                     TextButton(
-                                  onPressed: () { 
+                                  onPressed: () {
                                     setState(() {
-                                      if (direccionRuta == 0) {                              
-                                        direccionRuta = 1; 
+                                      if (direccionRuta == 0) {
+                                        direccionRuta = 1;
                                       } else if (direccionRuta == 1) {
-                                        direccionRuta = 0;      
-                                      }                                    
-                                      if (nlines.length > 0) {                                      
+                                        direccionRuta = 0;
+                                      }
+                                      if (nlines.length > 0) {
                                         latlng.clear();
                                         setState(() {});
                                         for (var i in nlines[posicion]
@@ -190,8 +197,6 @@ class _RutasState extends State<Rutas> {
                                           //print(new LatLng(i.lat, i.lng));
                                           latlng.add(new LatLng(i.lat, i.lng));
                                         }
-                                        print(
-                                            'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $direccionRuta');
                                         _OnMapCreated(mapController);
                                         bandera = false;
                                       } else {
@@ -244,6 +249,7 @@ class _RutasState extends State<Rutas> {
     );
   }
 
+//metodo de marcandor y obteniendo puntos del mapa
   _handleTap(LatLng point) {
     setState(() {
       if (markers.length <= 1) {
@@ -258,7 +264,7 @@ class _RutasState extends State<Rutas> {
         ));
       }
     });
-    if (markers.length == 2) { 
+    if (markers.length == 2) {
       _rutasProvider
           .getPuntosCercanos(points, lines, latlngPuntos)
           .then((value) => {
@@ -267,12 +273,11 @@ class _RutasState extends State<Rutas> {
                   if (nlines.length > 0) {
                     latlng.clear();
                     setState(() {});
+                    //ciclo para añadir la direccion de las lineas por los puntos seleccionados
                     for (var i in nlines[posicion].ruta[direccionRuta].puntos) {
                       //print(new LatLng(i.lat, i.lng));
                       latlng.add(new LatLng(i.lat, i.lng));
                     }
-                    print(
-                        'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS $direccionRuta');
                     _OnMapCreated(mapController);
                     bandera = false;
                   } else {
@@ -282,19 +287,20 @@ class _RutasState extends State<Rutas> {
               });
     }
   }
+
+//dibujando el trazo de cada linea que pasa por los puntos marcados
+  // ignore: non_constant_identifier_names
   void _OnMapCreated(GoogleMapController mapController) {
     setState(() {
-           
       mapController = mapController;
       polyline.add(Polyline(
-        startCap: Cap.roundCap,
-        endCap: Cap.roundCap,
-        polylineId: PolylineId('linea'),
-        visible: true,
-        points: latlng,
-        width: 3,
-        color:Color.fromRGBO(48, 79, 254, 1.0)      
-      ));
+          startCap: Cap.roundCap,
+          endCap: Cap.roundCap,
+          polylineId: PolylineId('linea'),
+          visible: true,
+          points: latlng,
+          width: 3,
+          color: Color.fromRGBO(48, 79, 254, 1.0)));
     });
   }
 }
