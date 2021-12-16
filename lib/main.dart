@@ -19,4 +19,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+/*Para la build de una apk 
+flutter build apk --release --no-sound-null-safety
+Para la ejecucion del proyecto
+flutter run --no-sound-null-safety
+*/
