@@ -26,8 +26,8 @@ class LineasApi {
   //Obtiene de una url el json y retorna una lista parseo Json
   */
   Future<List<Linea>> cargarData() async {
-    //http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/lineas'));
-    http.Response response = await http.get(Uri.parse('https://swanky-buttoned-saltasaurus.glitch.me/api/lineas'));
+    http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/lineas'));
+    //http.Response response = await http.get(Uri.parse('https://swanky-buttoned-saltasaurus.glitch.me/api/lineas'));
     final body = await json.decode(response.body);
 
     final list = body['lineas'] as List<dynamic>;
