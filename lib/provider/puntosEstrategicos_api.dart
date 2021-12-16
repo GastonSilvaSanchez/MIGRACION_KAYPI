@@ -27,6 +27,7 @@ class PuntoEstrategicoApi {
   */
   Future<List<PuntoEstrategico>> cargarData() async {
     http.Response response = await http.get(Uri.parse('http://10.0.2.2:3000/api/puntos'));
+    //Link de api: Entrar a glitch.com y crear un nuevo proyecto de node con el proyecto web
     //http.Response response = await http.get(Uri.parse('https://swanky-buttoned-saltasaurus.glitch.me/api/puntos'));
     final body = await json.decode(response.body);
 
