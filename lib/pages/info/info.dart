@@ -13,46 +13,55 @@ class _InfoAppState extends State<InfoApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo[800],
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: InkWell(
+          backgroundColor: Colors.blue.shade900,
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            /*leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
-            color: Colors.grey[600],
+            color: Colors.white,
             size: 28,
           ),
-        ),
-      ),
+        ),*/
+            leading: InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
+          ),
 
-      ///instanciacion y configuraion del cuerpo de la ventana
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              ///instanciacion de elementos de la lista
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(0),
+          ///instanciacion y configuraion del cuerpo de la ventana
+          body: Container(
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  ///instanciacion de elementos de la lista
+                  child: ListView.builder(
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(0),
 
-                      ///divicion en columnas
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'assets/img/kaypi.png',
-                              width: 170,
-                            ),
-                          ),
-                          /*Container(
+                          ///divicion en columnas
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'assets/img/kaypi.png',
+                                  width: 170,
+                                ),
+                              ),
+                              /*Container(
                                 margin: EdgeInsets.all(20),
                                 alignment: Alignment.center,
                                 child: Text('Kaypi',
@@ -66,87 +75,87 @@ class _InfoAppState extends State<InfoApp> {
                                   ),
                                 ),
                               ),*/
-                          ///divicion de partes dentro de la ventana
-                          ///
-                          ///intanciacion de una imagen (logotipo)
-                          Align(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'assets/img/uni.png',
-                              width: 150,
-                              height: 150,
-                            ),
-                          ),
-
-                          ///asignacion de tamaño
-                          SizedBox(height: 10.0),
-
-                          ///salto de linea
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '\n',
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-
-                          /// version de aplicacion y configuracion de visualizacion
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Versión 2.0',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red[900],
-                                letterSpacing: 2.0,
+                              ///divicion de partes dentro de la ventana
+                              ///
+                              ///intanciacion de una imagen (logotipo)
+                              Align(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'assets/img/uni.png',
+                                  width: 150,
+                                  height: 150,
+                                ),
                               ),
-                            ),
-                          ),
 
-                          SizedBox(
-                            height: 20,
-                          ),
+                              ///asignacion de tamaño
+                              SizedBox(height: 10.0),
 
-                          /// llamado a las card para su implementacion
-                          miCard(),
-                          miCard2(),
-
-                          Divider(
-                            height: 90.0,
-                            color: Colors.grey[600],
-                          ),
-
-                          ///divicion de partes dentro de la ventana
-                          /// inicio de otras aplicaciones
-                          Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Otras Aplicaciones',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.grey[600],
-                                letterSpacing: 2.0,
+                              ///salto de linea
+                              Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  '\n',
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                            ),
+
+                              /// version de aplicacion y configuracion de visualizacion
+                              Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Versión 2.0',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(
+                                height: 20,
+                              ),
+
+                              /// llamado a las card para su implementacion
+                              miCard(),
+                              miCard2(),
+
+                              Divider(
+                                height: 90.0,
+                                color: Colors.white,
+                              ),
+
+                              ///divicion de partes dentro de la ventana
+                              /// inicio de otras aplicaciones
+                              Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Otras Aplicaciones',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 30.0),
+
+                              /// llamado a los card para su implementacion
+                              miCard3(),
+                              miCardDesign(),
+                            ],
                           ),
-
-                          SizedBox(height: 30.0),
-
-                          /// llamado a los card para su implementacion
-                          miCard3(),
-                          miCardDesign(),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    ));
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 
   ///instanciacion de la clase micard
@@ -169,13 +178,13 @@ class _InfoAppState extends State<InfoApp> {
                 alignment: Alignment.centerRight,
                 placeholder: AssetImage('assets/img/loading.gif'),
                 image: AssetImage('assets/img/descargacocha.png'),
-                height: 40,
-                width: 40,
+                height: 60,
+                width: 60,
               ),
               Container(
                 margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 60, 5),
+                padding: EdgeInsets.fromLTRB(10, 20, 50, 20),
                 child:
                     Text("Contribuciones\n\nGobierno Municipal de Cochabamba"),
               ),
@@ -219,9 +228,9 @@ class _InfoAppState extends State<InfoApp> {
               Container(
                 margin: EdgeInsets.all(0),
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(5, 10, 100, 5),
+                padding: EdgeInsets.fromLTRB(20, 30, 100, 30),
                 child: Text(
-                    "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nAxel\nCarolina\nPaulo\nNoemi\nEdward\nMichel"),
+                    "Desarrollado por:\nUniversidad Privada Del Valle\n\nDesarrolladores:\n\nGabriel Sebastian Clavijo\nLuis Ángel Jallasa\nMirko Marca\nMiguel Angel Terrazas\nHeidi Ivanna Huanca\nAxel Eddy Martinez\nCristopher Joaquin Jimenez\nEric Emmanuel Galleguillos\nSergio Lara Rocabado\nJimena Gonzales\nAxel Matias Miranda\nCarolina Vivian Escobar\nPaulo David Crespo\nNoemi Sanchez\nEdward Rene Jimenez\nMichel Sanabria"),
               ),
             ],
           )
@@ -267,8 +276,15 @@ class _InfoAppState extends State<InfoApp> {
 
               /// enlace para redirigir a la descarga de la aplicacion el googleplaystore
               Center(
-                child: ElevatedButton(
-                    child: Text("Descargar"),
+                child: MaterialButton(
+                    color: Colors.blueAccent,
+                    textColor: Colors.white,
+                    child: Icon(
+                      Icons.download,
+                      size: 24,
+                    ),
+                    padding: EdgeInsets.all(16),
+                    shape: CircleBorder(),
                     onPressed: () {
                       launch(
                           "https://play.google.com/store/apps/details?id=bo.tramitesco.chabamba&hl=es&gl=US");
@@ -318,8 +334,15 @@ class _InfoAppState extends State<InfoApp> {
 
               /// enlace para redirigir a la descarga de la aplicacion el googleplaystore
               Center(
-                child: ElevatedButton(
-                    child: Text("Descargar"),
+                child: MaterialButton(
+                    color: Colors.blueAccent,
+                    textColor: Colors.white,
+                    child: Icon(
+                      Icons.download,
+                      size: 24,
+                    ),
+                    padding: EdgeInsets.all(16),
+                    shape: CircleBorder(),
                     onPressed: () {
                       launch(
                           "https://play.google.com/store/apps/details?id=com.gamc.ciudadanoactivo&hl=es_BO&gl=US");

@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
             colors: [
               Colors.white,
               Colors.grey,
-              Colors.blue,
+              Colors.blue.shade900,
             ],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,

@@ -1,7 +1,7 @@
 class Linea {
   final String nombre;
   final String categoria;
-  final List<int> telefonos;
+  final List<String> telefonos;
   final List<String> pasajes;
   final List<String> horarios;
   final List<String> calles;
@@ -27,7 +27,7 @@ class Linea {
     return new Linea(
       nombre: json['Nombre'],
       categoria: json['Categoria'],
-      telefonos: json['Telefonos'].cast<int>(),
+      telefonos: json['Telefonos'].cast<String>(),
       pasajes: json['Pasajes'].cast<String>(),
       horarios: json['Horarios'].cast<String>(),
       calles: json['Calles'].cast<String>(),

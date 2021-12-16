@@ -6,7 +6,5 @@ abstract class Routes {
   static const FORMLINEAS = '/lineas';
   static const PUNTOSESTRATEGICOS = '/puntos';
   static const CONFIGURACION = '/configuracion';
-  static const AYUDA = '/ayuda';
-  static const INFO = '/info';
   static const RUTAMAPA = '/rutamapa';
 }

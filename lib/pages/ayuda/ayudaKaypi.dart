@@ -37,7 +37,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   ///se define una nueva lista de la clase carditem
   _AyudaKaypiState() {
     ///se empieza a instanciar los elementos de la lista
-    elementos.add(new CardItem(
+    /* elementos.add(new CardItem(
 
         ///intancia los atributos
         "Rutas",
@@ -53,11 +53,11 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
           "assets/img/ayudaImg/rutas2.jpeg",
           "assets/img/ayudaImg/rutas3.jpeg",
           "assets/img/ayudaImg/rutas3.1.PNG"
-        ]));
+        ]));*/
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Lineas",
+        "Líneas",
         "Visualiza información cobre determinadas lineas de transporte.",
         "assets/img/ayudaImg/lineasayuda.png",
         [
@@ -65,33 +65,33 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/lineas.jpeg"
+          "assets/img/ayudaImg/lineas.png"
         ]));
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Puntos Estrategicos",
-        "Visualiza información sobre un punto estrategico especifico y sus posibles rutas.",
+        "Puntos Estratégicos",
+        "Visualiza información sobre un punto estrategico especifico y sus posibles rutas y su respectiva ubicación.",
         "assets/img/ayudaImg/puntosestayuda.png",
         [
           "Elegido un punto estratégico es posible  determinar las líneas que pasan por dicho punto así como trazar una ruta desde su ubicación actual. La aplicación le permite crear sus propios puntos estratégicos."
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/puntosestrategicos1.PNG"
+          "assets/img/ayudaImg/puntosestrategicos01.png"
         ]));
     elementos.add(new CardItem(
 
         ///intancia los atributos
-        "Configuración",
-        "Modifica el aspecto de la aplicación para una mejor experiencia.",
+        "Información y ayuda",
+        "Busca ayuda para las funciones de la aplicacion y encuentra informacion sobre el desarrollo de la app",
         "assets/img/ayudaImg/configuracionayuda.png",
         [
-          "Modifcar al idioma de su preferencia. \nActivar notificaciones. \nModificar privaciondad y terminos y condiciones. \nCambiar la apariencia. \nActivar o desactivar acualizaciones automaticas ."
+          "Ver la guia de la aplicación. \nVer informacion relacionada con el desarrollo de la aplicación."
         ],
         [
           ///hace llamdo a las imagenes a usar
-          "assets/img/ayudaImg/configuracion.PNG"
+          "assets/img/ayudaImg/configuracion01.png"
         ]));
   }
 
@@ -119,16 +119,7 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
               width: double.infinity,
               padding: EdgeInsets.only(left: 20, bottom: 10, top: 10),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.white,
-                      Colors.grey,
-                      Colors.indigo.shade400,
-                    ],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                  ),
-                  borderRadius: BorderRadius.circular(25)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(25)),
               child: Row(
                 ///divicion por filas
                 children: <Widget>[
@@ -182,59 +173,68 @@ class _AyudaKaypiState extends State<AyudaKaypi> {
   Widget build(BuildContext context) {
     final orientacion = MediaQuery.of(context).orientation;
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo.shade600,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.indigo.shade600,
-        elevation: 0,
+          backgroundColor: Colors.blue.shade100,
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.blue.shade900,
+            elevation: 0,
 
-        ///se establece el nombre y los detalles del titulo de la ventana
-        title: new Text('Ayuda',
-            style: new TextStyle(fontWeight: FontWeight.bold)),
-        leading: InkWell(
+            ///se establece el nombre y los detalles del titulo de la ventana
+            title: new Text('Ayuda',
+                style: new TextStyle(fontWeight: FontWeight.bold)),
+            /*leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
             color: Colors.grey,
             size: 28,
           ),
-        ),
-      ),
+        ),*/
+            leading: InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 28,
+              ),
+            ),
+          ),
 
-      ///se establece el cuerppo de la ventana
-      body: Padding(
-          padding: const EdgeInsets.all(0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(seconds: 2),
-                    transitionBuilder: (widget, animation) {
-                      return ScaleTransition(
-                        scale: animation,
-                        child: widget,
-                      );
-                    },
-                    child: orientacion == Orientation.portrait
-                        ? ListView.builder(
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index))
+          ///se establece el cuerppo de la ventana
+          body: Padding(
+              padding: const EdgeInsets.all(0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(seconds: 2),
+                        transitionBuilder: (widget, animation) {
+                          return ScaleTransition(
+                            scale: animation,
+                            child: widget,
+                          );
+                        },
+                        child: orientacion == Orientation.portrait
+                            ? ListView.builder(
+                                itemCount: elementos.length,
+                                itemBuilder: (context, index) =>
+                                    ListaOpciones(context, index))
 
-                        ///lee y muestra las items de la lista
-                        : GridView.builder(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            itemCount: elementos.length,
-                            itemBuilder: (context, index) =>
-                                ListaOpciones(context, index),
-                          ),
-                  ),
-                ),
-              ])),
-    ));
+                            ///lee y muestra las items de la lista
+                            : GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2),
+                                itemCount: elementos.length,
+                                itemBuilder: (context, index) =>
+                                    ListaOpciones(context, index),
+                              ),
+                      ),
+                    ),
+                  ])),
+        ));
   }
 }

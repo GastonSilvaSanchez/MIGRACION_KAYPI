@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/model/puntoEstrategico.dart';
 import 'package:flutter_kaypi/pages/puntosEstrategicos/lineaspuntos.dart';
@@ -7,7 +9,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 List<String> listalineas = <String>[];
-
 class FormPuntos extends StatefulWidget {
   const FormPuntos({Key? key}) : super(key: key);
 
@@ -16,13 +17,80 @@ class FormPuntos extends StatefulWidget {
 }
 
 class _FormPuntosState extends State<FormPuntos> {
+  late Future<List<PuntoEstrategico>> futurePoints;
+   List points = [];
+   List filteredPoints = [];
+   bool isSearching = false;
+   void initState() {
+     futurePoints = puntoEstrategicoApi.cargarData();
+    puntoEstrategicoApi.cargarData().then((data) {
+      setState(() {
+        points = filteredPoints = data;
+      });
+    });
+    super.initState();
+  }
+    void _filterPoints(value) {
+    setState(() {
+      filteredPoints = points
+          .where((point) =>
+              point.nombre.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.indigo.shade600,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Puntos Estrategicos'),
+        backgroundColor: Colors.blue.shade900,
+        title:  !isSearching
+            ? Text('Puntos Estrategicos')
+            
+            : TextField(
+                onChanged: (value) {
+                  _filterPoints(value);
+                },
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
+                    hoverColor: Colors.blueAccent.shade400,
+                    hintText: "Busca tu lugar de preferencia",
+                    hintStyle: TextStyle(color: Colors.white60, decoration:TextDecoration.none),
+                     enabledBorder: UnderlineInputBorder(      
+                      borderSide: BorderSide(color: Colors.white30),   
+                      ),  
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                   ),
+                ),
+                
+              ), 
+      actions: <Widget>[
+          isSearching
+              ? IconButton(
+                  icon: Icon(Icons.cancel),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = false;
+                      filteredPoints = points;
+                    });
+                  },
+                )
+              : IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      this.isSearching = true;
+                    });
+                  },
+                )
+        ],      
         elevation: 0,
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
@@ -33,12 +101,41 @@ class _FormPuntosState extends State<FormPuntos> {
           ),
         ),
       ),
-      body: _lista(context),
-    );
-  }
+      body: !isSearching    
+      ? _lista(context)
+      : Container(
+        padding: EdgeInsets.all(10),
+        child: filteredPoints.length > 0
+            ? ListView.builder(
+                itemCount: filteredPoints.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: ()=> Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>_buildPuntoEspecifico(filteredPoints[index],context),
+                    )),
 
+                    child: Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 8),
+                        child: Text(
+                          filteredPoints[index].nombre,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  );
+                })
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
+
+      ) 
+      );
+  }
   Widget _lista(context) => FutureBuilder<List<PuntoEstrategico>>(
-        future: puntoEstrategicoApi.cargarData(),
+        future: futurePoints,
         initialData: [],
         // ignore: non_constant_identifier_names
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
@@ -56,7 +153,12 @@ class _FormPuntosState extends State<FormPuntos> {
                 return Center(child: Text('No hay data'));
               }
 
-              return _buildLineas(lineas!, context);
+              return  RefreshIndicator(
+                  child: _buildLineas(lineas!, context),
+                  onRefresh: _pullRefresh,
+              );
+              
+              
           }
         },
       );
@@ -69,22 +171,16 @@ class _FormPuntosState extends State<FormPuntos> {
           final puntos = puntosEstrategicos[index];
           return Card(
             color: Colors.white,
+            
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
             margin: EdgeInsets.all(15),
             elevation: 10,
+           
 
             child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.white,
-                        Colors.grey,
-                        Colors.indigo.shade400,
-                      ],
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
+                   color: Colors.white,
                     borderRadius: BorderRadius.circular(25)),
                 child: ClipRRect(
                   // Los bordes del contenido del card se cortan usando BorderRadius
@@ -122,15 +218,14 @@ class _FormPuntosState extends State<FormPuntos> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
+                          SizedBox(
+                            width: 15,
+                          ),  
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -145,16 +240,12 @@ class _FormPuntosState extends State<FormPuntos> {
                               child: Text('Puntos')),
                           SizedBox(
                             width: 15,
-                          ),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
+                          ),                
                           TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
-                                onSurface: Colors.grey,
+                                backgroundColor: Colors.blue.shade900,
+                                onSurface: Colors.blue.shade100,
                               ),
                               onPressed: () => {
                                     Navigator.push(
@@ -173,6 +264,107 @@ class _FormPuntosState extends State<FormPuntos> {
           );
         });
   }
+   Future<void> _pullRefresh() async {
+     List<PuntoEstrategico> freshPoints = await puntoEstrategicoApi.cargarData();
+     setState(() {
+      futurePoints = Future.value(freshPoints);
+    });
+ }
+}
+
+Widget _buildPuntoEspecifico(PuntoEstrategico puntosEstrategicos, context) {
+  final puntos = puntosEstrategicos;
+  return Scaffold(
+      appBar: AppBar(
+        title: Text(puntos.nombre),
+        backgroundColor: Colors.blue.shade900,
+      ),
+      body: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        margin: EdgeInsets.all(15),
+        elevation: 10,
+
+        child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(25)),
+            child: ClipRRect(
+              // Los bordes del contenido del card se cortan usando BorderRadius
+
+              // widget hijo que será recortado segun la propiedad anterior
+              child: Column(
+                children: <Widget>[
+                  // widget Image para mostrar una imagen
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(1),
+                    child: Text(puntos.categoria,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(1),
+                    child: Text(puntos.zonasCBBA,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
+                  ),
+                  Container(
+                      padding: EdgeInsets.all(10),
+                      child: Center(
+                        child: Text(
+                          puntos.descripcion,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                          textAlign: TextAlign.center,
+                        ),
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.blue.shade900,
+                            onSurface: Colors.blue.shade100,
+                          ),
+                          onPressed: () => {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PuntosMarcadorGoogle(
+                                            puntos: puntos,
+                                          )),
+                                )
+                              },
+                          child: Text('Puntos')),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.blue.shade900,
+                            onSurface: Colors.blue.shade100,
+                          ),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            LineasPuntos(puntos: puntos))),
+                              },
+                          child: Text('Lineas'))
+                    ],
+                  )
+                ],
+              ),
+            )),
+        // Dentro de esta propiedad usamos ClipRRect
+      ));
 }
 
 // ignore: must_be_immutable
@@ -200,53 +392,25 @@ class PuntosMarcadorGoogle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("VISTA DE MARCADOR")),
+      appBar: AppBar(
+          title: Text("VISTA DE MARCADOR"),
+          backgroundColor: Colors.blue.shade900),
       body: Stack(
         children: <Widget>[
           GoogleMap(
             markers: _createMarker(),
+              gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            new Factory<OneSequenceGestureRecognizer>(() => new EagerGestureRecognizer(),)
+            ].toSet(),
             initialCameraPosition: _initialLocation,
+            
             minMaxZoomPreference: MinMaxZoomPreference(13, 17),
             myLocationEnabled: true,
-            myLocationButtonEnabled: false,
+            myLocationButtonEnabled: true,
             mapType: MapType.normal,
             onMapCreated: (GoogleMapController controller) {
               controller.showMarkerInfoWindow(MarkerId('marker_2'));
             },
-          ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-                child: ClipOval(
-                  child: Material(
-                    color: Colors.orange.shade100, // button color
-                    child: InkWell(
-                      splashColor: Colors.orange, // inkwell color
-                      child: SizedBox(
-                        width: 56,
-                        height: 56,
-                        child: Icon(Icons.my_location),
-                      ),
-                      onTap: () {
-                        mapController.animateCamera(
-                          CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              target: LatLng(
-                                _currentPosition.latitude,
-                                _currentPosition.longitude,
-                              ),
-                              zoom: 18.0,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ),
         ],
       ),

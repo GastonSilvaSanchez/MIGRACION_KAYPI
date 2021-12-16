@@ -39,7 +39,7 @@ class _MenuZoomState extends State<MenuZoom> {
         borderRadius: 40,
         showShadow: true,
         angle: -14.00,
-        backgroundColor: Colors.indigoAccent.shade400,
+        backgroundColor: Colors.blue.shade600,
         slideWidth: MediaQuery.of(context).size.width * 0.7,
         openCurve: Curves.fastOutSlowIn,
         closeCurve: Curves.bounceIn,
@@ -60,12 +60,8 @@ class _MenuZoomState extends State<MenuZoom> {
       case MenuItems.lugares:
         return ListaLugaresTuristicos();
       case MenuItems.configuracion:
+       default:
         return Configuracion();
-      case MenuItems.ayuda:
-        return AyudaKaypi();
-      case MenuItems.info:
-      default:
-        return InfoApp();
     }
   }
 }

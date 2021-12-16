@@ -13,7 +13,6 @@ import 'package:flutter/widgets.dart';
 //import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 Map<String, Widget Function(BuildContext)> appRoutes() {
-  
   return {
     Routes.SPLASH: (_) => const SplashPage(),
     Routes.PERMISSIONS: (_) => const RequestPermissionPage(),
@@ -21,9 +20,7 @@ Map<String, Widget Function(BuildContext)> appRoutes() {
     Routes.RUTA: (_) => const Rutas(),
     Routes.FORMLINEAS: (_) => const FormLineas(),
     Routes.CONFIGURACION: (_) => const Configuracion(),
-    Routes.AYUDA: (_) => const AyudaKaypi(),
     Routes.PUNTOSESTRATEGICOS: (_) => const FormPuntos(),
-    Routes.INFO: (_) => const InfoApp(),
-    Routes.RUTAMAPA: (_) => const LineaRuta(),
+    Routes.RUTAMAPA: (_) => LineaRuta(),
   };
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kaypi/pages/lugaresTuristicos/listaLugaresTuristicos.dart';
+import 'package:flutter_kaypi/pages/lugaresTuristicos/puntoSearch.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CardLugar extends StatefulWidget {
@@ -30,9 +31,9 @@ class CardLugarState extends State<CardLugar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade600,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent.shade400,
+        backgroundColor: Colors.blue.shade900,
         elevation: 0,
         title: Text(
           _lugar.titulo,
@@ -71,7 +72,7 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.titulo.toUpperCase(),
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -81,7 +82,7 @@ class CardLugarState extends State<CardLugar> {
                                   child: Text(
                                     "Ver Ubicación",
                                     style: TextStyle(
-                                        color: Colors.indigoAccent.shade400,
+                                        color:  Colors.blue.shade900,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -94,13 +95,13 @@ class CardLugarState extends State<CardLugar> {
                                         MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            color: Colors.indigoAccent.shade400,
+                                            color: Colors.blue.shade900,
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
-                                    elevation: 18,
-                                    primary: Colors.transparent,
-                                    shadowColor: Colors.grey.shade400,
+                                   
+                                    primary: Colors.white,
+                                    
                                   )),
                               SizedBox(height: 20),
                             ],
@@ -113,7 +114,7 @@ class CardLugarState extends State<CardLugar> {
                               Text(
                                 _lugar.info,
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                               ),
@@ -137,7 +138,7 @@ class CardLugarState extends State<CardLugar> {
                                         _lugar.listaFuncionalidades[index]
                                             .toString(),
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 16.0,
                                         ),
                                       ),
@@ -163,7 +164,7 @@ class CardLugarState extends State<CardLugar> {
                                   child: Text(
                                     "Más Información",
                                     style: TextStyle(
-                                        color: Colors.indigoAccent.shade400,
+                                        color:  Colors.blue.shade900,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -176,14 +177,49 @@ class CardLugarState extends State<CardLugar> {
                                         MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            color: Colors.indigoAccent.shade400,
+                                            color:  Colors.blue.shade900,
                                             width: 2),
                                         borderRadius:
                                             BorderRadius.circular(15)),
-                                    elevation: 18,
-                                    primary: Colors.transparent,
-                                    shadowColor: Colors.grey.shade400,
+                                   
+                                    primary: Colors.white,
+                
                                   )),
+                                  SizedBox(height: 10),
+                           new Column(
+                            children: [
+                              ElevatedButton(
+                                  child: Text(
+                                    "Encontrar Punto Estrategico",
+                                    style: TextStyle(
+                                        color:  Colors.blue.shade900,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onPressed: () {
+                                   Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PuntoSearch(lugar: _lugar)
+                                      )
+                                   );
+                                  },  
+                                  style: ElevatedButton.styleFrom(
+                                    animationDuration: Duration(seconds: 4),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color:  Colors.blue.shade900,
+                                            width: 2),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                   
+                                    primary: Colors.white,
+                
+                                  )),
+                            ],
+                          ),
                             ],
                           ),
                         ],
@@ -199,3 +235,4 @@ class CardLugarState extends State<CardLugar> {
     );
   }
 }
+

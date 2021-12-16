@@ -8,7 +8,7 @@
         android:label="flutter_kaypi"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyAFCyi3Sfu1LI3BzubuMhY25kDyNSEDCCQ"/>
+        android:value="AIzaSyBY0Y6-0YKuzrsaoPmY4SjJAx93J6yeJb8"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

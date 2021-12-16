@@ -182,13 +182,11 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
           margin: EdgeInsets.all(2.5),
           //falta detallar
           child: Container(
-              height: 340,
-              width: double.infinity,
+              height: 200,
+              width: 100,
               padding: EdgeInsets.only(left: 0, bottom: 10, top: 10),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.grey, Colors.indigo.shade800],
-                  ),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8)),
               child: Column(
                 children: <Widget>[
@@ -196,8 +194,10 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                     tag: elementos[index],
                     child: Image.asset(
                       elementos[index].imagen,
+                      
                       //height: 100,
-                      width: double.infinity,
+                      width: 150,
+                      
                     ),
                   ),
                   Expanded(
@@ -213,7 +213,7 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
                               textAlign: TextAlign.left,
                               style: new TextStyle(
                                   fontSize: 18.0,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Roboto"),
                             ),
@@ -236,18 +236,20 @@ class _ListaLugaresTuristicosState extends State<ListaLugaresTuristicos> {
     final orientacion = MediaQuery.of(context).orientation;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
-      backgroundColor: Colors.indigo.shade800,
+      backgroundColor: Colors.blue.shade700,
       extendBodyBehindAppBar: true,
       //Este Código AppBar, es el menú de navegabilidad
       appBar: AppBar(
+        title: Text("Lugares Turisticos"),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: InkWell(
           onTap: () => ZoomDrawer.of(context)!.toggle(),
           child: Icon(
             Icons.menu,
-            color: Colors.grey,
+            color: Colors.white,
             size: 28,
           ),
         ),
